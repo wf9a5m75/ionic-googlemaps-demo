@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { MapGetMapPage } from './getmap';
 import { MapSetDivPage } from './setdiv';
+import { MapSetMapTypeIdPage } from './setmaptypeid';
 
 /**
  * Generated class for the MapPage page.
@@ -20,10 +21,12 @@ import { MapSetDivPage } from './setdiv';
 export class MapPage {
   getMap: any;
   setDiv: any;
+  setMapTypeId: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.getMap = MapGetMapPage;
     this.setDiv = MapSetDivPage;
+    this.setMapTypeId = MapSetMapTypeIdPage;
   }
 
   ionViewDidLoad() {
