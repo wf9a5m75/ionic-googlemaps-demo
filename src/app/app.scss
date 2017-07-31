@@ -53,3 +53,34 @@ th {
   background-color: #eee;
   border: 1px solid #b9b9b9;
 }
+.map {
+  width: 90%;
+  height: 400px;
+  border: 1px solid red;
+  margin: 5%;
+  position: relative;
+}
+textarea {
+  width: 90%;
+  height: 400px;
+  margin: 5%;
+  position: relative;
+  white-space: nowrap;
+  overflow:    scroll;
+  background-color: #f0f0f0;
+  font-size: 105%;
+  line-height: 150%;
+  font-family: monospace;
+}
+
+.highlight {
+  background-color: rgba(0, 0, 0, 0.04);
+  font-size: 85%;
+  padding: 0.2em;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 120%;
+}
