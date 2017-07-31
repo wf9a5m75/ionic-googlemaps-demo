@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { MapGetMapPage } from './map-get-map';
+import { MapGetMapPage } from './getmap';
 
 @NgModule({
   declarations: [

@@ -16,8 +16,8 @@ import {
 
 @IonicPage()
 @Component({
-  selector: 'page-map-get-map',
-  templateUrl: 'map-get-map.html',
+  selector: 'page-map-getmap',
+  templateUrl: 'getmap.html',
   providers: [
     GoogleMaps
   ]

@@ -5,8 +5,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { MapPage } from '../pages/map/map';
-import { MapGetMapPage } from '../pages/map-get-map/map-get-map';
+import { MapPage } from '../pages/map/index';
+import { MapGetMapPage } from '../pages/map/getmap';
+import { MapSetDivPage } from '../pages/map/setdiv';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ListPage,
     MapPage,
-    MapGetMapPage
+    MapGetMapPage,
+    MapSetDivPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     ListPage,
     MapPage,
-    MapGetMapPage
+    MapGetMapPage,
+    MapSetDivPage
   ],
   providers: [
     StatusBar,

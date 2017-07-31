@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { MapGetMapPage } from '../map-get-map/map-get-map';
+import { MapGetMapPage } from './getmap';
+import { MapSetDivPage } from './setdiv';
 
 /**
  * Generated class for the MapPage page.
@@ -13,14 +14,16 @@ import { MapGetMapPage } from '../map-get-map/map-get-map';
 @IonicPage()
 @Component({
   selector: 'page-map',
-  templateUrl: 'map.html',
+  templateUrl: 'index.html',
 })
 
 export class MapPage {
-  map_getMap: any;
+  getMap: any;
+  setDiv: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.map_getMap = MapGetMapPage;
+    this.getMap = MapGetMapPage;
+    this.setDiv = MapSetDivPage;
   }
 
   ionViewDidLoad() {

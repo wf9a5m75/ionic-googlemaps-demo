@@ -1,0 +1,60 @@
+<!--
+  Generated template for the MapGetMapPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Map/setDiv</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <section class="demo">
+      <h3>map.setDiv()</h3>
+      <p>
+          Click the button, detach the map. Click the button again, attach the map.
+      </p>
+      <div class="map" id="map_canvas">
+          <span class="smallPanel"><button ion-button (click)="onButtonClick($event)">Click here</button></span>
+      </div>
+      <textarea class="prettyprint">
+export class MapSetDivPage {
+  map: GoogleMap;
+  mapDiv: HTMLElement;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
+
+  ionViewDidLoad() {
+    var self=this;
+    self.loadMap();
+  }
+  loadMap() {
+    this.mapDiv = document.getElementById('map_canvas');
+    this.map = this.googleMaps.create(this.mapDiv);
+
+    // Wait the MAP_READY before using any methods.
+    this.map.one(GoogleMapsEvent.MAP_READY)
+      .then(() => {
+        console.log('Map is ready!');
+
+      });
+  }
+
+  onButtonClick(event) {
+    if (this.map.getDiv()) {
+      this.map.setDiv();
+    } else {
+      this.map.setDiv(this.mapDiv);
+    }
+  }
+}
+      </textarea>
+  </section>
+
+
+</ion-content>
