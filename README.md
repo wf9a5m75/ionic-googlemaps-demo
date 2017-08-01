@@ -152,7 +152,7 @@ Second,
   - [ ] setPosition
   - [ ] setRotation
   - [ ] setFlat
-  - [ ] setIcon
+  - [ ] setIcon (@wf9a5m75)
 
 - [ ] Circle
   - [ ] map.addCircle
