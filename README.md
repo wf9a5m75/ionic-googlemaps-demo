@@ -62,7 +62,7 @@ $> ionic cordova run android -l
 
 ## Current status
 
-- [x] Map
+- [ ] Map
   - [x] getMap
   - [x] setDiv
   - [x] setMapTypeId
@@ -107,7 +107,7 @@ $> ionic cordova run android -l
   - [ ] MAP_READY
 
 -[ ] Marker
-  - [ ] map.addMarker
+  - [x] map.addMarker
   - [ ] getPosition
   - [ ] showInfoWindow
   - [ ] hideInfoWindow
