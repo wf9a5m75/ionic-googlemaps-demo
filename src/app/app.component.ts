@@ -4,8 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { MapPage } from '../pages/map/index';
-import { MarkerPage } from '../pages/marker/index';
+import {MapPage} from "../pages/map/map";
+import {MarkerPage} from "../pages/marker/marker";
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +26,6 @@ export class MyApp {
       { title: 'MapPage', component: MapPage },
       { title: 'MarkerPage', component: MarkerPage }
     ];
-
   }
 
   initializeApp() {
