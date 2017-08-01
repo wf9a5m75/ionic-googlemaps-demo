@@ -4,7 +4,8 @@ import {
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
-  BaseArrayClass
+  BaseArrayClass,
+  HtmlInfoWindow
 } from '@ionic-native/google-maps';
 
 
@@ -105,7 +106,7 @@ export class MapAddMarkerPage {
         ];
 
         // Add markers
-        var baseArrayClass = new BaseArrayClass(data);
+        let baseArrayClass:any = new BaseArrayClass(data);
 
         baseArrayClass.map((options:any, cb:any) => {
           // The variable "options" contains each element of the data.
@@ -115,19 +116,30 @@ export class MapAddMarkerPage {
           delete options.title;
           this.map3.addMarker(options).then(cb);
 
-        }).then(() => {
+        }, (markers) => {
+
+          let htmlInfoWindow:any = new HtmlInfoWindow();
+
+          markers.forEach((marker) => {
+            marker.on(GoogleMapsEvent.MARKER_CLICK)
+              .subscribe(() => {
+                htmlInfoWindow.setContent(marker.get("mytitle"));
+                htmlInfoWindow.open(marker);
+              });
+          });
+
+          // Set camera position that include all markers.
+          let bounds:any = [];
+          data.forEach((POI: any) => {
+            bounds.push(POI.position);
+          });
+
+          this.map3.moveCamera({
+            target: bounds
+          });
 
         });
 
-        // Set camera position that include all markers.
-        let bounds:any = [];
-        data.forEach((POI: any) => {
-          bounds.push(POI.position);
-        });
-
-        this.map3.moveCamera({
-          target: bounds
-        });
       });
   }
 

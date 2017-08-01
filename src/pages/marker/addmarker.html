@@ -77,7 +77,28 @@ loadMap() {
         The below code is recommended way to add multiple marker on the map.
     </p>
     <div class="map" id="map_canvas3"></div>
-    <textarea class="prettyprint" style="height:250px">
+    <textarea class="prettyprint">
+loadMap() {
+this.map2 = this.googleMaps.create('map_canvas2');
+
+// Wait the MAP_READY before using any methods.
+this.map2.one(GoogleMapsEvent.MAP_READY)
+.then(() => {
+
+this.map2.addMarker({
+position: {
+lat: 0,
+lng: 0
+},
+title: "Hello Cordova Google Maps\n for iOS and Android",
+snippet: "This plugin is awesome!"
+})
+.then(marker => {
+// Display the infoWindow
+marker.showInfoWindow();
+});
+});
+}
 </textarea>
 </section>
 </ion-content>
