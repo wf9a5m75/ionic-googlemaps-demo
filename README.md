@@ -88,24 +88,24 @@ Second,
 [x] means the page was created.
 
 - [ ] Map
-  - [x] getMap
-  - [x] setDiv
-  - [x] setMapTypeId
-  - [ ] animateCamera
-  - [ ] animateCameraZoomIn
-  - [ ] animateCameraZoomOut
-  - [ ] moveCamera
-  - [ ] moveCameraZoomIn
-  - [ ] moveCameraZoomOut
-  - [ ] getCameraPosition
-  - [ ] getCameraTarget
-  - [ ] getCameraZoom
-  - [ ] getCameraBearing
-  - [ ] getCameraTilt
-  - [ ] setCameraTarget
-  - [ ] setCameraZoom
-  - [ ] setCameraTilt
-  - [ ] setCameraBearing
+  - [x] getMap (@wf9a5m75)
+  - [x] setDiv (@wf9a5m75)
+  - [x] setMapTypeId (@wf9a5m75)
+  - [ ] animateCamera (@wf9a5m75)
+  - [ ] animateCameraZoomIn (@wf9a5m75)
+  - [ ] animateCameraZoomOut (@wf9a5m75)
+  - [ ] moveCamera (@wf9a5m75)
+  - [ ] moveCameraZoomIn (@wf9a5m75)
+  - [ ] moveCameraZoomOut (@wf9a5m75)
+  - [ ] getCameraPosition (@wf9a5m75)
+  - [ ] getCameraTarget (@wf9a5m75)
+  - [ ] getCameraZoom (@wf9a5m75)
+  - [ ] getCameraBearing (@wf9a5m75)
+  - [ ] getCameraTilt (@wf9a5m75)
+  - [ ] setCameraTarget (@wf9a5m75)
+  - [ ] setCameraZoom (@wf9a5m75)
+  - [ ] setCameraTilt (@wf9a5m75)
+  - [ ] setCameraBearing (@wf9a5m75)
   - [ ] panBy
   - [ ] getVisibleRegion
   - [ ] getMyLocation
