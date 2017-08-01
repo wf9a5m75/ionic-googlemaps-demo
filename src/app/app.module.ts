@@ -9,6 +9,9 @@ import { MapGetMapPage } from '../pages/map/getmap';
 import { MapSetDivPage } from '../pages/map/setdiv';
 import { MapSetMapTypeIdPage } from '../pages/map/setmaptypeid';
 
+import { MarkerPage } from '../pages/marker/index';
+import { MapAddMarkerPage } from '../pages/marker/addmarker';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -19,7 +22,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MapPage,
     MapGetMapPage,
     MapSetDivPage,
-    MapSetMapTypeIdPage
+    MapSetMapTypeIdPage,
+    MarkerPage,
+    MapAddMarkerPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MapPage,
     MapGetMapPage,
     MapSetDivPage,
-    MapSetMapTypeIdPage
+    MapSetMapTypeIdPage,
+    MarkerPage,
+    MapAddMarkerPage
   ],
   providers: [
     StatusBar,
