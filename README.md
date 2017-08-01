@@ -20,7 +20,7 @@ It is really easy job. Just convert from JavaScript to TypeScript.
 **step1: Clone this project to your local**
 
 ```
-$> git clone https://github.com/mapsplugin/ionic-google-maps
+$> git clone https://github.com/wf9a5m75/ionic-googlemaps-demo
 
 $> cd ionic-google-maps
 ```
@@ -33,7 +33,7 @@ at the Google APIs console.
 The package name is `ionic.google.maps`
 
 ```
-<plugin name="cordova-plugin-googlemaps" spec="https://github.com/mapsplugin/cordova-plugin-googlemaps">
+<plugin name="cordova-plugin-googlemaps" spec="https://github.com/wf9a5m75/ionic-googlemaps-demo">
   <variable name="API_KEY_FOR_ANDROID" value="(REPLACE_WITH_YOUR_KEY)" />
   <variable name="API_KEY_FOR_IOS" value="(REPLACE_WITH_YOUR_KEY)" />
 </plugin>
