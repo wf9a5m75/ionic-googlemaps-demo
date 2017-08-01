@@ -7,7 +7,6 @@ import {
  GoogleMapsMapTypeId
 } from '@ionic-native/google-maps';
 
-
 @IonicPage()
 @Component({
   selector: 'page-map-setmaptypeid',

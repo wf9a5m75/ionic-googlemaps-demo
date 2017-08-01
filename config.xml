@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="ionic.google.maps" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MyApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -80,12 +80,12 @@
     </platform>
     <engine name="android" spec="^6.2.3" />
     <engine name="ios" spec="^4.4.0" />
-    <plugin name="com.googlemaps.ios" spec="/Users/masashi/Documents/workspace/cordova-plugin-googlemaps-sdk" />
+    <plugin name="com.googlemaps.ios" spec="https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk" />
     <plugin name="cordova-plugin-console" spec="^1.0.7" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
-    <plugin name="cordova-plugin-googlemaps" spec="file:../../cordova-plugin-googlemaps">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDoGU-q2R8gI3C2YdOheaCLTKl8rHshV9A" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyDoGU-q2R8gI3C2YdOheaCLTKl8rHshV9A" />
+    <plugin name="cordova-plugin-googlemaps" spec="https://github.com/mapsplugin/cordova-plugin-googlemaps">
+      <variable name="API_KEY_FOR_ANDROID" value="(REPLACE_WITH_YOUR_KEY)" />
+      <variable name="API_KEY_FOR_IOS" value="(REPLACE_WITH_YOUR_KEY)" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.3" />
