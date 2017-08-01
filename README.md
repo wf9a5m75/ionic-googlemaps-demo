@@ -56,30 +56,15 @@ Should work.
 $> ionic cordova run android -l
 ```
 
-**step5: copy template pages**
+**step5: generate new page**
+```
+$> ionic generate page GetMap
+```
 
-For example, if you want to create a page of `Marker.setIcon()` page,
-the class is `Marker`, so please copy template files into `marker` folder.
+This will create package in pages folder(there is issue in iconic to allow to specify any location for generated folder). 
+All you have to do move this folder to any folder. Restart your ionic cli and all changes will be presented.
 
-![](./copy_template_files.png)
-
-**step6: rename files to method name**
-
-For example, if you want to create a page of `Marker.setIcon()` page,
-the file names become:
-
-  - template.html -> seticon.html
-  - template.module.ts -> seticon.module.ts
-  - template.ts -> seticon.ts
-
-**step7: rename class names**
-
-We need to change the class name of each pages.
-
-First, let's open the `seticon.ts` file.
-Then change class names like this:
-
-![](./rename_module_file.png)
+NOTE: Make sure you are using latest ionic cli version.
 
 Second,
 
