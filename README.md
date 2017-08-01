@@ -66,7 +66,42 @@ All you have to do move this folder to any folder. Restart your ionic cli and al
 
 NOTE: Make sure you are using latest ionic cli version.
 
-Second,
+----
+
+## How to build @ionic-native, and install it in local
+
+### Build the @ionic-native/google-maps plugin
+
+```
+$> cd (path to)/ionic-native
+
+$> ls
+CHANGELOG.md		LICENSE			circle.yml		gulpfile.js		node_modules		package.json		src			tslint.json
+DEVELOPER.md		README.md		dist			karma.conf.js		package-lock.json	scripts			tsconfig.json
+
+$> npm run build google-maps
+
+```
+
+### install the @ionic-native/google-maps plugin
+
+```
+$> cd (path to)/ionic-googlemaps-demo
+
+$> npm uninstall @ionic-native/google-maps
+
+$> npm install (path to)/ionic-native/dist/google-maps
+```
+
+After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
+
+Because I already sent [a pull request](https://github.com/ionic-team/ionic-native/pull/1834) to the original ionic-native repo.
+If you commit the code to the https://github.com/wf9a5m75/ionic-native, automatic code review is executed at the pull request page.
+
+Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ionic-native/pull/1834)
+
+
+----
 
 ## Current working progress
 
