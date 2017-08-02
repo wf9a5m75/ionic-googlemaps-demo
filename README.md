@@ -153,14 +153,14 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
 
 - [ ] Marker
   - [x] map.addMarker
-  - [ ] getPosition
-  - [ ] showInfoWindow
-  - [ ] hideInfoWindow
-  - [ ] setAnimation
-  - [ ] isVisible
-  - [ ] setTitle
-  - [ ] setSnippet
-  - [ ] remove
+  - [ ] getPosition (@pavel-kurnosov)
+  - [ ] showInfoWindow (@pavel-kurnosov)
+  - [ ] hideInfoWindow (@pavel-kurnosov)
+  - [ ] setAnimation (@pavel-kurnosov)
+  - [ ] isVisible (@pavel-kurnosov)
+  - [ ] setTitle (@pavel-kurnosov)
+  - [ ] setSnippet (@pavel-kurnosov)
+  - [ ] remove (@pavel-kurnosov)
   - [ ] setIconAnchor
   - [ ] setInfoWindowAnchor
   - [ ] isInfoWindowShown
