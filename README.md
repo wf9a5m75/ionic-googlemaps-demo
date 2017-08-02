@@ -239,9 +239,9 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] setVisible
   - [ ] remove
 
-- [ ] Geocoding
-  - [ ] geocoding
-  - [ ] reverse_geocoding
+- [X] Geocoding (@ThorvaldAagaard)
+  - [X] geocoding
+  - [X] reverse_geocoding
 
 
 - [ ] Environment
