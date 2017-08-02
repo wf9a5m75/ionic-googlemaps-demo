@@ -1,9 +1,4 @@
-<!--
-  Generated template for the MapPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -23,22 +18,29 @@
           <th><a [navPush]="'AddMarkerPage'">map.addMarker()</a></th>
           <td>Add a marker.</td>
         </tr>
+      </table>
+      <h3>Methods</h3>
+      <table class="reference">
         <tr>
           <th><a [navPush]="'GetPositionPage'">getPosition()</a></th>
           <td>Get the marker position.</td>
         </tr>
+        <tr>
+          <th><a [navPush]="'ShowInfoWindowPage'">showInfoWindow()</a></th>
+          <td>Show the infoWindow of the marker.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'HideInfoWindowPage'">hideInfoWindow()</a></th>
+          <td>Hide the infoWindow of the marker.</td>
+        </tr>
+
         <tr>
           <th><a [navPush]="'SetIconPage'">setIcon()</a></th>
           <td>Change the marker icon.</td>
         </tr>
       </table>
       <!--
-                  <h3>Methods</h3>
                   <table class="reference">
-                      <tr>
-                          <th><button ion-button [navPush]="showInfoWindow">showInfoWindow()</button></th>
-                          <td>Show the infoWindow of the marker.</td>
-                      </tr>
                       <tr>
                           <th><button ion-button [navPush]="hideInfoWindow">hideInfoWindow()</button></th>
                           <td>Hide the infoWindow of the marker.</td>

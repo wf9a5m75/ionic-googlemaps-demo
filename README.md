@@ -118,9 +118,9 @@ Second,
 
 - [ ] Marker
   - [x] map.addMarker
-  - [ ] getPosition
-  - [ ] showInfoWindow
-  - [ ] hideInfoWindow
+  - [x] getPosition
+  - [x] showInfoWindow
+  - [x] hideInfoWindow
   - [ ] setAnimation
   - [ ] isVisible
   - [ ] setTitle

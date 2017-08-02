@@ -1,28 +1,77 @@
-<!--
-  Generated template for the MapGetMapPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Marker/getPosition()</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Marker/getPosition()</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <section class="demo">
-    <h3>Create a map</h3>
-    <p>
-      The map.addMarker() method takes a single Marker options object literal, specifying the initial properties of the marker.
-    </p>
-    <div class="map" id="map_canvas"></div>
-    <textarea class="prettyprint">
+    <section class="demo">
+        <p>Returns the marker position immediately.</p>
+        <div class="map" id="map_canvas">
+            <span class="smallPanel"
+                  *ngIf="markerPosition">{{'{'+ markerPosition.lat + ', ' + markerPosition.lng + '}'}}</span>
+        </div>
+        <textarea class="prettyprint">
+            import {Component, NgZone} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent, ILatLng, Marker
+} from '@ionic-native/google-maps';
+import {Observable} from "rxjs";
 
+@IonicPage()
+@Component({
+  selector: 'page-get-position',
+  templateUrl: 'get-position.html',
+})
+export class GetPositionPage {
+  map: GoogleMap;
+  markerPosition: ILatLng;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private _ngZone: NgZone) {
+  }
+
+  ionViewDidLoad() {
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = this.googleMaps.create('map_canvas', {
+      gestures: {
+        scroll: false  // Disable map dragging
+      }
+    });
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      this.map.addMarker({
+        position: {
+          lat: 0,
+          lng: 0
+        },
+        draggable: true,
+        title: "Drag me!"
+      }).then((marker: Marker) => {
+        this.markerPosition = marker.getPosition();
+
+        var onMarkerMove = event => {
+          this._ngZone.run(() => {
+            this.markerPosition = event;
+          });
+        };
+
+        marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(onMarkerMove);
+        marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(onMarkerMove);
+        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(onMarkerMove);
+      });
+    });
+  }
+}
       </textarea>
-  </section>
+    </section>
 
 </ion-content>
