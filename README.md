@@ -63,7 +63,7 @@ For example, create a page for `Map.animateCameraZoomIn()`.
 ```
 $> cd (path to)ionic-googlemaps-demo
 
-$> ionic generate page AnimateCameraZoomIn  // Don't generate is the page is already existed.
+$> ionic generate page AnimateCameraZoomIn  // Don't generate if the page is already existed.
 [OK] Generated a page named AnimateCameraZoomIn!
 
 $> cd src/pages/
