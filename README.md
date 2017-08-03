@@ -57,8 +57,18 @@ $> ionic cordova run android -l
 ```
 
 **step5: generate new page**
+
+For example, create a page for `Map.animateCameraZoomIn()`.
+
 ```
-$> ionic generate page GetMap
+$> cd (path to)ionic-googlemaps-demo
+
+$> ionic generate page AnimateCameraZoomIn  // Don't generate is the page is already existed.
+[OK] Generated a page named AnimateCameraZoomIn!
+
+$> cd src/pages/
+
+$> mv animate-camera-zoom-in map/
 ```
 
 This will create package in pages folder(there is issue in iconic to allow to specify any location for generated folder). 
