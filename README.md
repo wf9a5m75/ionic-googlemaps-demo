@@ -90,7 +90,12 @@ CHANGELOG.md		LICENSE			circle.yml		gulpfile.js		node_modules		package.json		src
 DEVELOPER.md		README.md		dist			karma.conf.js		package-lock.json	scripts			tsconfig.json
 
 $> npm run build google-maps
+...
+Done processing plugins!
 
+$> npm run build core
+...
+Done processing plugins!
 ```
 
 ### install the @ionic-native/google-maps plugin
@@ -100,7 +105,9 @@ $> cd (path to)/ionic-googlemaps-demo
 
 $> npm uninstall @ionic-native/google-maps
 
-$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps
+$> npm install (path to)/ionic-native/dist/@ionic-native/core
+
+$> npm link (path to)/ionic-native/dist/@ionic-native/google-maps
 ```
 
 After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
