@@ -14,7 +14,7 @@
             <span class="smallPanel"
                   *ngIf="markerPosition">{{'{'+ markerPosition.lat + ', ' + markerPosition.lng + '}'}}</span>
         </div>
-        <textarea class="prettyprint">
+        <textarea class="prettyprint" readonly="readonly">
             import {Component, NgZone} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {

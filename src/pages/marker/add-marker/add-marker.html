@@ -21,7 +21,7 @@
             of the marker.
         </p>
         <div class="map" id="map_canvas1"></div>
-        <textarea class="prettyprint" id="map_canvas1_code">
+        <textarea class="prettyprint" id="map_canvas1_code" readonly="readonly">
 loadMap1() {
   this.map1 = this.googleMaps.create('map_canvas1');
 
@@ -48,7 +48,7 @@ loadMap1() {
             Marker shows an infoWindow when you tap on the marker. You can also display the snippet strings.
         </p>
         <div class="map" id="map_canvas2"></div>
-        <textarea class="prettyprint">
+        <textarea class="prettyprint" readonly="readonly">
 loadMap() {
   this.map2 = this.googleMaps.create('map_canvas2');
 
@@ -78,7 +78,7 @@ loadMap() {
             The below code is recommended way to add multiple marker on the map.
         </p>
         <div class="map" id="map_canvas3"></div>
-        <textarea class="prettyprint">
+        <textarea class="prettyprint" readonly="readonly">
 loadMap() {
   this.map3 = this.googleMaps.create('map_canvas3');
   this.map3.one(GoogleMapsEvent.MAP_READY)
