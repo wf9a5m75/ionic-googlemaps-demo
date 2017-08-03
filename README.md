@@ -107,7 +107,7 @@ $> npm uninstall @ionic-native/google-maps
 
 $> npm install (path to)/ionic-native/dist/@ionic-native/core
 
-$> npm link (path to)/ionic-native/dist/@ionic-native/google-maps
+$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps
 ```
 
 After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
