@@ -33,6 +33,26 @@
           <th><a [navPush]="'HideInfoWindowPage'">hideInfoWindow()</a></th>
           <td>Hide the infoWindow of the marker.</td>
         </tr>
+        <tr>
+          <th><a [navPush]="'SetAnimationPage'">setAnimation()</a></th>
+          <td>Specifies a marker animation.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'IsVisiblePage'">isVisible()</a></th>
+          <td>Retrurn true if the marker is visible.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'SetTitlePage'">setTitle()</a></th>
+          <td>Change the marker title.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'SetSnippetPage'">setSnippet()</a></th>
+          <td>Change the marker snippet.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'RemoveMarkerPage'">remove()</a></th>
+          <td>Remove the marker.</td>
+        </tr>
 
         <tr>
           <th><a [navPush]="'SetIconPage'">setIcon()</a></th>
@@ -41,30 +61,7 @@
       </table>
       <!--
                   <table class="reference">
-                      <tr>
-                          <th><button ion-button [navPush]="hideInfoWindow">hideInfoWindow()</button></th>
-                          <td>Hide the infoWindow of the marker.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="setAnimation">setAnimation()</button></th>
-                          <td>Specifies a marker animation.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="isVisible">isVisible()</button></th>
-                          <td>Retrurn true if the marker is visible.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="setTitle">setTitle()</button></th>
-                          <td>Change the marker title.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="setSnippet">setSnippet()</button></th>
-                          <td>Change the marker snippet.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="remove">remove()</button></th>
-                          <td>Remove the marker.</td>
-                      </tr>
+
                       <tr>
                           <th><button ion-button [navPush]="setIconAnchor">setIconAnchor()</button></th>
                           <td>Set the marker icon anchor.</td>

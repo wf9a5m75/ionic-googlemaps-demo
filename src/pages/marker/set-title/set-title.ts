@@ -1,28 +1,14 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Marker/hideInfoWindow()</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <section class="demo">
-    <p>Hide info window of the marker.</p>
-    <div class="map" id="map_canvas"></div>
-    <textarea class="prettyprint" readonly="readonly">
 import {Component} from "@angular/core";
 import {IonicPage, NavController, NavParams} from "ionic-angular";
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/google-maps";
+import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker, GoogleMapsAnimation} from "@ionic-native/google-maps";
 
 
 @IonicPage()
 @Component({
-  selector: 'page-hide-info-window',
-  templateUrl: 'hide-info-window.html',
+  selector: 'page-set-title',
+  templateUrl: 'set-title.html',
 })
-export class HideInfoWindowPage {
+export class SetTitlePage {
   map: GoogleMap;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
@@ -44,16 +30,16 @@ export class HideInfoWindowPage {
         title: "Click me!"
       }).then((marker: Marker) => {
         marker.showInfoWindow();
+
+        // Catch the MARKER_CLICK event
         marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
-          marker.hideInfoWindow();
+          // Change the marker title
+          marker.setTitle("Clicked!");
+
+          // Redraw (reopen) the infoWindow.
+          marker.showInfoWindow();
         });
       });
     });
   }
 }
-
-
-      </textarea>
-  </section>
-
-</ion-content>

@@ -156,22 +156,22 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [x] getPosition (@pavel-kurnosov)
   - [x] showInfoWindow (@pavel-kurnosov)
   - [x] hideInfoWindow (@pavel-kurnosov)
-  - [ ] setAnimation (@pavel-kurnosov)
-  - [ ] isVisible (@pavel-kurnosov)
-  - [ ] setTitle (@pavel-kurnosov)
-  - [ ] setSnippet (@pavel-kurnosov)
-  - [ ] remove (@pavel-kurnosov)
-  - [ ] setIconAnchor
-  - [ ] setInfoWindowAnchor
-  - [ ] isInfoWindowShown
-  - [ ] setOpacity
-  - [ ] setZIndex
-  - [ ] setVisible
-  - [ ] setDraggable
-  - [ ] setDisableAutoPan
-  - [ ] setPosition
-  - [ ] setRotation
-  - [ ] setFlat
+  - [x] setAnimation (@pavel-kurnosov)
+  - [x] isVisible (@pavel-kurnosov)
+  - [x] setTitle (@pavel-kurnosov)
+  - [x] setSnippet (@pavel-kurnosov)
+  - [x] remove (@pavel-kurnosov)
+  - [ ] setIconAnchor (@pavel-kurnosov)
+  - [ ] setInfoWindowAnchor (@pavel-kurnosov)
+  - [ ] isInfoWindowShown (@pavel-kurnosov)
+  - [ ] setOpacity (@pavel-kurnosov)
+  - [ ] setZIndex (@pavel-kurnosov)
+  - [ ] setVisible (@pavel-kurnosov)
+  - [ ] setDraggable (@pavel-kurnosov)
+  - [ ] setDisableAutoPan (@pavel-kurnosov)
+  - [ ] setPosition (@pavel-kurnosov)
+  - [ ] setRotation (@pavel-kurnosov)
+  - [ ] setFlat (@pavel-kurnosov)
   - [ ] setIcon (@wf9a5m75)
 
 - [ ] Circle

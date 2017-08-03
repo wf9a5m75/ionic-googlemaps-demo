@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Marker/hideInfoWindow()</ion-title>
+    <ion-title>Marker/setSnipet()</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,20 +9,21 @@
 
 <ion-content padding>
   <section class="demo">
-    <p>Hide info window of the marker.</p>
+    <p>
+      Change the marker snippet.
+    </p>
     <div class="map" id="map_canvas"></div>
     <textarea class="prettyprint" readonly="readonly">
 import {Component} from "@angular/core";
 import {IonicPage, NavController, NavParams} from "ionic-angular";
 import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/google-maps";
 
-
 @IonicPage()
 @Component({
-  selector: 'page-hide-info-window',
-  templateUrl: 'hide-info-window.html',
+  selector: 'page-set-snippet',
+  templateUrl: 'set-snippet.html',
 })
-export class HideInfoWindowPage {
+export class SetSnippetPage {
   map: GoogleMap;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
@@ -41,18 +42,23 @@ export class HideInfoWindowPage {
           lat: 0,
           lng: 0
         },
-        title: "Click me!"
+        title: "Click me!",
+        snippet: 'This is the snippet string.'
       }).then((marker: Marker) => {
         marker.showInfoWindow();
+
+        // Catch the MARKER_CLICK event
         marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
-          marker.hideInfoWindow();
+          // Change the marker snippet.
+          marker.setSnippet("This plugin is awesome!");
+
+          // Redraw (reopen) the infoWindow.
+          marker.showInfoWindow();
         });
       });
     });
   }
 }
-
-
       </textarea>
   </section>
 
