@@ -34,3 +34,6 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 config.xml
 package*
+package.json
+package-lock.json
+

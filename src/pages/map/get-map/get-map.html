@@ -69,7 +69,7 @@ export class MapGetMapPage {
       You can specify the map options with <span class="highlight">getMap()</span> method.
     </p>
     <div class="map" id="map_canvas2"></div>
-    <textarea class="prettyprint">
+    <textarea readonly="readonly" class="prettyprint">
 loadMap() {
   this.map = this.googleMaps.create('map_canvas2', {
     'mapType': GoogleMapsMapTypeId.HYBRID,
@@ -122,7 +122,7 @@ loadMap() {
       <span class="smallPanel"><button ion-button (click)="onButtonClick($event)">HTML button1</button></span>
       <span class="smallPanel" style="position:absolute;bottom:1em;right:1em;"><button ion-button color="secondary" (click)="onButtonClick($event)">HTML button2</button></span>
     </div>
-    <textarea class="prettyprint" style="height:250px">
+    <textarea readonly="readonly" class="prettyprint" style="height:250px">
 loadMap3() {
   this.map3 = this.googleMaps.create('map_canvas3');
   this.map3.one(GoogleMapsEvent.MAP_READY)
@@ -136,7 +136,7 @@ onButtonClick(event) {
   alert(event.srcElement.innerText + ' is clicked');
 }
 </textarea>
-    <textarea class="prettyprint" style="height:100px">
+    <textarea readonly="readonly" class="prettyprint" style="height:100px">
   <div class="map" id="map_canvas3" style="position:relative">
       <span class="smallPanel"><button>HTML button1</button></span>
       <span class="smallPanel" style="position:absolute;bottom:1em;right:1em;"><button>HTML button2</button></span>

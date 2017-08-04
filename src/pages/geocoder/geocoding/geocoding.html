@@ -1,0 +1,211 @@
+<!--
+  Generated template for the GeocodingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Geocoding</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div id="contentView">
+        <div id="contentsFrame">
+            <section class="demo">
+                <h3>Geocoding</h3>
+                <p>
+                  This plugin supports geocoding. You can convert address or landscape names to latitude and longitude.<br>
+                  <br>
+                  In Android, this plugin uses Google Play Services feature, while in iOS this plugin uses iOS feature (not Google).
+                  It means the geocoding results are different on Android and iOS.
+                </p>
+                <div class="map" id="map_canvas1">
+                  <span class="smallPanel"><input ion-input [(ngModel)]="search_address" value="Kyoto, Japan"><button ion-button (click)="onButton1_click($event)">Search</button></span>
+                </div>
+                <textarea readonly="readonly" class="prettyprint">
+export class GeocodingPage {
+  map1: GoogleMap;
+  map2: GoogleMap;
+  mapTypeId: any;
+  isRunning: boolean = false;
+  search_address: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geocoder: Geocoder) {}
+
+  ionViewDidLoad() {
+    this.loadMap1();
+  }
+  loadMap1() {
+    this.search_address = 'Kyoto, Japan';
+    this.map1 = this.googleMaps.create('map_canvas1');
+
+    // Wait the MAP_READY before using any methods.
+    this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
+      console.log("map ready for map_canvas1");
+    });
+  }
+
+  onButton1_click(event) {
+    let self = this;
+
+    // Address -> latitude,longitude
+    self.geocoder.geocode({
+      "address": this.search_address
+    }).then((results: GeocoderResult[]) => {
+
+      if (results.length) {
+
+        // Add a marker
+        self.map1.addMarker({
+          'position': results[0].position,
+          'title':  JSON.stringify(results[0].position)
+        }).then((marker) => {
+
+          // Move to the position
+          self.map1.animateCamera({
+            'target': results[0].position,
+            'zoom': 17
+          }).then(() => {
+            marker.showInfoWindow();
+            self.isRunning = false;
+          });
+
+        });
+
+      } else {
+        self.isRunning = false;
+      }
+
+    });
+  }
+}
+</textarea>
+            </section>
+
+
+            <section class="demo">
+
+                <h3>Multiple locations</h3>
+                <p>
+                  You can pass multiple location in one request as Array.
+                  In this case, the method passes an instance of BaseArrayClass,
+                  then you will receive each results one by one.<br>
+                  <br>
+                  The instance of BaseArrayClass triggers the <span class="highlight">finish</span> event
+                  when all requests are completed.<br>
+                  If any error occurs during the requests processing, the instance triggers <span class="highlight">error</span> event.
+                </p>
+                <div class="map" id="map_canvas2">
+                  <span class="smallPanel"><button ion-button (click)="onButton2_click($event)">Click here!</button></span>
+                </div>
+                <textarea readonly="readonly" class="prettyprint">
+export class GeocodingPage {
+  map2: GoogleMap;
+  isRunning: boolean = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geocoder: Geocoder) {}
+
+  ionViewDidLoad() {
+    setTimeout(this.loadMap2.bind(this), 2000);
+  }
+  loadMap2() {
+    this.map2 = this.googleMaps.create('map_canvas2', {
+      camera: {
+        target: [
+          {"lat": 21.306944, "lng": -157.858333},
+          {"lat": 47.037874, "lng": -69.779490}
+        ]
+      }
+    });
+
+    // Wait the MAP_READY before using any methods.
+    this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
+      console.log("map ready for map_canvas2");
+    });
+  }
+
+
+  onButton2_click(event) {
+    if (this.isRunning) {
+      return;
+    }
+    this.isRunning = true;
+
+    let self = this;
+    let start = Date.now();
+
+    // Geocode multiple location
+    this.geocoder.geocode({
+
+      // US Capital cities
+      "address": [
+        "Montgomery, AL, USA", "Juneau, AK, USA", "Phoenix, AZ, USA",
+        "Little Rock, AR, USA", "Sacramento, CA, USA", "Denver, CO, USA",
+        "Hartford, CT, USA", "Dover, DE, USA", "Washington, DC, USA",
+        "Tallahassee, FL, USA", "Atlanta, GA, USA", "Honolulu, HI, USA",
+        "Boise, ID, USA", "Springfield, IL, USA", "Indianapolis, IN, USA",
+        "Des Moines, IA, USA", "Topeka, KS, USA", "Frankfort, KY, USA",
+        "Baton Rouge, LA, USA", "Augusta, ME, USA", "Annapolis, MD, USA",
+        "Boston, MA, USA", "Lansing, MI, USA", "Saint Paul, MN, USA",
+        "Jackson, MS, USA", "Jefferson City, MO, USA", "Helena, MT, USA",
+        "Lincoln, NE, USA", "Carson City, NV, USA", "Concord, NH, USA",
+        "Trenton, NJ, USA", "Santa Fe, NM, USA", "Albany, NY, USA",
+        "Raleigh, NC, USA", "Bismarck, ND, USA", "Columbus, OH, USA",
+        "Oklahoma City, OK, USA", "Salem, OR, USA", "Harrisburg, PA, USA",
+        "Providence, RI, USA", "Columbia, SC, USA", "Pierre, SD, USA",
+        "Nashville, TN, USA", "Austin, TX, USA", "Salt Lake City, UT, USA",
+        "Montpelier, VT, USA", "Richmond, VA, USA", "Olympia, WA, USA",
+        "Charleston, WV, USA", "Madison, WI, USA", "Cheyenne, Wyoming, USA"
+      ]
+    }).then((mvcArray: BaseArrayClass<GeocoderResult>) => {
+
+        let latLngBounds = new LatLngBounds();
+        let markers = new BaseArrayClass();
+
+        mvcArray.on('error').subscribe((error) => {
+          console.log(error);
+        });
+
+        mvcArray.on('insert_at').subscribe((index: number) => {
+
+          // Get a result
+          let geocodeResult = mvcArray.getAt(index);
+          if (geocodeResult.length > 0) {
+
+            latLngBounds.extend(geocodeResult[0].position);
+
+            self.map2.addMarker({
+              'position': geocodeResult[0].position,
+              'title':  JSON.stringify(geocodeResult)
+            }).then((marker) => {
+              markers.push(marker);
+            });
+          } else {
+            markers.push(null);
+          }
+        });
+
+        mvcArray.on('finish').subscribe(() => {
+          self.isRunning = false;
+        });
+
+        markers.on('insert_at').subscribe((index) => {
+          if (!self.isRunning && markers.getLength() === mvcArray.getLength()) {
+            let end = Date.now();
+            alert("results : " + mvcArray.getLength() + "\n" +
+                  "duration: " + ((end - start) / 1000).toFixed(1) + " seconds");
+          }
+        });
+    });
+  }
+}
+</textarea>
+            </section>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<!--
+  Generated template for the GeocoderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Geocoder class</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div id="contentView">
+    <div id="contentsFrame">
+        <p>Geocoder class provides only one static method: <span class="highlight">geocoder()</span>.<br/>
+          You can do:
+        </p>
+        <ul>
+          <li><b>Geocoding</b> : Convert from <span class="highlight">address</span> to <span class="highlight">latitude / longitude</span>.</li>
+          <li><b>Reverse geocoding</b> : Convert from <span class="highlight">latitude / longitude</span> to <span class="highlight">address</span>.</li>
+        </ul>
+        <p>
+          As of version 2.0, you can pass multiple location to the geocoder method at the same time,
+          then you can receive the results each time through the <a href="../BaseArrayClass/index.html">BaseArrayClass</a> instance.
+        </p>
+
+        <h3>Demos</h3>
+        <table class="reference">
+            <tr>
+                <th><a [navPush]="'GeocodingPage'">Geocoding</a></th>
+                <td>Get latitude / longitude pair(s) from the giving address(es).</td>
+            </tr>
+              <tr>
+                  <th><a [navPush]="'ReverseGeocodingPage'">Reverse geocoding</a></th>
+                  <td>Get latitude / longitude pair(s) from the giving address(es).</td>
+              </tr>
+        </table>
+    </div>
+  </div>
+
+</ion-content>
