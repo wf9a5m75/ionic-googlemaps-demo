@@ -89,6 +89,8 @@ $> ls
 CHANGELOG.md		LICENSE			circle.yml		gulpfile.js		node_modules		package.json		src			tslint.json
 DEVELOPER.md		README.md		dist			karma.conf.js		package-lock.json	scripts			tsconfig.json
 
+$> npm run clean && npm run lint && npm run build:core
+
 $> npm run build google-maps
 ...
 Done processing plugins!
