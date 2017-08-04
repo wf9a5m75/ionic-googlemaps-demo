@@ -105,6 +105,19 @@ $> npm uninstall @ionic-native/google-maps
 $> npm install (path to)/ionic-native/dist/@ionic-native/google-maps --no-fetch
 ```
 
+You may get some warning, but you can ignore these messages.
+```
+$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps --no-fetch
+ionic-googlemaps-demo@0.0.1 (path to)/ionic-googlemaps-demo
+├── UNMET PEER DEPENDENCY @ionic-native/core@4.1.0
+└── @ionic-native/google-maps@4.1.0 
+
+npm WARN @ionic-native/splash-screen@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
+npm WARN @ionic-native/status-bar@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
+npm WARN ajv-keywords@2.1.0 requires a peer of ajv@>=5.0.0 but none was installed.
+```
+
+
 After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
 
 Because I already sent [a pull request](https://github.com/ionic-team/ionic-native/pull/1834) to the original ionic-native repo.
