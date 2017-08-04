@@ -105,9 +105,10 @@ $> cd (path to)/ionic-googlemaps-demo
 
 $> npm uninstall @ionic-native/google-maps
 
+// Must install both core and google-maps from local
 $> npm install (path to)/ionic-native/dist/@ionic-native/core
 
-$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps
+$> npm link (path to)/ionic-native/dist/@ionic-native/google-maps
 ```
 
 After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
