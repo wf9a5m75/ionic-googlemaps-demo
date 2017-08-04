@@ -83,13 +83,11 @@ NOTE: Make sure you are using latest ionic cli version.
 ### Build the @ionic-native/google-maps plugin
 
 ```
-$> cd (path to)/ionic-native
+$> git clone https://github.com/wf9a5m75/ionic-native
 
-$> ls
-CHANGELOG.md		LICENSE			circle.yml		gulpfile.js		node_modules		package.json		src			tslint.json
-DEVELOPER.md		README.md		dist			karma.conf.js		package-lock.json	scripts			tsconfig.json
+$> cd ionic-native
 
-$> npm run clean && npm run lint && npm run build:core
+$> npm install
 
 $> npm run build google-maps
 ...
@@ -104,10 +102,7 @@ $> cd (path to)/ionic-googlemaps-demo
 
 $> npm uninstall @ionic-native/google-maps
 
-// Must install both core and google-maps from local
-$> npm install (path to)/ionic-native/dist/@ionic-native/core
-
-$> npm link (path to)/ionic-native/dist/@ionic-native/google-maps
+$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps --no-fetch
 ```
 
 After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
