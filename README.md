@@ -190,7 +190,7 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] setPosition (@pavel-kurnosov)
   - [ ] setRotation (@pavel-kurnosov)
   - [ ] setFlat (@pavel-kurnosov)
-  - [ ] setIcon (@wf9a5m75)
+  - [ ] setIcon
 
 - [ ] Circle
   - [ ] map.addCircle
