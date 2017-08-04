@@ -93,9 +93,6 @@ $> npm run build google-maps
 ...
 Done processing plugins!
 
-$> npm run build core
-...
-Done processing plugins!
 ```
 
 ### install the @ionic-native/google-maps plugin
