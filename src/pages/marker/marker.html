@@ -53,6 +53,20 @@
           <th><a [navPush]="'RemoveMarkerPage'">remove()</a></th>
           <td>Remove the marker.</td>
         </tr>
+        <tr>
+          <th><a [navPush]="'SetIconAnchorPage'">setIconAnchor()</a></th>
+          <td>Set the marker icon anchor.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'SetInfoWindowAnchorPage'">setInfoWindowAnchor()</a></th>
+          <td>Change the info window anchor. </td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'IsInfoWindowShownPage'">isInfoWindowShown()</a></th>
+          <td>Retrurn true if the infoWindow is shown on the marker.</td>
+        </tr>
+
+
 
         <tr>
           <th><a [navPush]="'SetIconPage'">setIcon()</a></th>
@@ -62,18 +76,6 @@
       <!--
                   <table class="reference">
 
-                      <tr>
-                          <th><button ion-button [navPush]="setIconAnchor">setIconAnchor()</button></th>
-                          <td>Set the marker icon anchor.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="setInfoWindowAnchor">setInfoWindowAnchor()</button></th>
-                          <td>Change the info window anchor. </td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="isInfoWindowShown">isInfoWindowShown()</button></th>
-                          <td>Retrurn true if the infoWindow is shown on the marker.</td>
-                      </tr>
                       <tr>
                           <th><button ion-button [navPush]="setOpacity">setOpacity()</button></th>
                           <td>Change the marker opacity.</td>
