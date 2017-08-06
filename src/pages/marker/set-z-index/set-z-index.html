@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Marker/setZIndex()</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <section class="demo">
+    <p>
+      Change the marker zIndex
+    </p>
+    <div class="map" id="map_canvas"></div>
+    <textarea class="prettyprint" readonly="readonly">
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker, LatLng} from "@ionic-native/google-maps";
+
+
+@IonicPage()
+@Component({
+  selector: 'page-set-z-index',
+  templateUrl: 'set-z-index.html',
+})
+export class SetZIndexPage {
+  map: GoogleMap;
+  opacity = 1;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
+  }
+
+  ionViewDidLoad() {
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = this.googleMaps.create('map_canvas', {
+      camera: {
+        target: {lat: 37.4419, lng: -122.1419},
+        zoom: 13
+      }
+    });
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      var latLngBounds = this.map.getVisibleRegion();
+
+      var centerLat = this.getCenter(latLngBounds).lat;
+      var centerLng = this.getCenter(latLngBounds).lng - 0.005;
+      for (var i = 1; i <= 20; i++) {
+
+        this.map.addMarker({
+          position: {
+            lat: centerLat,
+            lng: centerLng + 0.001 * i
+          },
+          icon: "green",
+          zIndex: i
+        });
+
+        this.map.addMarker({
+          position: {
+            lat: centerLat + 0.005,
+            lng: centerLng + 0.001 * i
+          },
+          icon: "blue",
+          zIndex: -i
+        });
+      }
+
+    });
+  }
+
+  getCenter(latLngBounds) {
+    var centerLat = (latLngBounds.southwest.lat + latLngBounds.northeast.lat) / 2;
+
+    var swLng = latLngBounds.southwest.lng;
+    var neLng = latLngBounds.northeast.lng;
+    var sumLng = swLng + neLng;
+    var centerLng = sumLng / 2;
+
+    if ((swLng > 0 && neLng < 0 && sumLng < 180)) {
+      centerLng += sumLng > 0 ? -180 : 180;
+    }
+    return new LatLng(centerLat, centerLng);
+  }
+}
+      </textarea>
+  </section>
+
+</ion-content>

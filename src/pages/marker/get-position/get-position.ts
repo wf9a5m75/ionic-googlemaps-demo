@@ -37,19 +37,21 @@ export class GetPositionPage {
         },
         draggable: true,
         title: "Drag me!"
-      }).then((marker: Marker) => {
-        this.markerPosition = marker.getPosition();
+      }).then(event => this.onMarkerAdded(event));
+    });
+  }
 
-        var onMarkerMove = event => {
-          this._ngZone.run(() => {
-            this.markerPosition = event;
-          });
-        };
+  onMarkerAdded(marker: Marker) {
+    this.markerPosition = marker.getPosition();
 
-        marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(onMarkerMove);
-        marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(onMarkerMove);
-        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(onMarkerMove);
-      });
+    marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe((event)=> this.onMarkerMove(event));
+    marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe((event)=> this.onMarkerMove(event));
+    marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe((event)=> this.onMarkerMove(event));
+  }
+
+  onMarkerMove(event) {
+    this._ngZone.run(() => {
+      this.markerPosition = event;
     });
   }
 }
