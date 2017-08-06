@@ -6,21 +6,30 @@ import {
   GoogleMapsEvent
 } from '@ionic-native/google-maps';
 
+
 @IonicPage()
 @Component({
-  selector: 'page-animate-camera-zoom-in',
-  templateUrl: 'animate-camera-zoom-in.html',
+  selector: 'page-get-camera-bearing',
+  templateUrl: 'get-camera-bearing.html',
 })
-export class AnimateCameraZoomInPage {
+export class GetCameraBearingPage {
   map: GoogleMap;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
 
   ionViewDidLoad() {
-    this.loadMap();
+    setTimeout(this.loadMap.bind(this), 1000);
   }
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas');
+    this.map = this.googleMaps.create('map_canvas', {
+      "camera": {
+        "target": {
+          "lat": 37.422858,
+          "lng": -122.085065
+        },
+        "zoom": 15
+      }
+    });
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log('map is ready');
@@ -28,6 +37,7 @@ export class AnimateCameraZoomInPage {
   }
 
   onButton_click() {
-    this.map.animateCameraZoomIn();
+    // Show the current camera bearing.
+    alert("bearing: " + this.map.getCameraBearing());
   }
 }
