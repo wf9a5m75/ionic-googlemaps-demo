@@ -151,10 +151,10 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] setCameraZoom (@wf9a5m75)
   - [ ] setCameraTilt (@wf9a5m75)
   - [ ] setCameraBearing (@wf9a5m75)
-  - [ ] panBy
+  - [ ] panBy (@quanganh206)
   - [ ] getVisibleRegion
-  - [ ] getMyLocation
-  - [ ] setClickable
+  - [ ] getMyLocation (@quanganh206)
+  - [ ] setClickable (@quanganh206)
   - [ ] remove
   - [ ] clear
   - [ ] fromLatLngToPoint
@@ -212,7 +212,7 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] CIRCLE_CLICK
 
 - [ ] Polyline
-  - [ ] map.addPolyline
+  - [ ] map.addPolyline (@quanganh206)
   - [ ] setPoints
   - [ ] getPoints
   - [ ] setGeodesic
@@ -221,7 +221,7 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] setStrokeColor
   - [ ] setStrokeWidth
   - [ ] setZIndex
-  - [ ] remove
+  - [ ] remove (@quanganh206)
   - [ ] POLYLINE_CLICK
 
 - [ ] Polygone
