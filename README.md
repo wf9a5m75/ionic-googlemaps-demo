@@ -89,6 +89,8 @@ $> cd ionic-native
 
 $> npm install
 
+$> npm run build:core
+
 $> npm run build google-maps
 ...
 Done processing plugins!
@@ -100,9 +102,13 @@ Done processing plugins!
 ```
 $> cd (path to)/ionic-googlemaps-demo
 
+$> npm uninstall @ionic-native/core
+
 $> npm uninstall @ionic-native/google-maps
 
-$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps --no-fetch
+$> npm install (path to)/ionic-native/dist/@ionic-native/core
+
+$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps
 ```
 
 You may get some warning, but you can ignore these messages.
