@@ -255,7 +255,7 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] remove
   - [ ] GROUND_OVERLAY_CLICK
 
-- [ ] HtmlInfoWindow
+- [ ] HtmlInfoWindow (@dasois)
   - [ ] new HtmlInfoWindow
   - [ ] setContent
   - [ ] setBackgroundColor
