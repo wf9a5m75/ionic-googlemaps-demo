@@ -80,35 +80,23 @@ NOTE: Make sure you are using latest ionic cli version.
 
 ## How to build @ionic-native, and install it in local
 
-### Build the @ionic-native/google-maps plugin
+### install the @ionic-native/google-maps plugin
 
 ```
 $> git clone https://github.com/wf9a5m75/ionic-native
 
-$> cd ionic-native
+$> git checkout  dev
 
-$> npm install
+$> cd ionic-googlemaps-demo
 
-$> npm run build:core
+$> npm uninstall @ionic-native/core @ionic-native/google-maps
 
-$> npm run build google-maps
-...
-Done processing plugins!
 
-```
+$> npm install (path to)/ionic-native/dist/\@ionic-native/core --no-fetch
 
-### install the @ionic-native/google-maps plugin
+$> npm install (path to)/ionic-native/dist/\@ionic-native/google-maps --no-fetch
 
-```
-$> cd (path to)/ionic-googlemaps-demo
-
-$> npm uninstall @ionic-native/core
-
-$> npm uninstall @ionic-native/google-maps
-
-$> npm install (path to)/ionic-native/dist/@ionic-native/core
-
-$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps
+$> ionic cordova run
 ```
 
 You may get some warning, but you can ignore these messages.
