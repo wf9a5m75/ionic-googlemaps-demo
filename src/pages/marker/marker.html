@@ -73,7 +73,22 @@
           <th><a [navPush]="'SetZIndexPage'">setZIndex()</a></th>
           <td>Change the marker zIndex.</td>
         </tr>
-
+        <tr>
+          <th><a [navPush]="'SetVisiblePage'">setVisible()</a></th>
+          <td>Change the marker visibility.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'SetDraggablePage'">setDraggable()</a></th>
+          <td>Set true if you allows all users to drag the marker.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'SetDisableAutoPanPage'">setDisableAutoPan()</a></th>
+          <td>Set true if you <b>do not want</b> to move the map when you click on the marker.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'SetPositionPage'">setPosition()</a></th>
+          <td>Set the marker position.</td>
+        </tr>
 
 
         <tr>
@@ -84,22 +99,6 @@
       <!--
                   <table class="reference">
 
-                      <tr>
-                          <th><button ion-button [navPush]="setVisible">setVisible()</button></th>
-                          <td>Change the marker visibility.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="setDraggable">setDraggable()</button></th>
-                          <td>Set true if you allows all users to drag the marker.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="setDisableAutoPan">setDisableAutoPan()</button></th>
-                          <td>Set true if you <b>do not want</b> to move the map when you click on the marker.</td>
-                      </tr>
-                      <tr>
-                          <th><button ion-button [navPush]="setPosition">setPosition()</button></th>
-                          <td>Set the marker position.</td>
-                      </tr>
                       <tr>
                           <th><button ion-button [navPush]="setRotation">setRotation()</button></th>
                           <td>Set the marker rotation angle.</td>
