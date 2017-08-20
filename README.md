@@ -103,8 +103,8 @@ You may get some warning, but you can ignore these messages.
 ```
 $> npm install (path to)/ionic-native/dist/@ionic-native/google-maps --no-fetch
 ionic-googlemaps-demo@0.0.1 (path to)/ionic-googlemaps-demo
-├── UNMET PEER DEPENDENCY @ionic-native/core@4.1.0
-└── @ionic-native/google-maps@4.1.0
+????????? UNMET PEER DEPENDENCY @ionic-native/core@4.1.0
+????????? @ionic-native/google-maps@4.1.0
 
 npm WARN @ionic-native/splash-screen@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
 npm WARN @ionic-native/status-bar@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
@@ -133,10 +133,10 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [x] animateCamera (@wf9a5m75)
   - [x] animateCameraZoomIn (@wf9a5m75)
   - [x] animateCameraZoomOut (@wf9a5m75)
-  - [ ] moveCamera (@wf9a5m75)
-  - [ ] moveCameraZoomIn (@wf9a5m75)
-  - [ ] moveCameraZoomOut (@wf9a5m75)
-  - [ ] getCameraPosition (@wf9a5m75)
+  - [x] moveCamera (@wf9a5m75)
+  - [x] moveCameraZoomIn (@wf9a5m75)
+  - [x] moveCameraZoomOut (@wf9a5m75)
+  - [x] getCameraPosition (@wf9a5m75)
   - [ ] getCameraTarget (@wf9a5m75)
   - [ ] getCameraZoom (@wf9a5m75)
   - [x] getCameraBearing (@wf9a5m75)
