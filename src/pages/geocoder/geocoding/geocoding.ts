@@ -12,7 +12,7 @@ import {
 
 @IonicPage()
 @Component({
-  selector: 'page-geocoding-camera',
+  selector: 'page-geocoding',
   templateUrl: 'geocoding.html',
   providers: [
     Geocoder

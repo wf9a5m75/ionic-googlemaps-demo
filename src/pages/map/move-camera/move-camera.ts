@@ -3,8 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
-  GoogleMapsEvent,
-  Marker
+  GoogleMapsEvent
 } from '@ionic-native/google-maps';
 
 @IonicPage()
@@ -20,7 +19,6 @@ export class MoveCameraPage {
   }
 
   ionViewDidLoad() {
-    let self = this;
     this.loadMap1();
     this.loadMap2();
   }
