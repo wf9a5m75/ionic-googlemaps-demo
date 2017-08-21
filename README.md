@@ -149,10 +149,10 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [x] getVisibleRegion (@wf9a5m75)
   - [ ] getMyLocation (@quanganh206)
   - [ ] setClickable (@quanganh206)
-  - [ ] remove
-  - [ ] clear
-  - [ ] fromLatLngToPoint
-  - [ ] fromPointToLatLng
+  - [x] remove (@wf9a5m75)
+  - [x] clear (@wf9a5m75)
+  - [x] fromLatLngToPoint (@wf9a5m75)
+  - [x] fromPointToLatLng (@wf9a5m75)
   - [ ] setMyLocationEnabled
   - [ ] getFocusedBuilding
   - [ ] setIndoorEnabled
