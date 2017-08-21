@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SetCameraTiltPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent
+} from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
@@ -14,12 +12,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'set-camera-tilt.html',
 })
 export class SetCameraTiltPage {
+  map: GoogleMap;
+  tilt: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SetCameraTiltPage');
+    this.loadMap();
   }
 
+  loadMap() {
+    this.tilt = 0;
+    this.map = this.googleMaps.create("map_canvas", {
+      camera: {
+        target: {
+          lat: 37.422858,
+          lng: -122.085065
+        },
+        zoom: 15
+      }
+    });
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      console.log("map is ready");
+    });
+  }
+
+  onButton_click() {
+    this.tilt += 45;
+    this.map.setCameraTilt(this.tilt);
+  }
 }
