@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -15,19 +15,20 @@ import {
 export class GetCameraBearingPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     setTimeout(this.loadMap.bind(this), 1000);
   }
   loadMap() {
     this.map = this.googleMaps.create('map_canvas', {
-      "camera": {
-        "target": {
-          "lat": 37.422858,
-          "lng": -122.085065
+      camera: {
+        target: {
+          lat: 37.422858,
+          lng: -122.085065
         },
-        "zoom": 15
+        zoom: 0,
+        bearing: 150
       }
     });
 
@@ -38,6 +39,13 @@ export class GetCameraBearingPage {
 
   onButton_click() {
     // Show the current camera bearing.
-    alert("bearing: " + this.map.getCameraBearing());
+    var text = "bearing: " + this.map.getCameraBearing();
+
+    let alert = this.alertCtrl.create({
+      title: 'Current camera zoom level',
+      subTitle: text,
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 }
