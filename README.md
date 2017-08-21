@@ -146,7 +146,7 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [x] setCameraTilt (@wf9a5m75)
   - [x] setCameraBearing (@wf9a5m75)
   - [ ] panBy (@quanganh206)
-  - [ ] getVisibleRegion
+  - [x] getVisibleRegion (@wf9a5m75)
   - [ ] getMyLocation (@quanganh206)
   - [ ] setClickable (@quanganh206)
   - [ ] remove
