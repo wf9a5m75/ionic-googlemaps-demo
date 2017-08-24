@@ -5,19 +5,19 @@ This is a demo application of [@ionic-native/Google Maps plugin](https://ionicfr
 Unfortunately, the current wrapper plugin has lots of mistake.
 
 In order to find out, Masashi(@wf9a5m75) needs to test all methods.
-But Masashi is not familiar with ionic framework, and the [Cordova Google Maps Plugin](https://github.com/mapsplugin/cordova-plugin-googlemaps) has lots of methods.
+But unfortunately, he's unfamiliar with the ionic framework and the [Cordova Google Maps Plugin](https://github.com/mapsplugin/cordova-plugin-googlemaps) has lots of methods to implement.
 
-## What does help need?
+## What do Masashi need help with?
 
-Masashi has been trying to port the code from [JavaScript version demo](https://github.com/mapsplugin/v2.0-demo) to the ionic wrapper version demo (this project).
+I've has been trying to port the code from [JavaScript version demo](https://github.com/mapsplugin/v2.0-demo) into the ionic wrapper version demo [(ionic-googlemaps-demo)](https://github.com/wf9a5m75/ionic-googlemaps-demo).
 
-Please help me to create each pages by ionic style.
+Please help me to create each pages in ionic style.
 
 ## How to contribute?
 
-It is really easy job. Just convert from JavaScript to TypeScript.
+It is a really easy job. Just convert what is in JavaScript to TypeScript.
 
-**step1: Clone this project to your local**
+**STEP-1: Clone this project into your machine**
 
 ```
 $> git clone https://github.com/wf9a5m75/ionic-googlemaps-demo
@@ -25,7 +25,7 @@ $> git clone https://github.com/wf9a5m75/ionic-googlemaps-demo
 $> cd ionic-google-maps
 ```
 
-**step2: Open the config.xml, then replace the Maps API keys**
+**STEP-2: Open the config.xml, then replace the Maps API keys**
 
 Don't forget to enable the Google Maps Android API v2/Google Maps SDK for iOS
 at the Google APIs console.
@@ -39,7 +39,7 @@ The package name is `ionic.google.maps`
 </plugin>
 ```
 
-**step3: install**
+**STEP-3: Install**
 
 ```
 $> ionic cordova platform add android (or ios)
@@ -48,22 +48,22 @@ $> npm install @ionic-native/googlemaps
 
 ```
 
-**step4: run**
+**STEP-4: Run**
 
-Should work.
+It should work.
 
 ```
 $> ionic cordova run android -l
 ```
 
-**step5: generate new page**
+**STEP-5: Generate new page**
 
 For example, create a page for `Map.animateCameraZoomIn()`.
 
 ```
 $> cd (path to)ionic-googlemaps-demo
 
-$> ionic generate page AnimateCameraZoomIn  // Don't generate if the page is already existed.
+$> ionic generate page AnimateCameraZoomIn  // Don't generate if the page is already exists.
 [OK] Generated a page named AnimateCameraZoomIn!
 
 $> cd src/pages/
@@ -71,16 +71,18 @@ $> cd src/pages/
 $> mv animate-camera-zoom-in map/
 ```
 
-This will create package in pages folder(there is issue in iconic to allow to specify any location for generated folder).
-All you have to do move this folder to any folder. Restart your ionic cli and all changes will be presented.
+This will create package in pages folder(there is issue in ionic to allow to specify any location for generated folder).
+All you have to do is move this folder into any folder. Restart your ionic cli and all changes will be presented.
 
 NOTE: Make sure you are using latest ionic cli version.
-
+```
+$> npm install -g ionic@latest
+```
 ----
 
-## How to build @ionic-native, and install it in local
+## How to build @ionic-native, and install it in your machine
 
-### install the @ionic-native/google-maps plugin
+### Install the @ionic-native/google-maps plugin
 
 ```
 $> git clone https://github.com/wf9a5m75/ionic-native
@@ -112,10 +114,10 @@ npm WARN ajv-keywords@2.1.0 requires a peer of ajv@>=5.0.0 but none was installe
 ```
 
 
-After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
+After finish fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
 
 Because I already sent [a pull request](https://github.com/ionic-team/ionic-native/pull/1834) to the original ionic-native repo.
-If you commit the code to the https://github.com/wf9a5m75/ionic-native, automatic code review is executed at the pull request page.
+If you commit the code to the https://github.com/wf9a5m75/ionic-native, an automatic code review is executed at the pull request page.
 
 Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ionic-native/pull/1834)
 
