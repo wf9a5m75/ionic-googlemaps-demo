@@ -54,7 +54,7 @@ export class GetCameraPositionPage {
 
   onButton_click() {
     // Get the current camera position.
-    var cameraPosition: any = this.map.getCameraPosition();
+    var cameraPosition: CameraPosition = this.map.getCameraPosition();
 
     // Show the results
     var text = ["Current camera position:\n",
