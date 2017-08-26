@@ -50,8 +50,10 @@ export class GetPositionPage {
   }
 
   onMarkerMove(event) {
+    // event[0] : LatLng
+    // event[1] : Marker
     this._ngZone.run(() => {
-      this.markerPosition = event;
+      this.markerPosition = event[0];
     });
   }
 }
