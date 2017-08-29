@@ -91,7 +91,7 @@
           <td>Set the camera bearing.</td>
         </tr>
         <tr>
-          <th><a href="./panBy.html">panBy()</a></th>
+          <th><a [navPush]="'PanByPage'">panBy()</a></th>
           <td>Change the center of the map by the given distance in pixels.</td>
         </tr>
         <tr>
@@ -99,11 +99,11 @@
           <td>Get the current visible region (sw and ne).</td>
         </tr>
         <tr>
-          <th><a href="./getMyLocation.html">getMyLocation()</a></th>
+          <th><a [navPush]="'GetMyLocationPage'">getMyLocation()</a></th>
           <td>Get the current device location.</td>
         </tr>
         <tr>
-          <th><a href="./setClickable.html">setClickable()</a></th>
+          <th><a [navPush]="'SetClickablePage'">setClickable()</a></th>
           <td>Set false to ignore all clicks on the map.</td>
         </tr>
         <tr>
