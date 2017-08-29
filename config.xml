@@ -1,13 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="ionic.google.maps" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MyApp</name>
+    <name>ionic-googlemaps-demo</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
-    <allow-navigation href="http://192.168.86.209:8100" />
-    <allow-navigation href="http://192.168.1.2:8100" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -84,9 +82,9 @@
     <plugin name="com.googlemaps.ios" spec="https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk" />
     <plugin name="cordova-plugin-console" spec="^1.0.7" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
-    <plugin name="cordova-plugin-googlemaps" spec="git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps">
-        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyBBCysAsrYHmQpGt570oeuN8iamyB2kljQ" />
-        <variable name="API_KEY_FOR_IOS" value="AIzaSyC0bhpECYRH-B9d4Vd5itqgCa-cL82iunQ" />
+    <plugin name="cordova-plugin-googlemaps" spec="https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps">
+        <variable name="API_KEY_FOR_ANDROID" value="(REPLACE_WITH_YOUR_KEY)" />
+        <variable name="API_KEY_FOR_IOS" value="(REPLACE_WITH_YOUR_KEY)" />
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Show your location on the map" />
         <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Trace your location on the map" />
     </plugin>

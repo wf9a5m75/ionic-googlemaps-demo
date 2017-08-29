@@ -4,14 +4,9 @@ import {
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
-  CameraPosition
+  CameraPosition,
+  ILatLng
 } from "@ionic-native/google-maps";
-/**
- * Generated class for the AddPolylinePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -53,13 +48,13 @@ export class AddPolylinePage {
       });
 
 
-      let position: CameraPosition = {
+      let position: CameraPosition<ILatLng[]> = {
         target: this.AIR_PORTS
       };
 
       // move the map's camera to position
       this.map.moveCamera(position);
     });
-    
+
   }
 }

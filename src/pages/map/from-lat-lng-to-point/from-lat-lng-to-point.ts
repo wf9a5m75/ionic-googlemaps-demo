@@ -46,7 +46,9 @@ export class FromLatLngToPointPage {
   }
 
 
-  onMarkerDragEnd(latLng: LatLng, marker: Marker) {
+  onMarkerDragEnd(params) {
+    var latLng = params[0];
+    var marker = params[1];
     console.log(latLng, marker);
 
     // LatLng -> Point

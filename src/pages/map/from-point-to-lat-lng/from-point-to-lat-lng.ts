@@ -43,7 +43,7 @@ export class FromPointToLatLngPage {
 
         // Convert point to LatLng.
         self.map.fromPointToLatLng([clickX, clickY]).then((latLng: LatLng) => {
-
+console.log(latLng.toUrlValue());
           // Add a marker
           self.map.addMarker({
             position: latLng,

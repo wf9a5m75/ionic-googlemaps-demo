@@ -4,16 +4,10 @@ import {
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
-  LatLng,
-  CameraPosition
+  ILatLng,
+  CameraPosition,
+  Marker
 } from "@ionic-native/google-maps";
-
-/**
- * Generated class for the GetMyLocationPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -22,7 +16,6 @@ import {
 })
 export class GetMyLocationPage {
   map: GoogleMap;
-  onLoading: boolean = true;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -31,7 +24,7 @@ export class GetMyLocationPage {
 
   ionViewDidLoad() {
     var self = this;
-    self.loadMap();
+    setTimeout(self.loadMap.bind(self), 1000);
   }
   loadMap() {
     this.map = this.googleMaps.create("map_canvas");
@@ -39,27 +32,40 @@ export class GetMyLocationPage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("Map is ready!");
-      this.onLoading = false;
     });
   }
 
   onButtonClick(event) {
-    if (this.map) {
-      this.map.getMyLocation()
-      .then((resp) => {
-        let location = new LatLng(resp.latLng.lat, resp.latLng.lng);
-        let position: CameraPosition = {
-          target: location,
-          zoom: 15,
-          tilt: 30
-        };
+    this.map.getMyLocation()
+      .then((location) => {
+        let msg: string = [
+          "Current your location:\n",
+          "latitude:" + location.latLng.lat,
+          "longitude:" + location.latLng.lng,
+          "speed:" + location.speed,
+          "time:" + location.time,
+          "bearing:" + location.bearing
+        ].join("\n");
 
-        // move the map's camera to position
-        this.map.moveCamera(position);
+        this.map.addMarker({
+          position: location.latLng,
+          title: msg
+        }).then((marker: Marker) => {
+
+          let position: CameraPosition<ILatLng> = {
+            target: location.latLng,
+            zoom: 16
+          };
+
+          // move the map's camera to position
+          this.map.animateCamera(position).then(() => {
+            marker.showInfoWindow();
+          });
+        });
+
       })
       .catch((err) => {
         console.log(err);
       })
-    }
   }
 }
