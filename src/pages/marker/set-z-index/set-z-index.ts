@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {IonicPage, NavController, NavParams} from "ionic-angular";
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker, LatLng} from "@ionic-native/google-maps";
+import {GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng} from "@ionic-native/google-maps";
 
 
 @IonicPage()

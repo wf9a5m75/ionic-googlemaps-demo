@@ -14,5 +14,67 @@
 
 
 <ion-content padding>
+<section class="demo">
+                <p>Get the current camera position, including the center, zoom, tilt and bearing.<br>
+                    <br> Unlike v1, this method returns the current camera position <span class="highlight">synchronously</span>.</p>
+                <div class="map" id="map_canvas">
+                    <span class="smallPanel"><button ion-button (click)="onButton_click($event)">Click here</button></span>
+                </div>
+                <textarea readonly="readonly" class="prettyprint">
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent
+} from '@ionic-native/google-maps';
 
+@IonicPage()
+@Component({
+  selector: 'page-get-camera-position',
+  templateUrl: 'get-camera-position.html',
+})
+export class GetCameraPositionPage {
+  map: GoogleMap;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private alertCtrl: AlertController) {
+  }
+
+  ionViewDidLoad() {
+    var self = this;
+    setTimeout(this.loadMap.bind(self), 1000);
+  }
+
+  loadMap() {
+    this.map = this.googleMaps.create("map_canvas");
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+
+    });
+  }
+
+  onButton_click() {
+    // Get the current camera position.
+    var cameraPosition: CameraPosition = this.map.getCameraPosition();
+
+    // Show the results
+    var text = ["Current camera position:\n",
+      "-------------------------------",
+      "latitude:" + cameraPosition.target.lat,
+      "longitude:" + cameraPosition.target.lng,
+      "zoom:" + cameraPosition.zoom,
+      "tilt:" + cameraPosition.tilt,
+      "bearing:" + cameraPosition.bearing].join("<br>\n");
+
+    let alert = this.alertCtrl.create({
+      title: 'Current camera target',
+      subTitle: text,
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
+}
+
+  </textarea>
+            </section>
 </ion-content>

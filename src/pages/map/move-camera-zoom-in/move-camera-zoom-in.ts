@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MoveCameraZoomInPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent
+} from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
@@ -14,12 +12,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'move-camera-zoom-in.html',
 })
 export class MoveCameraZoomInPage {
+  map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MoveCameraZoomInPage');
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = this.googleMaps.create('map_canvas');
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      console.log("map is ready to use.");
+    });
+  }
+
+  onButton_click() {
+    this.map.moveCameraZoomIn();
   }
 
 }

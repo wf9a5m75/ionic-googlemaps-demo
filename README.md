@@ -5,19 +5,19 @@ This is a demo application of [@ionic-native/Google Maps plugin](https://ionicfr
 Unfortunately, the current wrapper plugin has lots of mistake.
 
 In order to find out, Masashi(@wf9a5m75) needs to test all methods.
-But Masashi is not familiar with ionic framework, and the [Cordova Google Maps Plugin](https://github.com/mapsplugin/cordova-plugin-googlemaps) has lots of methods.
+But unfortunately, he's unfamiliar with the ionic framework and the [Cordova Google Maps Plugin](https://github.com/mapsplugin/cordova-plugin-googlemaps) has lots of methods to implement.
 
-## What does help need?
+## What do Masashi need help with?
 
-Masashi has been trying to port the code from [JavaScript version demo](https://github.com/mapsplugin/v2.0-demo) to the ionic wrapper version demo (this project).
+I've has been trying to port the code from [JavaScript version demo](https://github.com/mapsplugin/v2.0-demo) into the ionic wrapper version demo [(ionic-googlemaps-demo)](https://github.com/wf9a5m75/ionic-googlemaps-demo).
 
-Please help me to create each pages by ionic style.
+Please help me to create each pages in ionic style.
 
 ## How to contribute?
 
-It is really easy job. Just convert from JavaScript to TypeScript.
+It is a really easy job. Just convert what is in JavaScript to TypeScript.
 
-**step1: Clone this project to your local**
+**STEP-1: Clone this project into your machine**
 
 ```
 $> git clone https://github.com/wf9a5m75/ionic-googlemaps-demo
@@ -25,7 +25,7 @@ $> git clone https://github.com/wf9a5m75/ionic-googlemaps-demo
 $> cd ionic-google-maps
 ```
 
-**step2: Open the config.xml, then replace the Maps API keys**
+**STEP-2: Open the config.xml, then replace the Maps API keys**
 
 Don't forget to enable the Google Maps Android API v2/Google Maps SDK for iOS
 at the Google APIs console.
@@ -39,7 +39,7 @@ The package name is `ionic.google.maps`
 </plugin>
 ```
 
-**step3: install**
+**STEP-3: Install**
 
 ```
 $> ionic cordova platform add android (or ios)
@@ -48,22 +48,22 @@ $> npm install @ionic-native/googlemaps
 
 ```
 
-**step4: run**
+**STEP-4: Run**
 
-Should work.
+It should work.
 
 ```
 $> ionic cordova run android -l
 ```
 
-**step5: generate new page**
+**STEP-5: Generate new page**
 
 For example, create a page for `Map.animateCameraZoomIn()`.
 
 ```
 $> cd (path to)ionic-googlemaps-demo
 
-$> ionic generate page AnimateCameraZoomIn  // Don't generate if the page is already existed.
+$> ionic generate page AnimateCameraZoomIn  // Don't generate if the page is already exists.
 [OK] Generated a page named AnimateCameraZoomIn!
 
 $> cd src/pages/
@@ -71,52 +71,42 @@ $> cd src/pages/
 $> mv animate-camera-zoom-in map/
 ```
 
-This will create package in pages folder(there is issue in iconic to allow to specify any location for generated folder).
-All you have to do move this folder to any folder. Restart your ionic cli and all changes will be presented.
+This will create package in pages folder(there is issue in ionic to allow to specify any location for generated folder).
+All you have to do is move this folder into any folder. Restart your ionic cli and all changes will be presented.
 
 NOTE: Make sure you are using latest ionic cli version.
-
+```
+$> npm install -g ionic@latest
+```
 ----
 
-## How to build @ionic-native, and install it in local
+## How to build @ionic-native, and install it in your machine
 
-### Build the @ionic-native/google-maps plugin
+### Install the @ionic-native/google-maps plugin
 
 ```
 $> git clone https://github.com/wf9a5m75/ionic-native
 
-$> cd ionic-native
+$> git checkout  dev
 
-$> npm install
+$> cd ionic-googlemaps-demo
 
-$> npm run build:core
+$> npm uninstall @ionic-native/core @ionic-native/google-maps
 
-$> npm run build google-maps
-...
-Done processing plugins!
 
-```
+$> npm install (path to)/ionic-native/dist/\@ionic-native/core --no-fetch
 
-### install the @ionic-native/google-maps plugin
+$> npm install (path to)/ionic-native/dist/\@ionic-native/google-maps --no-fetch
 
-```
-$> cd (path to)/ionic-googlemaps-demo
-
-$> npm uninstall @ionic-native/core
-
-$> npm uninstall @ionic-native/google-maps
-
-$> npm install (path to)/ionic-native/dist/@ionic-native/core
-
-$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps
+$> ionic cordova run
 ```
 
 You may get some warning, but you can ignore these messages.
 ```
 $> npm install (path to)/ionic-native/dist/@ionic-native/google-maps --no-fetch
 ionic-googlemaps-demo@0.0.1 (path to)/ionic-googlemaps-demo
-├── UNMET PEER DEPENDENCY @ionic-native/core@4.1.0
-└── @ionic-native/google-maps@4.1.0
+????????? UNMET PEER DEPENDENCY @ionic-native/core@4.1.0
+????????? @ionic-native/google-maps@4.1.0
 
 npm WARN @ionic-native/splash-screen@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
 npm WARN @ionic-native/status-bar@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
@@ -124,10 +114,10 @@ npm WARN ajv-keywords@2.1.0 requires a peer of ajv@>=5.0.0 but none was installe
 ```
 
 
-After finish the fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
+After finish fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
 
 Because I already sent [a pull request](https://github.com/ionic-team/ionic-native/pull/1834) to the original ionic-native repo.
-If you commit the code to the https://github.com/wf9a5m75/ionic-native, automatic code review is executed at the pull request page.
+If you commit the code to the https://github.com/wf9a5m75/ionic-native, an automatic code review is executed at the pull request page.
 
 Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ionic-native/pull/1834)
 
@@ -145,26 +135,26 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [x] animateCamera (@wf9a5m75)
   - [x] animateCameraZoomIn (@wf9a5m75)
   - [x] animateCameraZoomOut (@wf9a5m75)
-  - [ ] moveCamera (@wf9a5m75)
-  - [ ] moveCameraZoomIn (@wf9a5m75)
-  - [ ] moveCameraZoomOut (@wf9a5m75)
-  - [ ] getCameraPosition (@wf9a5m75)
-  - [ ] getCameraTarget (@wf9a5m75)
-  - [ ] getCameraZoom (@wf9a5m75)
+  - [x] moveCamera (@wf9a5m75)
+  - [x] moveCameraZoomIn (@wf9a5m75)
+  - [x] moveCameraZoomOut (@wf9a5m75)
+  - [x] getCameraPosition (@wf9a5m75)
+  - [x] getCameraTarget (@wf9a5m75)
+  - [x] getCameraZoom (@wf9a5m75)
   - [x] getCameraBearing (@wf9a5m75)
-  - [ ] getCameraTilt (@wf9a5m75)
-  - [ ] setCameraTarget (@wf9a5m75)
-  - [ ] setCameraZoom (@wf9a5m75)
-  - [ ] setCameraTilt (@wf9a5m75)
-  - [ ] setCameraBearing (@wf9a5m75)
+  - [x] getCameraTilt (@wf9a5m75)
+  - [x] setCameraTarget (@wf9a5m75)
+  - [x] setCameraZoom (@wf9a5m75)
+  - [x] setCameraTilt (@wf9a5m75)
+  - [x] setCameraBearing (@wf9a5m75)
   - [x] panBy (@quanganh206)
-  - [ ] getVisibleRegion
+  - [x] getVisibleRegion (@wf9a5m75)
   - [x] getMyLocation (@quanganh206)
   - [x] setClickable (@quanganh206)
-  - [ ] remove
-  - [ ] clear
-  - [ ] fromLatLngToPoint
-  - [ ] fromPointToLatLng
+  - [x] remove (@wf9a5m75)
+  - [x] clear (@wf9a5m75)
+  - [x] fromLatLngToPoint (@wf9a5m75)
+  - [x] fromPointToLatLng (@wf9a5m75)
   - [ ] setMyLocationEnabled
   - [ ] getFocusedBuilding
   - [ ] setIndoorEnabled
@@ -197,9 +187,9 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] isInfoWindowShown (@pavel-kurnosov)
   - [x] setOpacity (@pavel-kurnosov)
   - [x] setZIndex (@pavel-kurnosov)
-  - [ ] setVisible (@pavel-kurnosov)
-  - [ ] setDraggable (@pavel-kurnosov)
-  - [ ] setDisableAutoPan (@pavel-kurnosov)
+  - [x] setVisible (@pavel-kurnosov)
+  - [x] setDraggable (@pavel-kurnosov)
+  - [x] setDisableAutoPan (@pavel-kurnosov)
   - [ ] setPosition (@pavel-kurnosov)
   - [ ] setRotation (@pavel-kurnosov)
   - [ ] setFlat (@pavel-kurnosov)
@@ -255,7 +245,7 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [ ] remove
   - [ ] GROUND_OVERLAY_CLICK
 
-- [ ] HtmlInfoWindow
+- [ ] HtmlInfoWindow (@dasois)
   - [ ] new HtmlInfoWindow
   - [ ] setContent
   - [ ] setBackgroundColor

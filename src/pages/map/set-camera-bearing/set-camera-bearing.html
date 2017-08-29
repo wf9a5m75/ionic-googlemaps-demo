@@ -7,12 +7,68 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>SetCameraBearing</ion-title>
+    <ion-title>map.setCameraBearing()</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <section class="demo">
 
+    <p>
+      <img src="assets/images/bearing.gif"><br> Change the camera view bearing.
+    </p>
+    <div class="map" id="map_canvas">
+      <span class="smallPanel"><button ion-button (click)="onButton_click($evnet)">Click here</button></span>
+    </div>
+    <textarea readonly="readonly" class="prettyprint">
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent
+} from '@ionic-native/google-maps';
+
+
+@IonicPage()
+@Component({
+  selector: 'page-set-camera-bearing',
+  templateUrl: 'set-camera-bearing.html',
+})
+export class SetCameraBearingPage {
+  map: GoogleMap;
+  bearing: number = 0;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
+  }
+
+  ionViewDidLoad() {
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = this.googleMaps.create("map_canvas", {
+      camera: {
+        target: {
+          lat: 37.422858,
+          lng: -122.085065
+        },
+        zoom: 15
+      }
+    });
+    this.map.one(plugin.google.maps.event.MAP_READY).then(() => {
+      console.log("map is ready");
+    });
+  }
+
+  onButton_click() {
+    bearing += 15;
+    this.map.setCameraBearing(bearing);
+  }
+}
+
+</textarea>
+  </section>
 </ion-content>
