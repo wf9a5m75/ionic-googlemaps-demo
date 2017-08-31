@@ -7,7 +7,8 @@ import {
   Geocoder,
   BaseArrayClass,
   GeocoderResult,
-  LatLngBounds
+  LatLngBounds,
+  Marker
 } from '@ionic-native/google-maps';
 
 @IonicPage()
@@ -28,7 +29,7 @@ export class GeocodingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geocoder: Geocoder) {}
 
   ionViewDidLoad() {
-    this.loadMap1();
+    setTimeout(this.loadMap1.bind(this), 1000);
     setTimeout(this.loadMap2.bind(this), 2000);
   }
   loadMap1() {
@@ -128,7 +129,7 @@ export class GeocodingPage {
     }).then((mvcArray: BaseArrayClass<GeocoderResult>) => {
 
         let latLngBounds = new LatLngBounds();
-        let markers = new BaseArrayClass();
+        let markers = new BaseArrayClass<Marker>([]);
 
         mvcArray.on('error').subscribe((error) => {
           console.log(error);
