@@ -1,0 +1,74 @@
+<!--
+  Generated template for the GetFocusedBuildingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>map.getFocusedBuilding()</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content padding>
+  <section class="demo">
+
+    <div class="map" id="map_canvas">
+        <span class="smallPanel"
+              *ngIf="label">{{label}}</span>
+    </div>
+    <textarea class="prettyprint" style="height:280px" readonly="readonly">
+export class GetFocusedBuildingPage {
+  map: GoogleMap;
+  label: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private _ngZone: NgZone) {}
+
+  ionViewDidLoad() {
+    var self = this;
+    setTimeout(self.loadMap.bind(self), 1000);
+  }
+  loadMap() {
+    this.map = this.googleMaps.create('map_canvas', {
+      camera: {
+        target: {
+          lat: 37.422375,
+          lng: -122.084207
+        },
+        zoom: 18
+      },
+      controls: {
+        indoorPicker: true
+      }
+    });
+
+    // Wait the MAP_READY before using any methods.
+    this.map.one(GoogleMapsEvent.MAP_READY)
+      .then(() => {
+
+        // Get the current focused building programatically.
+        this.map.getFocusedBuilding().then((event) => this.onIndoorEvents([event]));
+
+        // or you can listen the INDOOR_BUILDING_FOCUSED and the INDOOR_LEVEL_ACTIVATED events.
+        this.map.on(GoogleMapsEvent.INDOOR_BUILDING_FOCUSED).subscribe((event) => this.onIndoorEvents(event));
+        this.map.on(GoogleMapsEvent.INDOOR_LEVEL_ACTIVATED).subscribe((event) => this.onIndoorEvents(event));
+      });
+  }
+
+  onIndoorEvents(event) {
+    console.log(event);
+    let indoorBuilding: any = event[0];
+
+    this._ngZone.run(() => {
+      this.label = "current floor: " + indoorBuilding.levels[indoorBuilding.activeLevelIndex].name;
+    });
+  }
+}
+</textarea></section>
+
+
+</ion-content>
