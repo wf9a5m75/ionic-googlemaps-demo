@@ -155,22 +155,22 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [x] clear (@wf9a5m75)
   - [x] fromLatLngToPoint (@wf9a5m75)
   - [x] fromPointToLatLng (@wf9a5m75)
-  - [ ] setMyLocationEnabled
-  - [ ] getFocusedBuilding
-  - [ ] setIndoorEnabled
-  - [ ] setTrafficEnabled
-  - [ ] setCompassEnabled
-  - [ ] setAllGesturesEnabled
-  - [ ] setVisible
-  - [ ] setPadding
-  - [ ] setOptions
-  - [ ] toDataURL
-  - [ ] MAP_CLICK
-  - [ ] MAP_LONG_CLICK
-  - [ ] MY_LOCATION_BUTTON_CLICK
-  - [ ] CAMERA_EVENTS
-  - [ ] MAP_DRAG_EVENTS
-  - [ ] MAP_READY
+  - [ ] setMyLocationEnabled (@wf9a5m75)
+  - [ ] getFocusedBuilding (@wf9a5m75)
+  - [ ] setIndoorEnabled (@wf9a5m75)
+  - [ ] setTrafficEnabled (@wf9a5m75)
+  - [ ] setCompassEnabled (@wf9a5m75)
+  - [ ] setAllGesturesEnabled (@wf9a5m75)
+  - [ ] setVisible (@wf9a5m75)
+  - [ ] setPadding (@wf9a5m75)
+  - [ ] setOptions (@wf9a5m75)
+  - [ ] toDataURL (@wf9a5m75)
+  - [ ] MAP_CLICK (@wf9a5m75)
+  - [ ] MAP_LONG_CLICK (@wf9a5m75)
+  - [ ] MY_LOCATION_BUTTON_CLICK (@wf9a5m75)
+  - [ ] CAMERA_EVENTS (@wf9a5m75)
+  - [ ] MAP_DRAG_EVENTS (@wf9a5m75)
+  - [ ] MAP_READY (@wf9a5m75)
 
 - [ ] Marker
   - [x] map.addMarker
