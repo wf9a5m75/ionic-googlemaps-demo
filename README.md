@@ -17,15 +17,31 @@ Please help me to create each pages in ionic style.
 
 It is a really easy job. Just convert what is in JavaScript to TypeScript.
 
-**STEP-1: Clone this project into your machine**
+**STEP-1: Fork this project on github**
+
+Click on this button, then fork this project.
+![](http://readme-pics.s3.amazonaws.com/fork_button.jpg)
+
+**STEP-2: Clone the forked your repo into your local machine**
 
 ```
-$> git clone https://github.com/wf9a5m75/ionic-googlemaps-demo
+$> git clone https://github.com/(your account name)/ionic-googlemaps-demo
 
 $> cd ionic-google-maps
 ```
 
-**STEP-2: Install**
+**STEP-3: Create a branch with your github account name**
+
+In order to conflict with other people, please create a branch.
+For example, Masashi's github account name is @wf9a5m75.
+
+```
+$> git checkout -b wf9a5m75  // create a new branch
+
+$> git push --set-upstream origin wf9a5m75
+```
+
+**STEP-4: Install**
 
 Don't forget to enable the Google Maps Android API v2/Google Maps SDK for iOS
 at the Google APIs console.
@@ -33,15 +49,17 @@ at the Google APIs console.
 The package name is `ionic.google.maps`
 
 ```
+$> npm install -g ionic@latest
+
 $> ionic cordova platform add android (or ios)
 
 $> cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="..." --variable API_KEY_FOR_IOS="..."
-$> npm install @ionic-native/core (^4.2.1)
+$> npm install @ionic-native/core (^4.2.1)  // must be 4.2.1 or over
 $> npm install @ionic-native/googlemaps (^4.2.1)
 
 ```
 
-**STEP-3: Run**
+**STEP-5: Run**
 
 It should work.
 
@@ -49,7 +67,7 @@ It should work.
 $> ionic cordova run android -l
 ```
 
-**STEP-4: Generate new page**
+**STEP-6: Generate new page**
 
 For example, create a page for `Map.animateCameraZoomIn()`.
 
@@ -67,10 +85,22 @@ $> mv animate-camera-zoom-in map/
 This will create package in pages folder(there is issue in ionic to allow to specify any location for generated folder).
 All you have to do is move this folder into any folder. Restart your ionic cli and all changes will be presented.
 
-NOTE: Make sure you are using latest ionic cli version.
+**STEP-7: your work**
+
+**STEP-8: Commit the files to your repo first**
+
 ```
-$> npm install -g ionic@latest
+$> git add pages/map/animate-camera-zoom-in/*
+
+$> git commit -m "Add: map.animateCameraZoomIn()
+
+$> git push
 ```
+
+**STEP-9: Please send a pull request**
+![](https://guides.github.com/activities/hello-world/create-pr.png)
+
+Then Masashi will review and merge it.
 
 ----
 
