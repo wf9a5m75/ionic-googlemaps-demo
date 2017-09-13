@@ -107,19 +107,9 @@ Then Masashi will review and merge it.
 
 ## Before starting your work, please reserve the page.
 
-When you want to create some pages, please reserve the pages before starting.
+When you want to create some pages, please let Masashi know which page do you want to create, at the slack channel (#general channel).
 
-First, you clone this repository, then open this README.md file with your text editor.
-
-Then write your github account name at the next to the page name.
-<img src="https://raw.githubusercontent.com/wf9a5m75/ionic-googlemaps-demo/master/screen_shot_2017-08-01_at_11.38.05_am.png" width="400">
-
-After that, commit only this README.md file, and please start the working.
-
-When you finish to create a page, please commit the files.
-
-**Please don't send the package.json and the config.xml files**
-
+I will write your github account name on this README.md file.
 ----
 
 ## Current working progress
