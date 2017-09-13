@@ -44,7 +44,8 @@ The package name is `ionic.google.maps`
 ```
 $> ionic cordova platform add android (or ios)
 
-$> npm install @ionic-native/googlemaps
+$> npm install @ionic-native/core (^4.2.1)
+$> npm install @ionic-native/googlemaps (^4.2.1)
 
 ```
 
@@ -78,50 +79,6 @@ NOTE: Make sure you are using latest ionic cli version.
 ```
 $> npm install -g ionic@latest
 ```
-----
-
-## How to build @ionic-native, and install it in your machine
-
-### Install the @ionic-native/google-maps plugin
-
-```
-$> git clone https://github.com/wf9a5m75/ionic-native
-
-$> git checkout  dev
-
-$> cd ionic-googlemaps-demo
-
-$> npm uninstall @ionic-native/core @ionic-native/google-maps
-
-
-$> npm install (path to)/ionic-native/dist/\@ionic-native/core --no-fetch
-
-$> npm install (path to)/ionic-native/dist/\@ionic-native/google-maps --no-fetch
-
-$> ionic cordova run
-```
-
-You may get some warning, but you can ignore these messages.
-```
-$> npm install (path to)/ionic-native/dist/@ionic-native/google-maps --no-fetch
-ionic-googlemaps-demo@0.0.1 (path to)/ionic-googlemaps-demo
-????????? UNMET PEER DEPENDENCY @ionic-native/core@4.1.0
-????????? @ionic-native/google-maps@4.1.0
-
-npm WARN @ionic-native/splash-screen@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
-npm WARN @ionic-native/status-bar@3.12.1 requires a peer of @ionic-native/core@^3.6.0 but none was installed.
-npm WARN ajv-keywords@2.1.0 requires a peer of ajv@>=5.0.0 but none was installed.
-```
-
-
-After finish fixing bugs, please commit to the https://github.com/wf9a5m75/ionic-native
-
-Because I already sent [a pull request](https://github.com/ionic-team/ionic-native/pull/1834) to the original ionic-native repo.
-If you commit the code to the https://github.com/wf9a5m75/ionic-native, an automatic code review is executed at the pull request page.
-
-Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ionic-native/pull/1834)
-
-
 ----
 
 ## Current working progress
