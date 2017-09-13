@@ -20,7 +20,7 @@ It is a really easy job. Just convert what is in JavaScript to TypeScript.
 **STEP-1: Fork this project on github**
 
 Click on this button, then fork this project.
-![](http://readme-pics.s3.amazonaws.com/fork_button.jpg)
+<img src="http://readme-pics.s3.amazonaws.com/fork_button.jpg" width="400">
 
 **STEP-2: Clone the forked your repo into your local machine**
 
