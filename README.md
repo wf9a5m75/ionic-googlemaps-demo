@@ -71,6 +71,24 @@ NOTE: Make sure you are using latest ionic cli version.
 ```
 $> npm install -g ionic@latest
 ```
+
+----
+
+## Before starting your work, please reserve the page.
+
+When you want to create some pages, please reserve the pages before starting.
+
+First, you clone this repository, then open this README.md file with your text editor.
+
+Then write your github account name at the next to the page name.
+![](https://files.slack.com/files-tmb/T6G0VKM1N-F6GJECC03-bfcb9b9df9/screen_shot_2017-08-01_at_11.38.05_am_360.png)
+
+After that, commit only this README.md file, and please start the working.
+
+When you finish to create a page, please commit the files.
+
+**Please don't send the package.json and the config.xml files**
+
 ----
 
 ## Current working progress
