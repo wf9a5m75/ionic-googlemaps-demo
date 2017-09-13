@@ -157,7 +157,7 @@ Pull request [#1834 Fix: Google Maps Doc page](https://github.com/ionic-team/ion
   - [x] fromPointToLatLng (@wf9a5m75)
   - [x] setMyLocationEnabled (@wf9a5m75)
   - [x] getFocusedBuilding (@wf9a5m75)
-  - [ ] setIndoorEnabled (@wf9a5m75)
+  - [x] setIndoorEnabled (@wf9a5m75)
   - [ ] setTrafficEnabled (@wf9a5m75)
   - [ ] setCompassEnabled (@wf9a5m75)
   - [ ] setAllGesturesEnabled (@wf9a5m75)
