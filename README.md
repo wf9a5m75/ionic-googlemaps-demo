@@ -99,7 +99,7 @@ $> git push
 ```
 
 **STEP-9: Please send a pull request**
-![](https://guides.github.com/activities/hello-world/create-pr.png)
+<img src="https://guides.github.com/activities/hello-world/create-pr.png" width="400">
 
 Then Masashi will review and merge it.
 
