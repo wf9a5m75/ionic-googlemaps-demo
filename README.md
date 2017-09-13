@@ -25,7 +25,7 @@ $> git clone https://github.com/wf9a5m75/ionic-googlemaps-demo
 $> cd ionic-google-maps
 ```
 
-**STEP-2: Open the config.xml, then replace the Maps API keys**
+**STEP-2: Install**
 
 Don't forget to enable the Google Maps Android API v2/Google Maps SDK for iOS
 at the Google APIs console.
@@ -33,23 +33,15 @@ at the Google APIs console.
 The package name is `ionic.google.maps`
 
 ```
-<plugin name="cordova-plugin-googlemaps" spec="https://github.com/wf9a5m75/ionic-googlemaps-demo">
-  <variable name="API_KEY_FOR_ANDROID" value="(REPLACE_WITH_YOUR_KEY)" />
-  <variable name="API_KEY_FOR_IOS" value="(REPLACE_WITH_YOUR_KEY)" />
-</plugin>
-```
-
-**STEP-3: Install**
-
-```
 $> ionic cordova platform add android (or ios)
 
+$> cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="..." --variable API_KEY_FOR_IOS="..."
 $> npm install @ionic-native/core (^4.2.1)
 $> npm install @ionic-native/googlemaps (^4.2.1)
 
 ```
 
-**STEP-4: Run**
+**STEP-3: Run**
 
 It should work.
 
@@ -57,7 +49,7 @@ It should work.
 $> ionic cordova run android -l
 ```
 
-**STEP-5: Generate new page**
+**STEP-4: Generate new page**
 
 For example, create a page for `Map.animateCameraZoomIn()`.
 
