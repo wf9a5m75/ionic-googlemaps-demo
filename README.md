@@ -81,7 +81,7 @@ When you want to create some pages, please reserve the pages before starting.
 First, you clone this repository, then open this README.md file with your text editor.
 
 Then write your github account name at the next to the page name.
-![](https://files.slack.com/files-tmb/T6G0VKM1N-F6GJECC03-bfcb9b9df9/screen_shot_2017-08-01_at_11.38.05_am_360.png)
+<img src="https://raw.githubusercontent.com/wf9a5m75/ionic-googlemaps-demo/master/screen_shot_2017-08-01_at_11.38.05_am.png" width="400">
 
 After that, commit only this README.md file, and please start the working.
 
