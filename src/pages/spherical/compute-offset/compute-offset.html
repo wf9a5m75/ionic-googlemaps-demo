@@ -1,0 +1,76 @@
+<!--
+  Generated template for the ComputeOffsetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>spherical.computeOffset()</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div id="contentView">
+        <div id="contentsFrame">
+            <section class="demo">
+                <p>
+                    Returns the LatLng resulting from moving a distance from an origin in the specified heading.
+                </p>
+                <div class="map" id="map_canvas"></div>
+                <textarea readonly="readonly" class="prettyprint">
+export class ComputeOffsetPage {
+
+  map: GoogleMap;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private googleMaps: GoogleMaps,
+    private spherical: Spherical) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ComputeOffsetPage');
+    this.loadMap();
+  }
+
+  loadMap() {
+    let center: ILatLng = {"lat": 32, "lng": -97};
+
+    // radius (meter)
+    let radius = 300;
+
+    // Calculate the positions
+    let offsets = [];
+    for (var degree = 0; degree < 360; degree += 45) {
+        offsets.push(this.spherical.computeOffset(center, radius, degree));
+    }
+
+    this.map = this.googleMaps.create('map_canvas', {
+      camera: {
+        target: offsets,
+        padding: 100
+      }
+    });
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+
+        offsets.forEach((offset) => {
+            this.map.addPolyline({
+              'points': [center, offset],
+              'color' : '#AA00FF'
+            });
+        });
+
+    });
+  }
+}
+</textarea>
+            </section>
+        </div>
+    </div>
+</ion-content>
