@@ -260,3 +260,13 @@ I will write your github account name on this README.md file.
 - [ ] encoding
   - [ ] encodePath
   - [ ] decodePath
+
+- [ ] spherical (@wf9a5m75)
+ - [ ] computeDistanceBetween (@wf9a5m75)
+ - [ ] computeOffset (@wf9a5m75)
+ - [ ] computeOffsetOrigin (@wf9a5m75)
+ - [ ] computeLength (@wf9a5m75)
+ - [ ] computeArea (@wf9a5m75)
+ - [ ] computeSignedArea (@wf9a5m75)
+ - [ ] computeHeading (@wf9a5m75)
+ - [ ] interpolate (@wf9a5m75)
