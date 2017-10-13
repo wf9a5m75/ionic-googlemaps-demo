@@ -233,12 +233,12 @@ I will write your github account name on this README.md file.
   - [ ] remove
   - [ ] GROUND_OVERLAY_CLICK
 
-- [ ] HtmlInfoWindow (@dasois)
-  - [ ] new HtmlInfoWindow
-  - [ ] setContent
-  - [ ] setBackgroundColor
-  - [ ] open
-  - [ ] close
+- [ ] HtmlInfoWindow (@wf9a5m75)
+  - [x] new HtmlInfoWindow (@wf9a5m75)
+  - [ ] setContent (@wf9a5m75)
+  - [ ] setBackgroundColor (@wf9a5m75)
+  - [ ] open (@wf9a5m75)
+  - [ ] close (@wf9a5m75)
 
 - [ ] TileOverlay
   - [ ] map.addTileLayer
@@ -263,10 +263,10 @@ I will write your github account name on this README.md file.
 
 - [ ] spherical (@wf9a5m75)
   - [ ] computeDistanceBetween (@wf9a5m75)
-  - [ ] computeOffset (@wf9a5m75)
-  - [ ] computeOffsetOrigin (@wf9a5m75)
+  - [x] computeOffset (@wf9a5m75)
+  - [x] computeOffsetOrigin (@wf9a5m75)
   - [ ] computeLength (@wf9a5m75)
   - [ ] computeArea (@wf9a5m75)
-  - [ ] computeSignedArea (@wf9a5m75)
+  - [x] computeSignedArea (@wf9a5m75)
   - [ ] computeHeading (@wf9a5m75)
-  - [ ] interpolate (@wf9a5m75)
+  - [x] interpolate (@wf9a5m75)
