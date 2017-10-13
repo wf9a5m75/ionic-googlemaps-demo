@@ -13,9 +13,6 @@ import {
 @Component({
   selector: 'page-new-html-info-window',
   templateUrl: 'new-html-info-window.html',
-  providers: [
-    HtmlInfoWindow
-  ]
 })
 export class NewHtmlInfoWindowPage {
   map: GoogleMap;
