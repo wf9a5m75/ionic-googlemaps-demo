@@ -4,8 +4,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import {MapPage} from "../pages/map/map";
-import {MarkerPage} from "../pages/marker/marker";
+import { MapPage } from "../pages/map/map";
+import { MarkerPage } from "../pages/marker/marker";
+import { GeocoderPage } from "../pages/geocoder/geocoder";
+import { EnvironmentPage } from "../pages/environment/environment";
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +15,7 @@ import {MarkerPage} from "../pages/marker/marker";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any;  // Do not set any page here. Wait the platform.ready();
 
   pages: Array<{title: string, component: any}>;
 
@@ -23,15 +25,19 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'MapPage', component: MapPage },
-      { title: 'MarkerPage', component: MarkerPage }
+      { title: 'Map', component: MapPage },
+      { title: 'Marker', component: MarkerPage },
+      { title: 'Geocoder', component: GeocoderPage },
+      { title: 'Environment', component: EnvironmentPage }
     ];
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      // You can now use the GoogleMaps plugin in any page without platform.ready() or setTimeout().
+      this.rootPage = HomePage;
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

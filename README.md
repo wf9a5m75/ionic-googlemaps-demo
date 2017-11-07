@@ -253,13 +253,13 @@ I will write your github account name on this README.md file.
   - [X] reverse_geocoding
 
 
-- [ ] Environment
-  - [ ] setBackgroundColor
-  - [ ] getLicenseInfo
+- [x] Environment (@wf9a5m75)
+  - [x] setBackgroundColor (@wf9a5m75)
+  - [x] getLicenseInfo (@wf9a5m75)
 
-- [ ] encoding
-  - [ ] encodePath
-  - [ ] decodePath
+- [ ] encoding (@wf9a5m75)
+  - [ ] encodePath (@wf9a5m75)
+  - [ ] decodePath (@wf9a5m75)
 
 - [ ] spherical (@wf9a5m75)
   - [ ] computeDistanceBetween (@wf9a5m75)
@@ -270,3 +270,7 @@ I will write your github account name on this README.md file.
   - [x] computeSignedArea (@wf9a5m75)
   - [ ] computeHeading (@wf9a5m75)
   - [x] interpolate (@wf9a5m75)
+
+- [ ] poly (@wf9a5m75)
+  - [ ] containsLocation (@wf9a5m75)
+  - [ ] isLocationOnEdge (@wf9a5m75)

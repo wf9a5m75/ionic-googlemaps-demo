@@ -6,11 +6,13 @@ import {HomePage} from "../pages/home/home";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {GoogleMaps} from "@ionic-native/google-maps";
+import {LicensePopupPage} from "../pages/environment/get-license-info/license-popup";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LicensePopupPage
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import {GoogleMaps} from "@ionic-native/google-maps";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LicensePopupPage
   ],
   providers: [
     StatusBar,
