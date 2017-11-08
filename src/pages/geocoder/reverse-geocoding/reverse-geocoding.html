@@ -24,9 +24,7 @@
                   In Android, this plugin uses Google Play Services feature, while in iOS this plugin uses iOS feature (not Google).
                   It means the geocoding results are different on Android and iOS.
                 </p>
-                <div class="map" id="map_canvas1">
-                  <span class="smallPanel"><input ion-input [(ngModel)]="search_address" value="Kyoto, Japan"><button ion-button (click)="onButton1_click($event)">Search</button></span>
-                </div>
+                <div class="map" id="map_canvas1"></div>
                 <textarea readonly="readonly" class="prettyprint">
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -109,7 +107,7 @@ export class ReverseGeocodingPage {
     });
   }
 }
-                  
+
                 </textarea>
             </section>
 
@@ -160,7 +158,7 @@ export class ReverseGeocodingPage {
   ionViewDidLoad() {
     this.loadMap2();
   }
-  
+
   loadMap2() {
     var self = this;
     var mapDiv = document.getElementById("map_canvas2");
@@ -260,8 +258,8 @@ export class ReverseGeocodingPage {
             'position': results[0].position,
             'icon': '../images/starbucks.gif',
             'title': address
-          }).then((marker) => { 
-            self.onMarkerAdded(marker); 
+          }).then((marker) => {
+            self.onMarkerAdded(marker);
           });
         }
       });

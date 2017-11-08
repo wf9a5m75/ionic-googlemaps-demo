@@ -14,27 +14,24 @@ import {
 @IonicPage()
 @Component({
   selector: 'page-geocoding',
-  templateUrl: 'geocoding.html',
-  providers: [
-    Geocoder
-  ]
+  templateUrl: 'geocoding.html'
 })
 export class GeocodingPage {
   map1: GoogleMap;
   map2: GoogleMap;
-  mapTypeId: any;
+
   isRunning: boolean = false;
   search_address: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geocoder: Geocoder) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    setTimeout(this.loadMap1.bind(this), 1000);
-    setTimeout(this.loadMap2.bind(this), 2000);
+    this.loadMap1();
+    this.loadMap2();
   }
   loadMap1() {
     this.search_address = 'Kyoto, Japan';
-    this.map1 = this.googleMaps.create('map_canvas1');
+    this.map1 = GoogleMaps.create('map_canvas1');
 
     // Wait the MAP_READY before using any methods.
     this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
@@ -43,42 +40,40 @@ export class GeocodingPage {
   }
 
   onButton1_click(event) {
-    let self = this;
 
     // Address -> latitude,longitude
-    self.geocoder.geocode({
+    Geocoder.geocode({
       "address": this.search_address
     }).then((results: GeocoderResult[]) => {
       console.log(results);
 
-      if (results.length) {
-
-        // Add a marker
-        self.map1.addMarker({
-          'position': results[0].position,
-          'title':  JSON.stringify(results[0].position)
-        }).then((marker) => {
-
-          // Move to the position
-          self.map1.animateCamera({
-            'target': results[0].position,
-            'zoom': 17
-          }).then(() => {
-            marker.showInfoWindow();
-            self.isRunning = false;
-          });
-
-        });
-
-      } else {
-        self.isRunning = false;
+      if (!results.length) {
+        this.isRunning = false;
+        return null;
       }
+
+      // Add a marker
+      return this.map1.addMarker({
+        'position': results[0].position,
+        'title':  JSON.stringify(results[0].position)
+      });
+    })
+    .then((marker: Marker) => {
+
+      // Move to the position
+      this.map1.animateCamera({
+        'target': marker.getPosition(),
+        'zoom': 17
+      }).then(() => {
+        marker.showInfoWindow();
+        this.isRunning = false;
+      });
 
     });
   }
 
   loadMap2() {
-    this.map2 = this.googleMaps.create('map_canvas2', {
+    this.map2 = GoogleMaps.create('map_canvas2', {
       camera: {
         target: [
           {"lat": 21.306944, "lng": -157.858333},
@@ -100,11 +95,10 @@ export class GeocodingPage {
     }
     this.isRunning = true;
 
-    let self = this;
-    let start = Date.now();
+    let start: number = Date.now();
 
     // Geocode multiple location
-    this.geocoder.geocode({
+    Geocoder.geocode({
 
       // US Capital cities
       "address": [
@@ -128,43 +122,26 @@ export class GeocodingPage {
       ]
     }).then((mvcArray: BaseArrayClass<GeocoderResult>) => {
 
-        let latLngBounds = new LatLngBounds();
-        let markers = new BaseArrayClass<Marker>([]);
 
-        mvcArray.on('error').subscribe((error) => {
-          console.log(error);
-        });
-
-        mvcArray.on('insert_at').subscribe((index: number) => {
-
-          // Get a result
-          let geocodeResult = mvcArray.getAt(index);
-          if (geocodeResult.length > 0) {
-
-            latLngBounds.extend(geocodeResult[0].position);
-
-            self.map2.addMarker({
-              'position': geocodeResult[0].position,
-              'title':  JSON.stringify(geocodeResult)
-            }).then((marker) => {
-              markers.push(marker);
-            });
-          } else {
-            markers.push(null);
+      mvcArray.one('finish').then(() => {
+        console.log('finish', mvcArray.getArray());
+        return mvcArray.mapAsync((result: GeocoderResult[], next: (marker: Marker) => void) => {
+          if (result.length === 0) {
+            // Geocoder can not get the result
+            return next(null);
           }
+          this.map2.addMarker({
+            'position': result[0].position,
+            'title':  JSON.stringify(result)
+          }).then(next);
         });
+      })
+      .then((markers: Marker[]) => {
+        let end = Date.now();
+        this.isRunning = false;
+        alert("duration: " + ((end - start) / 1000).toFixed(1) + " seconds");
+      });
 
-        mvcArray.on('finish').subscribe(() => {
-          self.isRunning = false;
-        });
-
-        markers.on('insert_at').subscribe((index) => {
-          if (!self.isRunning && markers.getLength() === mvcArray.getLength()) {
-            let end = Date.now();
-            alert("results : " + mvcArray.getLength() + "\n" +
-                  "duration: " + ((end - start) / 1000).toFixed(1) + " seconds");
-          }
-        });
     });
   }
 }

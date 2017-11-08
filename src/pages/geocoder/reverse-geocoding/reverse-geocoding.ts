@@ -6,7 +6,9 @@ import {
   GoogleMapsEvent,
   Geocoder,
   BaseArrayClass,
-  GeocoderResult
+  GeocoderResult,
+  Marker,
+  ILatLng
 } from '@ionic-native/google-maps';
 
 
@@ -22,19 +24,17 @@ export class ReverseGeocodingPage {
   map1: GoogleMap;
   map2: GoogleMap;
   isRunning: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private geocoder: Geocoder) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     this.loadMap1();
-    setTimeout(this.loadMap2.bind(this), 2000);
+    this.loadMap2();
   }
 
   loadMap1() {
-    var self = this;
-    var mapDiv = document.getElementById("map_canvas1");
 
-    self.map1 = this.googleMaps.create(mapDiv, {
+    this.map1 = GoogleMaps.create('map_canvas1', {
       camera: {
         target: { "lat": 37.422858, "lng": -122.085065 },
         zoom: 10
@@ -42,60 +42,64 @@ export class ReverseGeocodingPage {
     });
 
     // Wait the MAP_READY before using any methods.
-    self.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
+    this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("map ready for map_canvas1");
-      self.map1.on(GoogleMapsEvent.MAP_CLICK).subscribe((latLng) => {
-        self.map1.addMarker({
+
+      this.map1.on(GoogleMapsEvent.MAP_CLICK).subscribe((params:any[]) => {
+        let latLng: ILatLng = params[0];
+        this.map1.addMarker({
           "position": latLng
-        }).then((marker) => {
+        })
+        .then((marker: Marker) => {
           // Latitude, longitude -> address
-          self.geocoder.geocode({
+          Geocoder.geocode({
             "position": latLng
           }).then((results: GeocoderResult[]) => {
             if (results.length == 0) {
               // Not found
-              return;
+              return null;
             }
-            var address = [
+            let address: any = [
               results[0].subThoroughfare || "",
               results[0].thoroughfare || "",
               results[0].locality || "",
               results[0].adminArea || "",
               results[0].postalCode || "",
               results[0].country || ""].join(", ");
-            marker.setTitle(address)
-              .showInfoWindow();
+
+            marker.setTitle(address);
+            marker.showInfoWindow();
           });
         });
-      });
+      })
     });
 
   }
 
   loadMap2() {
-    var self = this;
-    var mapDiv = document.getElementById("map_canvas2");
-    self.map2 = this.googleMaps.create(mapDiv, {
+    this.map2 = GoogleMaps.create('map_canvas2', {
       camera: {
-        target: [{ "lat": 42.452030, "lng": -71.537014 }, { "lat": 43.385365, "lng": -70.542110 }]
+        target: [
+          { "lat": 42.452030, "lng": -71.537014 },
+          { "lat": 43.385365, "lng": -70.542110 }
+        ]
       }
     });
-    self.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
+    this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("map ready for map_canvas2");
     });
   }
 
   onButton2_click(event) {
-    var self = this;
     if (this.isRunning) {
       return;
     }
     this.isRunning = true;
 
-    var start = Date.now();
+    let start = Date.now();
 
     // Geocode multiple location
-    self.geocoder.geocode({
+    Geocoder.geocode({
       "position": [
         { "lat": 43.031873, "lng": -71.073203 },
         { "lat": 42.989763, "lng": -70.932044 },
@@ -149,39 +153,34 @@ export class ReverseGeocodingPage {
       ]
     }).then((mvcArray: BaseArrayClass<GeocoderResult>) => {
 
-      mvcArray.on('error').subscribe((error) => {
-        console.log(error);
-      });
+      mvcArray.one('finish').then(() => {
+        return mvcArray.mapAsync((result: GeocoderResult[], next: (marker: Marker) => void) => {
+          if (result.length === 0) {
+            // Geocoder can not get the result
+            return next(null);
+          }
 
-      mvcArray.on('insert_at').subscribe((index) => {
+          // Get a result
+          let address: string = [
+            result[0].subThoroughfare || "",
+            result[0].thoroughfare || "",
+            result[0].locality || "",
+            result[0].adminArea || "",
+            result[0].postalCode || "",
+            result[0].country || ""].join(", ");
 
-        // Get a result
-        var results = mvcArray.getAt(index);
-        if (results.length > 0) {
-
-          var address = [
-            results[0].subThoroughfare || "",
-            results[0].thoroughfare || "",
-            results[0].locality || "",
-            results[0].adminArea || "",
-            results[0].postalCode || "",
-            results[0].country || ""].join(", ");
-
-          self.map2.addMarker({
-            'position': results[0].position,
-            'icon': '../images/starbucks.gif',
-            'title': address
-          }).then((marker) => { 
-            self.onMarkerAdded(marker); 
-          });
-        }
-      });
-
-      mvcArray.on('finish').subscribe(() => {
-        var end = Date.now();
-        alert("results : " + mvcArray.getLength() + "\n" +
-          "duration: " + ((end - start) / 1000).toFixed(1) + " seconds");
+          this.map2.addMarker({
+            'position': result[0].position,
+            'icon': 'assets/starbucks.gif',
+            'title':  JSON.stringify(result)
+          }).then(next);
+        });
+      })
+      .then((markers: Marker[]) => {
+        let end = Date.now();
         this.isRunning = false;
+        console.log('finish', mvcArray.getArray());
+        alert("duration: " + ((end - start) / 1000).toFixed(1) + " seconds");
       });
 
     });
