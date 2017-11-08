@@ -46,7 +46,7 @@ export class GetCameraPositionPage {
   }
 
   loadMap() {
-    this.map = this.googleMaps.create("map_canvas");
+    this.map = GoogleMaps.create("map_canvas");
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
 
     });

@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  LatLng
-} from '@ionic-native/google-maps';
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng } from '@ionic-native/google-maps';
 
 /**
  * Generated class for the PanByPage page.

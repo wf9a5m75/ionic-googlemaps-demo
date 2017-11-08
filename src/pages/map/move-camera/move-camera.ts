@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
-} from '@ionic-native/google-maps';
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
@@ -15,8 +11,7 @@ export class MoveCameraPage {
   map1: GoogleMap;
   map2: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap1();
@@ -24,7 +19,7 @@ export class MoveCameraPage {
   }
 
   loadMap1() {
-    this.map1 = this.googleMaps.create('map_canvas1');
+    this.map1 = GoogleMaps.create('map_canvas1');
     this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("map1 is ready");
     });
@@ -42,7 +37,7 @@ export class MoveCameraPage {
   }
 
   loadMap2() {
-    this.map2 = this.googleMaps.create('map_canvas2');
+    this.map2 = GoogleMaps.create('map_canvas2');
     this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("map2 is ready");
     });

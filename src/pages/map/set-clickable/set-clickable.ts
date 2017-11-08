@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
-} from "@ionic-native/google-maps";
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 
 /**
  * Generated class for the SetClickablePage page.
@@ -20,28 +16,24 @@ import {
 })
 export class SetClickablePage {
   map: GoogleMap;
-  onLoading: boolean = true;
-  clickable = true;
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private googleMaps: GoogleMaps
-  ) {}
+
+  clickable: boolean = true;
+
+  constructor() {}
 
   ionViewDidLoad() {
-    var self = this;
-    self.loadMap();
+    this.loadMap();
   }
+
   loadMap() {
-    this.map = this.googleMaps.create("map_canvas");
+    this.map = GoogleMaps.create("map_canvas");
 
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("Map is ready!");
       this.onLoading = false;
 
-      this.map.on(GoogleMapsEvent.MAP_CLICK)
-      .subscribe(() => {
+      this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(() => {
         alert("Click!");
       });
     });

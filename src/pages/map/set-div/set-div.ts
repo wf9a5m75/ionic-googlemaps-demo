@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
-} from '@ionic-native/google-maps';
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
@@ -13,17 +9,14 @@ import {
 })
 export class SetDivPage {
   map: GoogleMap;
-  mapDiv: HTMLElement;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
+  constructor() {}
 
   ionViewDidLoad() {
-    var self=this;
-    self.loadMap();
+    this.loadMap();
   }
   loadMap() {
-    this.mapDiv = document.getElementById('map_canvas');
-    this.map = this.googleMaps.create(this.mapDiv);
+    this.map = GoogleMaps.create('map_canvas');
 
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY)
@@ -37,7 +30,7 @@ export class SetDivPage {
     if (this.map.getDiv()) {
       this.map.setDiv();
     } else {
-      this.map.setDiv(this.mapDiv);
+      this.map.setDiv('map_canvas');
     }
   }
 }

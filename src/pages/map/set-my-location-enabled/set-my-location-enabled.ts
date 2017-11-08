@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
-} from '@ionic-native/google-maps';
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 
 
 @IonicPage()
@@ -18,14 +14,13 @@ export class SetMyLocationEnabledPage {
   myLocationButtonEnabled: boolean;
   toggleButton: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
+  constructor() {}
 
   ionViewDidLoad() {
-    var self = this;
-    setTimeout(self.loadMap.bind(self), 1000);
+    this.loadMap();
   }
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       controls: {
         myLocationButton: false
       }

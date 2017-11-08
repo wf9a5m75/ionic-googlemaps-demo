@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
-} from '@ionic-native/google-maps';
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 
 
 @IonicPage()
@@ -16,8 +12,7 @@ export class SetCameraBearingPage {
   map: GoogleMap;
   bearing: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap();
@@ -26,7 +21,7 @@ export class SetCameraBearingPage {
   loadMap() {
     this.bearing = 0;
 
-    this.map = this.googleMaps.create("map_canvas", {
+    this.map = GoogleMaps.create("map_canvas", {
       camera: {
         target: {
           lat: 37.422858,

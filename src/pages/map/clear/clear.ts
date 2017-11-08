@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent,
+  VisibleRegion, ILatLng
 } from '@ionic-native/google-maps';
 
 @IonicPage()
@@ -14,21 +12,20 @@ import {
 export class ClearPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    var self = this;
-    this.map = this.googleMaps.create('map_canvas');
+    this.map = GoogleMaps.create('map_canvas');
+
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("map is ready to use.");
 
       // Puts random markers on the map.
-      self.createMarkers();
+      this.createMarkers();
     });
   }
 
@@ -41,12 +38,13 @@ export class ClearPage {
   }
 
   createMarkers() {
-    var latLngBounds = this.map.getVisibleRegion();
-    var sw = latLngBounds.southwest;
-    var ne = latLngBounds.northeast;
-    var diffY = (ne.lat - sw.lat);
-    var diffX = (ne.lng - sw.lng);
-    for (var i = 0; i < 100; i++) {
+    let latLngBounds: VisibleRegion = this.map.getVisibleRegion();
+    let sw: ILatLng = latLngBounds.southwest;
+    let ne: ILatLng = latLngBounds.northeast;
+    let diffY: number = (ne.lat - sw.lat);
+    let diffX: number = (ne.lng - sw.lng);
+
+    for (let i = 0; i < 100; i++) {
       this.map.addMarker({
         'position': {
           'lat': sw.lat + diffY * Math.random(),

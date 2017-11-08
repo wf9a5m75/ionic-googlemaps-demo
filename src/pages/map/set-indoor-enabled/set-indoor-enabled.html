@@ -25,22 +25,29 @@
       </div>
     </div>
     <textarea class="prettyprint" style="height:280px" readonly="readonly">
-export class SetMyLocationEnabledPage {
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
+
+@Component(...)
+export class SetIndoorEnabledPage {
   map: GoogleMap;
-  isMapReady: boolean;
-  myLocationButtonEnabled: boolean;
   toggleButton: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
+  constructor() {}
 
   ionViewDidLoad() {
-    var self = this;
-    setTimeout(self.loadMap.bind(self), 1000);
+    this.loadMap();
   }
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
+      camera: {
+        target: {
+          lat: 37.422375,
+          lng: -122.084207
+        },
+        zoom: 18
+      },
       controls: {
-        myLocationButton: false
+        indoorPicker: true
       }
     });
 
@@ -48,14 +55,13 @@ export class SetMyLocationEnabledPage {
     this.map.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log('Map is ready!');
-        this.isMapReady = true;
       });
   }
 
-
   onToggleChanged() {
-    this.map.setMyLocationEnabled(this.toggleButton);
+    this.map.setIndoorEnabled(this.toggleButton);
   }
+
 }
 </textarea></section>
 

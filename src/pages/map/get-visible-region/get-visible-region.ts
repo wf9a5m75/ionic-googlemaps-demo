@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
-} from '@ionic-native/google-maps';
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, VisibleRegion } from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
@@ -14,16 +10,14 @@ import {
 export class GetVisibleRegionPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() { }
 
   ionViewDidLoad() {
-    var self = this;
-    setTimeout(this.loadMap.bind(self), 1000);
+    this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create("map_canvas", {
+    this.map = GoogleMaps.create("map_canvas", {
       camera: {
         target: {
           lat: 37.422858,
@@ -39,10 +33,9 @@ export class GetVisibleRegionPage {
   }
 
   onButton_click() {
-    var self = this;
 
     // Get the visible region
-    var visibleRegion = this.map.getVisibleRegion();
+    let visibleRegion: VisibleRegion = this.map.getVisibleRegion();
 
     // Draw a red polygon that represents viewport
     this.map.addPolygon({
@@ -57,7 +50,7 @@ export class GetVisibleRegionPage {
       'fillColor': 'rgba(255, 0, 0, 0.5)'
     }).then(() => {
       setTimeout(() => {
-        self.map.animateCameraZoomOut()
+        this.map.animateCameraZoomOut()
       }, 1000);
     });
 

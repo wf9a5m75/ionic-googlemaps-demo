@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -17,12 +17,12 @@ import {
 export class FromPointToLatLngPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
+  constructor() {
   }
 
   ionViewDidLoad() {
     var self = this;
-    setTimeout(self.loadMap.bind(self), 1000);
+    this.loadMap();
   }
 
   loadMap() {
@@ -30,7 +30,7 @@ export class FromPointToLatLngPage {
 
     var mapDiv = document.getElementById('map_canvas');
 
-    this.map = this.googleMaps.create(mapDiv);
+    this.map = GoogleMaps.create(mapDiv);
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
 
       self.map.setClickable(false);

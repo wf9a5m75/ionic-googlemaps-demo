@@ -18,10 +18,10 @@ export class GetCameraBearingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
-    setTimeout(this.loadMap.bind(this), 1000);
+    this.loadMap();
   }
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {
           lat: 37.422858,

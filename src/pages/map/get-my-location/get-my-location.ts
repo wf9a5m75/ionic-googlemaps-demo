@@ -1,12 +1,8 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  ILatLng,
-  CameraPosition,
-  Marker
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  ILatLng, CameraPosition, Marker
 } from "@ionic-native/google-maps";
 
 @IonicPage()
@@ -16,18 +12,15 @@ import {
 })
 export class GetMyLocationPage {
   map: GoogleMap;
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private googleMaps: GoogleMaps
-  ) {}
+
+  constructor() {}
 
   ionViewDidLoad() {
-    var self = this;
-    setTimeout(self.loadMap.bind(self), 1000);
+    this.loadMap();
   }
+
   loadMap() {
-    this.map = this.googleMaps.create("map_canvas");
+    this.map = GoogleMaps.create("map_canvas");
 
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
@@ -47,25 +40,23 @@ export class GetMyLocationPage {
           "bearing:" + location.bearing
         ].join("\n");
 
-        this.map.addMarker({
+        return this.map.addMarker({
           position: location.latLng,
           title: msg
-        }).then((marker: Marker) => {
-
-          let position: CameraPosition<ILatLng> = {
-            target: location.latLng,
-            zoom: 16
-          };
-
-          // move the map's camera to position
-          this.map.animateCamera(position).then(() => {
-            marker.showInfoWindow();
-          });
         });
+      })
+      .then((marker: Marker) => {
 
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+        let position: CameraPosition<ILatLng> = {
+          target: marker.getPosition(),
+          zoom: 16
+        };
+
+        // move the map's camera to position
+        this.map.animateCamera(position).then(() => {
+          marker.showInfoWindow();
+        });
+      });
+
   }
 }

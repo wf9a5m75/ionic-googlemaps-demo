@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -20,10 +20,10 @@ export class GetFocusedBuildingPage {
 
   ionViewDidLoad() {
     var self = this;
-    setTimeout(self.loadMap.bind(self), 1000);
+    this.loadMap();
   }
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {
           lat: 37.422375,

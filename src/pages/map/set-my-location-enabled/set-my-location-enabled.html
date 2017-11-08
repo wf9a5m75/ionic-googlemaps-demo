@@ -25,20 +25,22 @@
       </div>
     </div>
     <textarea class="prettyprint" style="height:280px" readonly="readonly">
-export class SetMyLocationEnabledPage {
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
+
+@Component(...)
+class SetMyLocationEnabledPage {
   map: GoogleMap;
   isMapReady: boolean;
   myLocationButtonEnabled: boolean;
   toggleButton: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
+  constructor() {}
 
   ionViewDidLoad() {
-    var self = this;
-    setTimeout(self.loadMap.bind(self), 1000);
+    this.loadMap();
   }
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       controls: {
         myLocationButton: false
       }

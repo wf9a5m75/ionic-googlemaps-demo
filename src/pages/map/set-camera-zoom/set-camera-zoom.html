@@ -23,32 +23,20 @@
       <span class="smallPanel"><button ion-button (click)="onButton_click($evnet)">Click here</button></span>
     </div>
     <textarea readonly="readonly" class="prettyprint">
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent
-} from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 
-
-@IonicPage()
-@Component({
-  selector: 'page-set-camera-zoom',
-  templateUrl: 'set-camera-zoom.html',
-})
-export class SetCameraZoomPage {
+@Component(...)
+class SetCameraZoomPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create("map_canvas", {
+    this.map = GoogleMaps.create("map_canvas", {
       camera: {
         target: {
           lat: 37.422858,

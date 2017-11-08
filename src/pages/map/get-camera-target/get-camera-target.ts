@@ -18,12 +18,12 @@ export class GetCameraTargetPage {
   }
 
   ionViewDidLoad() {
-    setTimeout(this.loadMap.bind(this), 1000);
+    this.loadMap();
   }
 
   loadMap() {
 
-    this.map = this.googleMaps.create("map_canvas");
+    this.map = GoogleMaps.create("map_canvas");
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("map is ready");
     });

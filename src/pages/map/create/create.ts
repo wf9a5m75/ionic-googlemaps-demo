@@ -1,32 +1,27 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapsMapTypeId
-} from '@ionic-native/google-maps';
+import { IonicPage } from 'ionic-angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapsMapTypeId } from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
-  selector: 'page-get-map',
-  templateUrl: 'get-map.html',
+  selector: 'page-create',
+  templateUrl: 'create.html',
 })
-export class GetMapPage {
+export class CreatePage {
   map1: GoogleMap;
   map2: GoogleMap;
   map3: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {}
+  constructor() {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MapGetMapPage');
     this.loadMap1();
-    setTimeout(this.loadMap2.bind(this), 1000);
-    setTimeout(this.loadMap3.bind(this), 2000);
+    this.loadMap2();
+    this.loadMap3();
   }
+
   loadMap1() {
-    this.map1 = this.googleMaps.create('map_canvas1');
+    this.map1 = GoogleMaps.create('map_canvas1');
 
     // Wait the MAP_READY before using any methods.
     this.map1.one(GoogleMapsEvent.MAP_READY)
@@ -37,7 +32,7 @@ export class GetMapPage {
   }
 
   loadMap2() {
-    this.map2 = this.googleMaps.create('map_canvas2', {
+    this.map2 = GoogleMaps.create('map_canvas2', {
       'mapType': GoogleMapsMapTypeId.HYBRID,
       'controls': {
         'compass': true,
@@ -79,7 +74,7 @@ export class GetMapPage {
   }
 
   loadMap3() {
-    this.map3 = this.googleMaps.create('map_canvas3');
+    this.map3 = GoogleMaps.create('map_canvas3');
     this.map3.one(GoogleMapsEvent.MAP_READY)
       .then(() => {
         console.log("--> map_canvas3 : ready.");
