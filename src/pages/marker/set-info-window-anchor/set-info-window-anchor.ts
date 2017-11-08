@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {IonicPage} from "ionic-angular";
 import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/google-maps";
 
 @IonicPage()
@@ -10,18 +10,17 @@ import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/goog
 export class SetInfoWindowAnchorPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas');
+    this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
+      return this.map.addMarker({
         position: {
           lat: 0,
           lng: 0
@@ -31,14 +30,14 @@ export class SetInfoWindowAnchorPage {
           anchor: [24, 24]
         },
         title: 'Click me!'
-      }).then((marker: Marker) => {
-        marker.showInfoWindow();
+      });
+    }).then((marker: Marker) => {
+      marker.showInfoWindow();
 
-        // Catch the MARKER_CLICK event
-        marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
-          // Set the infoWindow anchor at 24x24px from the left-top of the icon.
-          marker.setInfoWindowAnchor(24, 24);
-        });
+      // Catch the MARKER_CLICK event
+      marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
+        // Set the infoWindow anchor at 24x24px from the left-top of the icon.
+        marker.setInfoWindowAnchor(24, 24);
       });
     });
   }

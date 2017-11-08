@@ -1,8 +1,9 @@
 import {Component, NgZone} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/google-maps";
-import {Observable} from "rxjs";
-
+import {IonicPage} from "ionic-angular";
+import {
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  Marker, BaseArrayClass
+} from "@ionic-native/google-maps";
 
 @IonicPage()
 @Component({
@@ -11,36 +12,33 @@ import {Observable} from "rxjs";
 })
 export class IsInfoWindowShownPage {
   map: GoogleMap;
-  data = [
+  data: any[] = [
     {
       position: {lng: -122.1180187, lat: 37.3960513},
       title: "Ardis G Egan Intermediate School",
       showInfo: false
+    },
+    {
+      position: {lng: -122.1102408, lat: 37.3943847},
+      title: "Portola School",
+      showInfo: false
+    },
+    {
+      position: {lng: -122.0848257, lat: 37.3818032},
+      title: "Isaac Newton Graham Middle School",
+      showInfo: false
     }
-    // ,
-    // {
-    //   position: {lng: -122.1102408, lat: 37.3943847},
-    //   title: "Portola School",
-    //   showInfo: false
-    // },
-    // {
-    //   position: {lng: -122.0848257, lat: 37.3818032},
-    //   title: "Isaac Newton Graham Middle School",
-    //   showInfo: false
-    // }
   ];
   markers: Marker[];
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private _ngZone: NgZone) {
-  }
+  constructor(private _ngZone: NgZone) {}
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas');
+    this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       var bounds = [];
@@ -52,34 +50,30 @@ export class IsInfoWindowShownPage {
         target: bounds
       });
 
-      Observable.from(this.data)
-        .flatMap(item => {
-          return this.map.addMarker(item);
-        })
-        .toArray()
-        .subscribe(markers=> {
-          this.markers = markers;
-          console.log(markers);
+      let mvcArray = new BaseArrayClass(this.data);
+      return mvcArray.mapAsync((item: any, next: (marker: Marker) => void) => {
+        this.map.addMarker(item).then(next);
+      });
+    })
+    .then((markers: Markers[]) => {
+      this.markers = markers;
+      console.log(markers);
 
-          this.markers.forEach((marker,idx)=> {
-            console.log(marker.isInfoWindowShown());
+      this.markers.forEach((marker,idx)=> {
+        marker.set('idx', idx);
+        marker.on(GoogleMapsEvent.INFO_OPEN).subscribe(this.onInfoOpenClose);
+        marker.on(GoogleMapsEvent.INFO_CLOSE).subscribe(this.onInfoOpenClose);
+      });
+    });
+  });
 
-            marker.on(GoogleMapsEvent.INFO_OPEN).subscribe((event) => {
-              console.log('open ' + idx + ' ' + this.markers[idx].isInfoWindowShown());
-              this._ngZone.run(() => {
-                this.data[idx].showInfo = this.markers[idx].isInfoWindowShown();
-              });
-            });
-
-            marker.on(GoogleMapsEvent.INFO_CLOSE).subscribe((event) => {
-              console.log('close ' + idx + ' ' + this.markers[idx].isInfoWindowShown());
-              this._ngZone.run(() => {
-                this.data[idx].showInfo = this.markers[idx].isInfoWindowShown();
-              });
-            })
-          });
-        });
-
+  onInfoOpenClose(params: any[]) {
+    let marker: Marker = params[0];
+    let idx: number = marker.get('idx');
+    let status: string = this.markers[idx].isInfoWindowShown() ? 'open': 'close';
+    console.log(status + ' ' + idx + ' ' + );
+    this._ngZone.run(() => {
+      this.data[idx].showInfo = this.markers[idx].isInfoWindowShown();
     });
   }
 }

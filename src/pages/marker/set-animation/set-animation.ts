@@ -1,7 +1,9 @@
 import {Component} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker, GoogleMapsAnimation} from "@ionic-native/google-maps";
-
+import {IonicPage} from "ionic-angular";
+import {
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  Marker, GoogleMapsAnimation
+} from "@ionic-native/google-maps";
 
 @IonicPage()
 @Component({
@@ -12,7 +14,7 @@ export class SetAnimationPage {
   map: GoogleMap;
   marker: Marker;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
+  constructor() {
   }
 
   ionViewDidLoad() {
@@ -20,7 +22,7 @@ export class SetAnimationPage {
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {lat: 35, lng: 137},
         zoom: 15

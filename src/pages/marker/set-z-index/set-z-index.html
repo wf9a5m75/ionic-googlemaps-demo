@@ -14,29 +14,21 @@
     </p>
     <div class="map" id="map_canvas"></div>
     <textarea class="prettyprint" readonly="readonly">
-import {Component} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker, LatLng} from "@ionic-native/google-maps";
+import {GoogleMaps, GoogleMap, GoogleMapsEvent, LatLng} from "@ionic-native/google-maps";
 
-
-@IonicPage()
-@Component({
-  selector: 'page-set-z-index',
-  templateUrl: 'set-z-index.html',
-})
+@Component(...)
 export class SetZIndexPage {
   map: GoogleMap;
   opacity = 1;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() { }
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {lat: 37.4419, lng: -122.1419},
         zoom: 13
@@ -46,8 +38,8 @@ export class SetZIndexPage {
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       var latLngBounds = this.map.getVisibleRegion();
 
-      var centerLat = this.getCenter(latLngBounds).lat;
-      var centerLng = this.getCenter(latLngBounds).lng - 0.005;
+      let centerLat: number = this.getCenter(latLngBounds).lat;
+      let centerLng: numbe = this.getCenter(latLngBounds).lng - 0.005;
       for (var i = 1; i <= 20; i++) {
 
         this.map.addMarker({

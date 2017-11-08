@@ -17,29 +17,24 @@
             <span class="smallPanel"><button ion-button (click)="animateMarker()">Click here</button></span>
         </div>
         <textarea class="prettyprint" readonly="readonly">
-            import {Component} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker, GoogleMapsAnimation} from "@ionic-native/google-maps";
+import {
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  Marker, GoogleMapsAnimation
+} from "@ionic-native/google-maps";
 
-
-@IonicPage()
-@Component({
-  selector: 'page-set-animation',
-  templateUrl: 'set-animation.html',
-})
-export class SetAnimationPage {
+@Component(...)
+class SetAnimationPage {
   map: GoogleMap;
   marker: Marker;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {lat: 35, lng: 137},
         zoom: 15

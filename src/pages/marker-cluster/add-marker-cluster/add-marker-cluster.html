@@ -15,6 +15,104 @@
     </p>
     <div class="map" id="map_canvas"></div>
     <textarea class="prettyprint" readonly="readonly">
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  MarkerCluster,
+  LatLng,
+  GoogleMapsAnimation,
+  Marker
+} from "@ionic-native/google-maps";
+
+
+/**
+ * Generated class for the AddMarkerClusterPage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-add-marker-cluster',
+  templateUrl: 'add-marker-cluster.html',
+})
+export class AddMarkerClusterPage {
+  map: GoogleMap;
+
+  constructor() {}
+
+  ionViewDidLoad() {
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = GoogleMaps.create('map_canvas', {
+      'camera': {
+        'target': {
+          "lat": 21.382314,
+          "lng": -157.933097
+        },
+        'zoom': 10
+      }
+    });
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      this.addCluster(this.dummyData());
+    });
+  }
+
+  addCluster(data) {
+    this.map.addMarkerCluster({
+      boundsDraw: false,
+      maxZoomLevel: 12,
+      markers: data,
+      icons: [
+        {
+          min: 3,
+          url: "./assets/large.png",
+          anchor: { x: 16, y: 16 },
+          label: {
+            color: "white",
+            bold: true,
+            fontSize: 14
+          },
+          size: {
+            width: 37,
+            height: 37
+          }
+        }
+      ]
+    }).then((markerCluster: MarkerCluster) => {
+
+      markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
+        let latLng: LatLng = params[0];
+        let marker: Marker = params[1];
+
+        marker.setAnimation(GoogleMapsAnimation.BOUNCE);
+      });
+
+    });
+  }
+
+  dummyData() {
+    return [
+      {
+        "position": {
+          "lat": 21.382314,
+          "lng": -157.933097
+        },
+        "name": "Starbucks - HI - Aiea  03641",
+        "address": "Aiea Shopping Center_99-115 Aiea Heights Drive #125_Aiea, Hawaii 96701",
+        "phone": "808-484-1488",
+        "icon": "./assets/marker.png"
+      },
+      ...
+    ];
+  }
+
+}
     </textarea>
   </section>
 

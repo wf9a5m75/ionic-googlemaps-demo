@@ -1,8 +1,7 @@
 import {Component, NgZone} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage} from 'ionic-angular';
 import {
-  GoogleMaps,
-  GoogleMap,
+  GoogleMaps, GoogleMap,
   GoogleMapsEvent, ILatLng, Marker
 } from '@ionic-native/google-maps';
 
@@ -15,38 +14,37 @@ export class GetPositionPage {
   map: GoogleMap;
   markerPosition: ILatLng;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private _ngZone: NgZone) {
-  }
+  constructor(private _ngZone: NgZone) { }
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       gestures: {
         scroll: false  // Disable map dragging
       }
     });
 
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
-        position: {
-          lat: 0,
-          lng: 0
-        },
-        draggable: true,
-        title: "Drag me!"
-      }).then(event => this.onMarkerAdded(event));
-    });
-  }
+    this.map.one(GoogleMapsEvent.MAP_READY)
+      .then(() => {
+        return this.map.addMarker({
+          position: {
+            lat: 0,
+            lng: 0
+          },
+          draggable: true,
+          title: "Drag me!"
+        });
+      })
+      .then((marker: Marker) => {
+        this.markerPosition = marker.getPosition();
 
-  onMarkerAdded(marker: Marker) {
-    this.markerPosition = marker.getPosition();
-
-    marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe((event)=> this.onMarkerMove(event));
-    marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe((event)=> this.onMarkerMove(event));
-    marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe((event)=> this.onMarkerMove(event));
+        marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(this.onMarkerMove);
+        marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(this.onMarkerMove);
+        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(this.onMarkerMove);
+      });
   }
 
   onMarkerMove(event) {

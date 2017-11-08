@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {IonicPage} from "ionic-angular";
 import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/google-maps";
 
 @IonicPage()
@@ -10,15 +10,14 @@ import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/goog
 export class ShowInfoWindowPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() { }
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas');
+    this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.map.addMarker({

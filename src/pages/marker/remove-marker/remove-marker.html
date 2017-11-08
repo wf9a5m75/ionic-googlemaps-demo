@@ -14,28 +14,20 @@
     </p>
     <div class="map" id="map_canvas"></div>
     <textarea class="prettyprint" readonly="readonly">
-import {Component} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
 import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/google-maps";
 
-
-@IonicPage()
-@Component({
-  selector: 'page-remove-marker',
-  templateUrl: 'remove-marker.html',
-})
-export class RemoveMarkerPage {
+@Component(...)
+class RemoveMarkerPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
   loadMap() {
-    this.map = this.googleMaps.create('map_canvas');
+    this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       this.map.addMarker({
@@ -58,7 +50,6 @@ export class RemoveMarkerPage {
     });
   }
 }
-
       </textarea>
   </section>
 
