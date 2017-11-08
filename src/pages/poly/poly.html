@@ -1,0 +1,33 @@
+<!--
+  Generated template for the PolyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Poly</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+      <div id="contentsFrame">
+
+          <h3>Methods</h3>
+          <table class="reference">
+              <tr>
+                  <th><a [navPush]="'ContainsLocationPage'">containsLocation</a></th>
+                  <td>Computes whether the given point lies inside the specified polygon rectangle.</td>
+              </tr>
+              <tr>
+                  <th><a [navPush]="'IsLocationOnEdgePage'">isLocationOnEdge</a></th>
+                  <td>Returns true if the position is on edge.</td>
+              </tr>
+          </table>
+      </div>
+  </div>
+</ion-content>
