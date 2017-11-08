@@ -1,0 +1,85 @@
+<!--
+  Generated template for the SetPaddingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>map.setPadding()</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <section class="demo">
+    Set map paddings. The same as the padding property of CSS.
+
+    <div class="map" id="map_canvas" style="position:relative;">
+      <div style="position:absolute;width:50px;height:100%;right:0;background-color:rgba(0,0,0,0.25);"></div>
+      <div style="position:absolute;width:10px;height:100%;background-color:rgba(0,0,0,0.25);"></div>
+      <div style="position:absolute;width:100%;height:30px;background-color:rgba(0,0,0,0.25);"></div>
+      <div style="position:absolute;width:100%;height:20px;bottom:0;background-color:rgba(0,0,0,0.25);"></div>
+    </div>
+    <textarea class="prettyprint" style="height:280px" readonly="readonly">
+import { GoogleMaps,GoogleMap,GoogleMapsEvent } from '@ionic-native/google-maps';
+
+@Component(...)
+class SetPaddingPage {
+  map: GoogleMap;
+
+  constructor() {}
+
+  ionViewDidLoad() {
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = GoogleMaps.create('map_canvas', {
+      'controls': {
+        'compass': true,
+        'myLocationButton': true,
+        'indoorPicker': true,
+        'zoom': true
+      },
+      'camera': {
+        'target': {
+          'lat': 41.796875,
+          'lng': 140.757007
+        },
+        'tilt': 30,
+        'zoom': 15,
+        'bearing': 50
+      }
+    });
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      // Usage case #1:
+      // top = right = bottom = left = 30px
+      //map.setPadding( 30 );
+
+      // Usage case #2:
+      // top = bottom = 30px
+      // left = right = 50px
+      //map.setPadding( 30, 50 );
+
+      // Usage case #3:
+      // top = 30px
+      // left = right = 50px
+      // bottom = 20px
+      //map.setPadding( 30, 50 , 20 );
+
+      // Usage case #4:
+      // top = 30px
+      // right = 50px
+      // bottom = 20px
+      // left = 10px
+      this.map.setPadding( 30, 50 , 20 , 10 );
+    });
+  }
+}
+</textarea>
+  </section>
+</ion-content>
