@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
   Poly, Polyline, GoogleMaps, GoogleMap, GoogleMapsEvent,
   LatLngBounds, Marker, ILatLng
@@ -20,8 +20,7 @@ import {
 export class IsLocationOnEdgePage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IsLocationOnEdgePage');

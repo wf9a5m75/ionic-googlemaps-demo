@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
   Poly, Polygon, GoogleMaps, GoogleMap, GoogleMapsEvent,
   LatLngBounds, Marker, ILatLng
@@ -36,8 +36,7 @@ export class ContainsLocationPage {
     {lat: 41.79883, lng: 140.75673}
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor() { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContainsLocationPage');
