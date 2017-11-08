@@ -29,7 +29,49 @@
                 </p>
                 <div class="map" id="map_canvas"></div>
                 <textarea readonly="readonly" class="prettyprint">
+import {
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  HtmlInfoWindow, Marker
+} from '@ionic-native/google-maps';
 
+@IonicPage()
+@Component(..)
+export class NewHtmlInfoWindowPage {
+  map: GoogleMap;
+
+  constructor() {}
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NewHtmlInfoWindowPage');
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = GoogleMaps.create('map_canvas');
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      let htmlInfoWindow = new HtmlInfoWindow();
+
+      let html: string = [
+        'This is <b>Html</b> InfoWindow',
+        '<br>',
+        '<button onclick="javascript:alert(\'clicked!\');">click here</button>',
+      ].join("");
+      htmlInfoWindow.setContent(html);
+
+      this.map.addMarker({
+        position: {lat: 0, lng: 0},
+        draggable: true
+      }).then((marker: Marker) => {
+
+        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+          htmlInfoWindow.open(marker);
+        });
+        marker.trigger(GoogleMapsEvent.MARKER_CLICK);
+
+      });
+    });
+  }
+}
 </textarea>
             </section>
         </div>
