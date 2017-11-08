@@ -5,50 +5,53 @@ import {
   GoogleMap,
   GoogleMapsEvent,
   Marker,
-  LatLng
+  LatLng,
+  ILatLng
 } from '@ionic-native/google-maps';
 
 @IonicPage()
 @Component({
   selector: 'page-from-lat-lng-to-point',
-  templateUrl: 'from-lat-lng-to-point.html',
+  templateUrl: 'from-lat-lng-to-point.html'
 })
 export class FromLatLngToPointPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private googleMaps: GoogleMaps
+  ) {}
 
   ionViewDidLoad() {
-    var self = this;
-    setTimeout(self.loadMap.bind(self), 1000);
+    this.loadMap();
   }
 
   loadMap() {
-    var self = this;
+    // Please specify the map div id instead of div element.
+    // The plugin waits the map div is fully ready safely.
     this.map = this.googleMaps.create('map_canvas');
+
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("map is ready to use.");
 
-      var center = self.map.getCameraTarget();
-
-      self.map.addMarker({
+      let center: ILatLng = this.map.getCameraTarget();
+      return this.map.addMarker({
         position: center,
         draggable: true,
         title: "Drag me!"
-      }).then((marker: Marker) => {
-        marker.showInfoWindow();
-
-        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(self.onMarkerDragEnd.bind(self));
       });
-
+    })
+    .then((marker: Marker) => {
+      marker.showInfoWindow();
+      marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(this.onMarkerDragEnd);
     });
   }
 
 
-  onMarkerDragEnd(params) {
-    var latLng = params[0];
-    var marker = params[1];
+  onMarkerDragEnd(params: any[]) {
+    let latLng: LatLng = <LatLng>params[0];
+    let marker:Marker = <Marker>params[1];
     console.log(latLng, marker);
 
     // LatLng -> Point
