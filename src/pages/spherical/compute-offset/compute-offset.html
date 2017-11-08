@@ -22,16 +22,16 @@
                 </p>
                 <div class="map" id="map_canvas"></div>
                 <textarea readonly="readonly" class="prettyprint">
-export class ComputeOffsetPage {
+import {
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  Spherical, Marker, ILatLng
+} from '@ionic-native/google-maps';
 
+@Component(...)
+class ComputeOffsetPage {
   map: GoogleMap;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private googleMaps: GoogleMaps,
-    private spherical: Spherical) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComputeOffsetPage');
@@ -47,10 +47,10 @@ export class ComputeOffsetPage {
     // Calculate the positions
     let offsets = [];
     for (var degree = 0; degree < 360; degree += 45) {
-        offsets.push(this.spherical.computeOffset(center, radius, degree));
+        offsets.push(Spherical.computeOffset(center, radius, degree));
     }
 
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: offsets,
         padding: 100

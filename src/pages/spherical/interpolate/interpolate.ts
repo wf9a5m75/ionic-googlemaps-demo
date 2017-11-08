@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -13,10 +13,7 @@ import {
 @IonicPage()
 @Component({
   selector: 'page-interpolate',
-  templateUrl: 'interpolate.html',
-  providers: [
-    Spherical
-  ]
+  templateUrl: 'interpolate.html'
 })
 export class InterpolatePage {
   map: GoogleMap;
@@ -24,11 +21,7 @@ export class InterpolatePage {
   london: ILatLng = {"lat": 51.506, "lng": -0.119};
   points = [this.nyc, this.london];
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private googleMaps: GoogleMaps,
-    private spherical: Spherical) {
+  constructor() {
   }
 
   ionViewDidLoad() {
@@ -37,7 +30,7 @@ export class InterpolatePage {
 
   loadMap() {
 
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: this.points,
         padding: 100
@@ -66,7 +59,7 @@ export class InterpolatePage {
             direction = 1;
           }
 
-          marker.setPosition(this.spherical.interpolate(this.nyc, this.london, fraction));
+          marker.setPosition(Spherical.interpolate(this.nyc, this.london, fraction));
         }, 50);
 
       });

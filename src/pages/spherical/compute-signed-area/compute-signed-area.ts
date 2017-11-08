@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -12,20 +12,12 @@ import {
 @IonicPage()
 @Component({
   selector: 'page-compute-signed-area',
-  templateUrl: 'compute-signed-area.html',
-  providers: [
-    Spherical
-  ]
+  templateUrl: 'compute-signed-area.html'
 })
 export class ComputeSignedAreaPage {
   map: GoogleMap;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private googleMaps: GoogleMaps,
-    private spherical: Spherical) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComputeSignedAreaPage');
@@ -49,7 +41,7 @@ export class ComputeSignedAreaPage {
       {lat: 51.509784, lng: -0.122767}
     ];
 
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: points,
         padding : 100
@@ -62,7 +54,7 @@ export class ComputeSignedAreaPage {
         "points": points
       });
 
-      let signedArea = this.spherical.computeSignedArea(points);
+      let signedArea = Spherical.computeSignedArea(points);
 
       this.map.addMarker({
         position: points[0],

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
   GoogleMaps,
   GoogleMap,
@@ -12,20 +12,12 @@ import {
 @IonicPage()
 @Component({
   selector: 'page-compute-offset-origin',
-  templateUrl: 'compute-offset-origin.html',
-  providers: [
-    Spherical
-  ]
+  templateUrl: 'compute-offset-origin.html'
 })
 export class ComputeOffsetOriginPage {
   map: GoogleMap;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private googleMaps: GoogleMaps,
-    private spherical: Spherical) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComputeOffsetOriginPage');
@@ -41,10 +33,10 @@ export class ComputeOffsetOriginPage {
     // Calculate the positions
     let offsets = [];
     for (let degree = 0; degree < 360; degree += 45) {
-        offsets.push(this.spherical.computeOffsetOrigin(position, distance, degree));
+        offsets.push(Spherical.computeOffsetOrigin(position, distance, degree));
     }
 
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: offsets,
         padding: 100

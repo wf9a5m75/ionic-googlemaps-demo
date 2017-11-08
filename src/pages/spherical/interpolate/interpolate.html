@@ -22,17 +22,20 @@
                 </p>
                 <div class="map" id="map_canvas"></div>
                 <textarea readonly="readonly" class="prettyprint">
-export class InterpolatePage {
+import {
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  Spherical, Marker, ILatLng
+} from '@ionic-native/google-maps';
+
+
+@Component(...)
+class InterpolatePage {
   map: GoogleMap;
   nyc: ILatLng = {"lat": 40.715, "lng": -74.002};
   london: ILatLng = {"lat": 51.506, "lng": -0.119};
   points = [this.nyc, this.london];
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private googleMaps: GoogleMaps,
-    private spherical: Spherical) {
+  constructor() {
   }
 
   ionViewDidLoad() {
@@ -41,7 +44,7 @@ export class InterpolatePage {
 
   loadMap() {
 
-    this.map = this.googleMaps.create('map_canvas', {
+    this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: this.points,
         padding: 100
@@ -70,7 +73,7 @@ export class InterpolatePage {
             direction = 1;
           }
 
-          marker.setPosition(this.spherical.interpolate(this.nyc, this.london, fraction));
+          marker.setPosition(Spherical.interpolate(this.nyc, this.london, fraction));
         }, 50);
 
       });
