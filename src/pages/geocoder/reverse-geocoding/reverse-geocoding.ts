@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  Geocoder,
-  BaseArrayClass,
-  GeocoderResult,
-  Marker,
-  ILatLng
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  Geocoder, BaseArrayClass, GeocoderResult,
+  Marker, ILatLng
 } from '@ionic-native/google-maps';
 
 
@@ -24,8 +19,8 @@ export class ReverseGeocodingPage {
   map1: GoogleMap;
   map2: GoogleMap;
   isRunning: boolean = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap1();
@@ -172,7 +167,7 @@ export class ReverseGeocodingPage {
           this.map2.addMarker({
             'position': result[0].position,
             'icon': 'assets/starbucks.gif',
-            'title':  JSON.stringify(result)
+            'title': address
           }).then(next);
         });
       })

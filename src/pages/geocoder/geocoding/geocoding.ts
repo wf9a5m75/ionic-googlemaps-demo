@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  Geocoder,
-  BaseArrayClass,
-  GeocoderResult,
-  LatLngBounds,
-  Marker
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  Geocoder, BaseArrayClass, GeocoderResult, Marker
 } from '@ionic-native/google-maps';
 
 @IonicPage()
@@ -23,7 +17,7 @@ export class GeocodingPage {
   isRunning: boolean = false;
   search_address: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor() {}
 
   ionViewDidLoad() {
     this.loadMap1();

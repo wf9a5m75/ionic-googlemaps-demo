@@ -30,13 +30,11 @@
                 <textarea readonly="readonly" class="prettyprint">
 import {
   GoogleMaps, GoogleMap, GoogleMapsEvent,
-  Geocoder, BaseArrayClass, GeocoderResult,
-  LatLngBounds, Marker
+  Geocoder, GeocoderResult, Marker
 } from '@ionic-native/google-maps';
 
 @Component(...)
-
-class GeocodingPage1 {
+export class GeocodingPage {
   map1: GoogleMap;
 
   isRunning: boolean = false;
@@ -47,7 +45,6 @@ class GeocodingPage1 {
   ionViewDidLoad() {
     this.loadMap1();
   }
-
   loadMap1() {
     this.search_address = 'Kyoto, Japan';
     this.map1 = GoogleMaps.create('map_canvas1');
@@ -113,8 +110,7 @@ class GeocodingPage1 {
                 <textarea readonly="readonly" class="prettyprint">
 import {
   GoogleMaps, GoogleMap, GoogleMapsEvent,
-  Geocoder, BaseArrayClass, GeocoderResult,
-  LatLngBounds, Marker
+  Geocoder, BaseArrayClass, GeocoderResult, Marker
 } from '@ionic-native/google-maps';
 
 @Component(...)
