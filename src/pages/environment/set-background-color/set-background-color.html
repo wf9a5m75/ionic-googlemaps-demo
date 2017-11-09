@@ -14,5 +14,29 @@
 
 
 <ion-content padding>
-  <div id="map_canvas"></div>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+        <div id="map_canvas"></div>
+        <textarea readonly="readonly" class="prettyprint">
+import { Environment, GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+
+@Component(...)
+export class SetBackgroundColorPage {
+
+  map: GoogleMap;
+
+  constructor() {}
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad SetBackgroundColorPage');
+    this.map = GoogleMaps.create('map_canvas');
+    Environment.setBackgroundColor('red');
+  }
+
+}
+        </textarea>
+      </section>
+    </div>
+  </div>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, ModalController } from 'ionic-angular';
 import { Environment } from '@ionic-native/google-maps';
 import { LicensePopupPage } from './license-popup';
 
@@ -16,10 +16,7 @@ import { LicensePopupPage } from './license-popup';
 })
 export class GetLicenseInfoPage {
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public modalCtrl: ModalController) {
+  constructor(public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {

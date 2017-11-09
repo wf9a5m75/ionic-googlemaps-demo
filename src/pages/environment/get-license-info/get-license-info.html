@@ -14,5 +14,36 @@
 
 
 <ion-content padding>
-  <button ion-button (click)="onButton_click($event)">getLicenseInfo()</button>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+        <button ion-button (click)="onButton_click($event)">getLicenseInfo()</button>
+        <textarea readonly="readonly" class="prettyprint">
+import { Environment } from '@ionic-native/google-maps';
+import { LicensePopupPage } from './license-popup';
+
+@Component(...)
+export class GetLicenseInfoPage {
+
+  constructor(public modalCtrl: ModalController) {}
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad GetLicenseInfoPage');
+  }
+
+  onButton_click($event) {
+    Environment.getLicenseInfo().then(license => {
+      let popup = this.modalCtrl.create(LicensePopupPage, {
+        message: license
+      });
+      popup.present({
+        ev: $event
+      });
+    });
+  }
+}
+        </textarea>
+      </section>
+    </div>
+  </div>
 </ion-content>

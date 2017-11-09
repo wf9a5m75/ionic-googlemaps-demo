@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Environment, GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 
 /**
@@ -18,15 +18,12 @@ export class SetBackgroundColorPage {
 
   map: GoogleMap;
 
-  constructor(
-      public navCtrl: NavController,
-      public navParams: NavParams,
-      public googleMaps: GoogleMaps) {
+  constructor() {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SetBackgroundColorPage');
-    this.map = this.googleMaps.create('map_canvas');
+    this.map = GoogleMaps.create('map_canvas');
     Environment.setBackgroundColor('red');
   }
 
