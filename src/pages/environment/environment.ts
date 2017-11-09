@@ -15,8 +15,7 @@ import { IonicPage } from 'ionic-angular';
 })
 export class EnvironmentPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor() { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EnvironmentPage');

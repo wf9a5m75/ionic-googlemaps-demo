@@ -1,11 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage} from 'ionic-angular';
 import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  BaseArrayClass,
-  HtmlInfoWindow
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  BaseArrayClass, HtmlInfoWindow, Marker
 } from '@ionic-native/google-maps';
 
 @IonicPage()
@@ -106,7 +103,7 @@ export class AddMarkerPage {
 
       });
     })
-    .then(markers: Marker[]) => {
+    .then((markers: Marker[]) => {
 
       let htmlInfoWindow: HtmlInfoWindow = new HtmlInfoWindow();
 

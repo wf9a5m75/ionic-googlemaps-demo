@@ -14,29 +14,22 @@
 
 
 <ion-content padding>
-    <div id="contentView">
-        <div id="contentsFrame">
-            <section class="demo">
 
-                <p>
-                    Many JS developer wants to create HTML elements in InfoWindow. This class allows you to do that.
-                </p>
-                <h4>memo</h4>
-                <p style="background-color:#CCCCCC;padding:1em">
-                    If you want to execute inline javascript (such as onclick), you need to define the following meta tag in HTML.
-                    <br><br>
-                    &lt;meta http-equiv="Content-Security-Policy" content="default-src 'self' gap:; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: 'unsafe-eval'; object-src *; style-src 'self' data: 'unsafe-inline' *; img-src 'self' data: *; media-src 'self' data:; font-src 'self' data:; connect-src *"&gt;
-                </p>
-                <div class="map" id="map_canvas"></div>
-                <textarea readonly="readonly" class="prettyprint">
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+        <p>
+          Many JS developer wants to create HTML elements in InfoWindow. This class allows you to do that.
+        </p>
+        <div class="map" id="map_canvas"></div>
+        <textarea readonly="readonly" class="prettyprint">
 import {
   GoogleMaps, GoogleMap, GoogleMapsEvent,
   HtmlInfoWindow, Marker
 } from '@ionic-native/google-maps';
 
-@IonicPage()
 @Component(..)
-export class NewHtmlInfoWindowPage {
+class NewHtmlInfoWindowPage {
   map: GoogleMap;
 
   constructor() {}
@@ -46,34 +39,44 @@ export class NewHtmlInfoWindowPage {
     this.loadMap();
   }
 
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas');
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      let htmlInfoWindow = new HtmlInfoWindow();
+  this.map = GoogleMaps.create('map_canvas', {
+    camera: {
+      target: {lat: 35.685208, lng: -121.168225},
+      zoom: 5
+    }
+  });
+  this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+    let htmlInfoWindow = new HtmlInfoWindow();
 
-      let html: string = [
-        'This is <b>Html</b> InfoWindow',
-        '<br>',
-        '<button onclick="javascript:alert(\'clicked!\');">click here</button>',
-      ].join("");
-      htmlInfoWindow.setContent(html);
-
-      this.map.addMarker({
-        position: {lat: 0, lng: 0},
-        draggable: true
-      }).then((marker: Marker) => {
-
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          htmlInfoWindow.open(marker);
-        });
-        marker.trigger(GoogleMapsEvent.MARKER_CLICK);
-
-      });
+    let frame: HTMLElement = document.createElement('div');
+    frame.innerHTML = [
+      '<h3>Hearst Castle</h3>',
+      '<img src="assets/hearst_castle.jpg">'
+    ].join("");
+    frame.getElementsByTagName("img")[0].addEventListener("click", () => {
+      htmlInfoWindow.setBackgroundColor('red');
     });
-  }
+    htmlInfoWindow.setContent(frame, {
+      width: "280px",
+      height: "330px"
+    });
+
+    this.map.addMarker({
+      position: {lat: 35.685208, lng: -121.168225},
+      draggable: true,
+      disableAutoPan: true
+    }).then((marker: Marker) => {
+
+      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+        htmlInfoWindow.open(marker);
+      });
+
+    });
+  });
+}
 }
 </textarea>
-            </section>
-        </div>
+      </section>
     </div>
+  </div>
 </ion-content>

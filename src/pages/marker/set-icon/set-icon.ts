@@ -87,8 +87,8 @@ export class SetIconPage {
         })
         .then((markers: Marker[]) => {
           markers.forEach((marker: Marker) => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(this.onMarkerClick);
-            marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(this.onMarkerClick);
+            marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(event => this.onMarkerClick(event));
+            marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(event => this.onMarkerClick(event));
           });
         });
     });

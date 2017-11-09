@@ -41,9 +41,9 @@ export class GetPositionPage {
       .then((marker: Marker) => {
         this.markerPosition = marker.getPosition();
 
-        marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(this.onMarkerMove);
-        marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(this.onMarkerMove);
-        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(this.onMarkerMove);
+        marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(event => this.onMarkerMove(event));
+        marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(event => this.onMarkerMove(event));
+        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerMove(event));
       });
   }
 

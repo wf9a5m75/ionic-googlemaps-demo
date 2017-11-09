@@ -31,7 +31,6 @@ export class SetClickablePage {
     // Wait the MAP_READY before using any methods.
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
       console.log("Map is ready!");
-      this.onLoading = false;
 
       this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(() => {
         alert("Click!");

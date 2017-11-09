@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 
-@Component(...)
+@IonicPage()
+@Component({
+  selector: 'page-remove',
+  templateUrl: 'remove.html',
+})
 export class RemovePage {
   map: GoogleMap;
 

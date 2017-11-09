@@ -72,14 +72,14 @@ class IsInfoWindowShownPage {
         this.map.addMarker(item).then(next);
       });
     })
-    .then((markers: Markers[]) => {
+    .then((markers: Marker[]) => {
       this.markers = markers;
       console.log(markers);
 
       this.markers.forEach((marker,idx)=> {
         marker.set('idx', idx);
-        marker.on(GoogleMapsEvent.INFO_OPEN).subscribe(this.onInfoOpenClose);
-        marker.on(GoogleMapsEvent.INFO_CLOSE).subscribe(this.onInfoOpenClose);
+        marker.on(GoogleMapsEvent.INFO_OPEN).subscribe(event => this.onInfoOpenClose(event));
+        marker.on(GoogleMapsEvent.INFO_CLOSE).subscribe(event => this.onInfoOpenClose(event));
       });
     });
   });
@@ -88,7 +88,7 @@ class IsInfoWindowShownPage {
     let marker: Marker = params[0];
     let idx: number = marker.get('idx');
     let status: string = this.markers[idx].isInfoWindowShown() ? 'open': 'close';
-    console.log(status + ' ' + idx + ' ' + );
+    console.log(status + ' ' + idx);
     this._ngZone.run(() => {
       this.data[idx].showInfo = this.markers[idx].isInfoWindowShown();
     });

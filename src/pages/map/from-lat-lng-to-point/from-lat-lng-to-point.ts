@@ -38,7 +38,7 @@ export class FromLatLngToPointPage {
     })
     .then((marker: Marker) => {
       marker.showInfoWindow();
-      marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(this.onMarkerDragEnd);
+      marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerDragEnd(event));
     });
   }
 

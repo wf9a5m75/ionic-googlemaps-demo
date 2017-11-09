@@ -64,11 +64,15 @@
             <h2>Utilities</h2>
             <table class="reference">
                 <tr>
-                    <th><a href="./encoding/index.html">encoding</a></th>
+                    <th><a [navPush]="'EncodingPage'">Encoding</a></th>
                     <td>Utilities for polyline encoding and decoding.</td>
                 </tr>
                 <tr>
-                    <th><a [navPush]="'SphericalPage'">spherical</a></th>
+                    <th><a [navPush]="'SphericalPage'">Spherical</a></th>
+                    <td>Utility functions for computing geodesic angles, distances and areas.</td>
+                </tr>
+                <tr>
+                    <th><a [navPush]="'PolyPage'">Poly</a></th>
                     <td>Utility functions for computing geodesic angles, distances and areas.</td>
                 </tr>
             </table>

@@ -39,7 +39,7 @@ export class SetZIndexPage {
       var latLngBounds = this.map.getVisibleRegion();
 
       let centerLat: number = this.getCenter(latLngBounds).lat;
-      let centerLng: numbe = this.getCenter(latLngBounds).lng - 0.005;
+      let centerLng: number = this.getCenter(latLngBounds).lng - 0.005;
       for (var i = 1; i <= 20; i++) {
 
         this.map.addMarker({

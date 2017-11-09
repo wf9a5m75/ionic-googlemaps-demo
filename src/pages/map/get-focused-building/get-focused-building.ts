@@ -16,7 +16,7 @@ export class GetFocusedBuildingPage {
   map: GoogleMap;
   label: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private _ngZone: NgZone) {}
+  constructor(private _ngZone: NgZone) {}
 
   ionViewDidLoad() {
     var self = this;

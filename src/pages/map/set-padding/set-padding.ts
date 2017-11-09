@@ -14,8 +14,7 @@ import {
 export class SetPaddingPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor() {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SetPaddingPage');

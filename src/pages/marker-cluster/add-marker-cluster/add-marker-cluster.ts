@@ -72,7 +72,7 @@ export class AddMarkerClusterPage {
     }).then((markerCluster: MarkerCluster) => {
 
       markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((params) => {
-        let latLng: LatLng = params[0];
+        //let latLng: LatLng = params[0];
         let marker: Marker = params[1];
 
         marker.setAnimation(GoogleMapsAnimation.BOUNCE);

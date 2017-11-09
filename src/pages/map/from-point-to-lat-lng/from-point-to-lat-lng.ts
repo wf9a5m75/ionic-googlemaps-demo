@@ -21,31 +21,35 @@ export class FromPointToLatLngPage {
   }
 
   ionViewDidLoad() {
-    var self = this;
     this.loadMap();
   }
 
   loadMap() {
-    var self = this;
-
-    var mapDiv = document.getElementById('map_canvas');
-
-    this.map = GoogleMaps.create(mapDiv);
+    this.map = GoogleMaps.create('map_canvas');
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
 
-      self.map.setClickable(false);
+      this.map.setClickable(false);
+
+      let mapDiv: any = this.map.getDiv();
 
       mapDiv.addEventListener("click", (e) => {
-
         // Get the tapped position by pixels
-        var clickX = e.pageX - mapDiv.offsetLeft;
-        var clickY = e.pageY - mapDiv.offsetTop;
+        let clickX: number = e.pageX - mapDiv.offsetLeft;
+        let clickY: number = e.pageY - mapDiv.offsetTop;
+
+        // Trigger the `div_click` event
+        this.map.trigger('div_click', clickX, clickY);
+      });
+
+      this.map.on('div_click').subscribe((params: any[]) => {
+        let clickX: number = params[0];
+        let clickY: number = params[1];
 
         // Convert point to LatLng.
-        self.map.fromPointToLatLng([clickX, clickY]).then((latLng: LatLng) => {
-console.log(latLng.toUrlValue());
+        this.map.fromPointToLatLng(params).then((latLng: LatLng) => {
+          console.log(latLng.toUrlValue());
           // Add a marker
-          self.map.addMarker({
+          this.map.addMarker({
             position: latLng,
             title: [
               "Point: x = " + clickX + ", y = " + clickY,

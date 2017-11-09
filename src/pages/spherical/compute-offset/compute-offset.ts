@@ -5,7 +5,6 @@ import {
   GoogleMap,
   GoogleMapsEvent,
   Spherical,
-  Marker,
   ILatLng
 } from '@ionic-native/google-maps';
 
