@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  LatLng,
-  Marker
+  GoogleMaps, GoogleMap, GoogleMapsEvent,
+  LatLng, Marker
 } from '@ionic-native/google-maps';
 
 

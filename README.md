@@ -150,9 +150,9 @@ I will write your github account name on this README.md file.
   - [ ] setCompassEnabled (@wf9a5m75)
   - [ ] setAllGesturesEnabled (@wf9a5m75)
   - [ ] setVisible (@wf9a5m75)
-  - [ ] setPadding (@wf9a5m75)
+  - [x] setPadding (@wf9a5m75)
   - [ ] setOptions (@wf9a5m75)
-  - [ ] toDataURL (@wf9a5m75)
+  - [x] toDataURL (@wf9a5m75)
   - [ ] MAP_CLICK (@wf9a5m75)
   - [ ] MAP_LONG_CLICK (@wf9a5m75)
   - [ ] MY_LOCATION_BUTTON_CLICK (@wf9a5m75)
@@ -161,7 +161,7 @@ I will write your github account name on this README.md file.
   - [ ] MAP_READY (@wf9a5m75)
 
 - [ ] Marker
-  - [x] map.addMarker
+  - [x] map.addMarker (@wf9a5m75)
   - [x] getPosition (@pavel-kurnosov)
   - [x] showInfoWindow (@pavel-kurnosov)
   - [x] hideInfoWindow (@pavel-kurnosov)
@@ -172,16 +172,16 @@ I will write your github account name on this README.md file.
   - [x] remove (@pavel-kurnosov)
   - [x] setIconAnchor (@pavel-kurnosov)
   - [x] setInfoWindowAnchor (@pavel-kurnosov)
-  - [ ] isInfoWindowShown (@pavel-kurnosov)
+  - [x] isInfoWindowShown (@pavel-kurnosov)
   - [x] setOpacity (@pavel-kurnosov)
   - [x] setZIndex (@pavel-kurnosov)
   - [x] setVisible (@pavel-kurnosov)
   - [x] setDraggable (@pavel-kurnosov)
   - [x] setDisableAutoPan (@pavel-kurnosov)
-  - [ ] setPosition (@pavel-kurnosov)
+  - [x] setPosition (@pavel-kurnosov)
   - [ ] setRotation (@pavel-kurnosov)
   - [ ] setFlat (@pavel-kurnosov)
-  - [ ] setIcon
+  - [x] setIcon (@wf9a5m75)
 
 - [ ] Circle
   - [ ] map.addCircle
@@ -205,7 +205,7 @@ I will write your github account name on this README.md file.
   - [ ] setStrokeColor
   - [ ] setStrokeWidth
   - [ ] setZIndex
-  - [ ] remove (@quanganh206)
+  - [ ] remove
   - [ ] POLYLINE_CLICK
 
 - [ ] Polygone
@@ -223,7 +223,7 @@ I will write your github account name on this README.md file.
   - [ ] POLYGON_CLICK
 
 - [ ] GroundOverlay
-- [ ] map.addGroundOverlay
+  - [ ] map.addGroundOverlay
   - [ ] setBounds
   - [ ] setBearing
   - [ ] setImage
@@ -271,6 +271,6 @@ I will write your github account name on this README.md file.
   - [ ] computeHeading (@wf9a5m75)
   - [x] interpolate (@wf9a5m75)
 
-- [ ] poly (@wf9a5m75)
-  - [ ] containsLocation (@wf9a5m75)
-  - [ ] isLocationOnEdge (@wf9a5m75)
+- [x] poly (@wf9a5m75)
+  - [x] containsLocation (@wf9a5m75)
+  - [x] isLocationOnEdge (@wf9a5m75)
