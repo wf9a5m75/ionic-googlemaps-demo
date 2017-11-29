@@ -7,12 +7,14 @@ import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {GoogleMaps} from "@ionic-native/google-maps";
 import {LicensePopupPage} from "../pages/environment/get-license-info/license-popup";
+import { CustomTag } from "../pages/html-info-window/set-content/set-content";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LicensePopupPage
+    LicensePopupPage,
+    CustomTag
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import {LicensePopupPage} from "../pages/environment/get-license-info/license-po
   entryComponents: [
     MyApp,
     HomePage,
-    LicensePopupPage
+    LicensePopupPage,
+    CustomTag
   ],
   providers: [
     StatusBar,
