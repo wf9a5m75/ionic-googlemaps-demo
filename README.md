@@ -146,19 +146,19 @@ I will write your github account name on this README.md file.
   - [x] setMyLocationEnabled (@wf9a5m75)
   - [x] getFocusedBuilding (@wf9a5m75)
   - [x] setIndoorEnabled (@wf9a5m75)
-  - [ ] setTrafficEnabled (@wf9a5m75)
-  - [ ] setCompassEnabled (@wf9a5m75)
-  - [ ] setAllGesturesEnabled (@wf9a5m75)
-  - [ ] setVisible (@wf9a5m75)
+  - [ ] setTrafficEnabled
+  - [ ] setCompassEnabled
+  - [ ] setAllGesturesEnabled
+  - [ ] setVisible
   - [x] setPadding (@wf9a5m75)
-  - [ ] setOptions (@wf9a5m75)
+  - [ ] setOptions
   - [x] toDataURL (@wf9a5m75)
-  - [ ] MAP_CLICK (@wf9a5m75)
-  - [ ] MAP_LONG_CLICK (@wf9a5m75)
-  - [ ] MY_LOCATION_BUTTON_CLICK (@wf9a5m75)
-  - [ ] CAMERA_EVENTS (@wf9a5m75)
-  - [ ] MAP_DRAG_EVENTS (@wf9a5m75)
-  - [ ] MAP_READY (@wf9a5m75)
+  - [ ] MAP_CLICK
+  - [ ] MAP_LONG_CLICK
+  - [ ] MY_LOCATION_BUTTON_CLICK
+  - [ ] CAMERA_EVENTS
+  - [ ] MAP_DRAG_EVENTS
+  - [ ] MAP_READY
 
 - [ ] Marker
   - [x] map.addMarker (@wf9a5m75)
@@ -179,8 +179,8 @@ I will write your github account name on this README.md file.
   - [x] setDraggable (@pavel-kurnosov)
   - [x] setDisableAutoPan (@pavel-kurnosov)
   - [x] setPosition (@pavel-kurnosov)
-  - [ ] setRotation (@pavel-kurnosov)
-  - [ ] setFlat (@pavel-kurnosov)
+  - [ ] setRotation
+  - [ ] setFlat
   - [x] setIcon (@wf9a5m75)
 
 - [ ] Circle
@@ -248,27 +248,29 @@ I will write your github account name on this README.md file.
   - [ ] setVisible
   - [ ] remove
 
-- [X] Geocoding (@ThorvaldAagaard)
-  - [X] geocoding
-  - [X] reverse_geocoding
+- [x] Geocoding (@ThorvaldAagaard)
+  - [x] geocoding
+  - [x] reverse_geocoding
 
+- [x] Geolocation (@wf9a5m75)
+  - [x] getMyLocation
 
 - [x] Environment (@wf9a5m75)
   - [x] setBackgroundColor (@wf9a5m75)
   - [x] getLicenseInfo (@wf9a5m75)
 
-- [ ] encoding (@wf9a5m75)
-  - [ ] encodePath (@wf9a5m75)
-  - [ ] decodePath (@wf9a5m75)
+- [x] encoding (@wf9a5m75)
+  - [x] encodePath (@wf9a5m75)
+  - [x] decodePath (@wf9a5m75)
 
-- [ ] spherical (@wf9a5m75)
+- [ ] spherical
   - [ ] computeDistanceBetween (@wf9a5m75)
   - [x] computeOffset (@wf9a5m75)
   - [x] computeOffsetOrigin (@wf9a5m75)
-  - [ ] computeLength (@wf9a5m75)
-  - [ ] computeArea (@wf9a5m75)
+  - [ ] computeLength
+  - [ ] computeArea
   - [x] computeSignedArea (@wf9a5m75)
-  - [ ] computeHeading (@wf9a5m75)
+  - [ ] computeHeading
   - [x] interpolate (@wf9a5m75)
 
 - [x] poly (@wf9a5m75)
