@@ -270,7 +270,7 @@ I will write your github account name on this README.md file.
   - [ ] computeLength
   - [ ] computeArea
   - [x] computeSignedArea (@wf9a5m75)
-  - [ ] computeHeading
+  - [x] computeHeading (@wf9a5m75)
   - [x] interpolate (@wf9a5m75)
 
 - [x] poly (@wf9a5m75)
