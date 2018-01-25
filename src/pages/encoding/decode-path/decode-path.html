@@ -1,0 +1,61 @@
+<!--
+  Generated template for the DecodePathPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Encoding.decodePath</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+        <p>
+          Decodes an encoded path string into a sequence of LatLngs.
+        </p>
+        <div class="map" id="map_canvas"></div>
+        <textarea readonly="readonly" class="prettyprint">
+class DecodePathPage {
+  map: GoogleMap;
+
+  constructor() {}
+
+  ionViewDidLoad() {
+    this.loadMap();
+  }
+
+  loadMap() {
+    let encodedPath: string = 'c{|xHbo|OSnFrSjW~M{EnFwVz@wy@vQsq@cBoUzJ{EzObBrIcLfE~C~H{Y~C~CfOgY{EjM{EgTcLzTsSwQcGf@IoKgJSkMsb@RkR' +
+  'vVkRDon@SooBvBsXbGgE{@{EfE{EwLsXgEo{AcVgw@kRc|A_q@seAcLg@bBvQkCnKcGjCwQsSkM?cL{YjHrS{J~HgOwBgOjf@{Jj' +
+  'u@cLjRcGz^oUjW{Tni@f@jRsIj\wBjf@sNbo@wG~iArDnlArIj\bGfr@bQf^~WrSnPvVfOjHnURzc@cQbQzc@nUrtAbBfYkC~M~H' +
+  'nZ~Mz^f^_N~MrDbBwQkWsXR{E';
+
+    let points: ILatLng[] = Encoding.decodePath(encodedPath);
+    console.log(points);
+
+    this.map = GoogleMaps.create('map_canvas', {
+      camera: {
+        target: points
+      }
+    });
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      // Add a polygon
+      return this.map.addPolyline({
+        'points': points
+      });
+    });
+  }
+
+}</textarea>
+      </section>
+    </div>
+  </div>
+</ion-content>

@@ -11,80 +11,30 @@
     <div id="contentView">
         <div id="contentsFrame" >
             <h2>Classes</h2>
-            <table class="reference">
-                <tr>
-                    <th><a [navPush]="'MapPage'">Map</a></th>
-                    <td>Generate a map instance using <span class="highlight">googlemap.create()</span>.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'MarkerPage'">Marker</a></th>
-                    <td>Marker represents geological location on map.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'MarkerClusterPage'">MarkerCluster</a></th>
-                    <td>Marker cluster adds bunch of markers on map.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'HtmlInfoWindowPage'">HtmlInfoWindow</a></th>
-                    <td>Display HTML infoWindow</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'PolylinePage'">Polyline</a></th>
-                    <td>Draw a line on the map.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'PolygonPage'">Polygon</a></th>
-                    <td>Draw a polygonal area on the map.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'CirclePage'">Circle</a></th>
-                    <td>Draw a curcle on the map.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'GroundOverlayPage'">GroundOverlay</a></th>
-                    <td>Put your image on the specific bounds of the map.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'TileOverlayPage'">TileOverlay</a></th>
-                    <td>Display your tile image.</td>
-                </tr>
-                <tr>
-                    <th>KmlOverlay</th>
-                    <td><span class="highlight">Not ready yet</span> Load a kml file, then generate overlays automatically.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'GeocoderPage'">Geocoder</a></th>
-                    <td>Convert from address or landscape names to latitude/longitude (geocoding), and from latitude/longitude to address (reverse geoding). </td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'EnvironmentPage'">Environment</a></th>
-                    <td>Sets the environment parameters, such as background color.</td>
-                </tr>
-            </table>
+
+            <ul class="icon">
+              <li id="Map"><a [navPush]="'MapPage'">Map</a></li>
+              <li id="Marker"><a [navPush]="'MarkerPage'">Marker</a></li>
+              <li id="MarkerCluster"><a [navPush]="'MarkerClusterPage'">MarkerCluster</a></li>
+              <li id="HtmlInfoWindow"><a [navPush]="'HtmlInfoWindowPage'">HtmlInfoWindow</a></li>
+              <li id="Polyline"><a [navPush]="'PolylinePage'">Polyline</a></li>
+              <li id="Polygon"><a [navPush]="'PolygonPage'">Polygon</a></li>
+              <li id="Circle"><a [navPush]="'CirclePage'">Circle</a></li>
+              <li id="GroundOverlay"><a [navPush]="'GroundOverlayPage'">GroundOverlay</a></li>
+              <li id="TileOverlay"><a [navPush]="'TileOverlayPage'">TileOverlay</a></li>
+              <li id="KmlOverlay"><a [navPush]="'KmlOverlayPage'">KmlOverlay</a></li>
+              <li id="Geocoder"><a [navPush]="'GeocoderPage'">Geocoder</a></li>
+              <li id="Geolocation"><a [navPush]="'GeolocationPage'">Geolocation</a></li>
+              <li id="Environment"><a [navPush]="'EnvironmentPage'">Environment</a></li>
+              <div style="clear:both"></div>
+            </ul>
+
             <h2>Utilities</h2>
-            <table class="reference">
-                <tr>
-                    <th><a [navPush]="'EncodingPage'">Encoding</a></th>
-                    <td>Utilities for polyline encoding and decoding.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'SphericalPage'">Spherical</a></th>
-                    <td>Utility functions for computing geodesic angles, distances and areas.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'PolyPage'">Poly</a></th>
-                    <td>Utility functions for computing geodesic angles, distances and areas.</td>
-                </tr>
-            </table>
-<!--
-            <h2>Demo</h2>
-            <table class="reference">
-                <tr>
-                    <th><a href="./Demo/index.html">Demo</a></th>
-                    <td>You can see the demo codes</td>
-                </tr>
-            </table>
--->
+            <ul>
+              <li><a [navPush]="'EncodingPage'">Encoding</a></li>
+              <li><a [navPush]="'SphericalPage'">Spherical</a></li>
+              <li><a [navPush]="'PolyPage'">Poly</a></li>
+            </ul>
         </div>
     </div>
 </ion-content>

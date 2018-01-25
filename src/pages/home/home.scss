@@ -1,3 +1,78 @@
 page-home {
 
+  ul.icon {
+    list-style-type: none;
+    padding: 0;
+  }
+  ul.icon > li {
+    max-width: 150px;
+    width: 45%;
+    height: 150px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 15px;
+    background-position: bottom left;
+    background-size: 100%;
+    position: relative;
+    background-repeat: no-repeat;
+  }
+  ul.icon > li > a {
+    font-style: italic;
+    text-decoration: none;
+    font-family:monospace;
+    font-weight: bolder;
+    color: blue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    line-height: 250px;
+  }
+
+  li#Map {
+    background-image: url(../assets/home/map.png);
+  }
+  li#Marker {
+    background-image: url(../assets/home/marker.png);
+  }
+  li#MarkerCluster {
+    background-image: url(../assets/home/markercluster.png);
+  }
+  li#HtmlInfoWindow {
+    background-image: url(../assets/home/htmlInfoWindow.png);
+  }
+  li#Polyline {
+    background-image: url(../assets/home/polyline.png);
+  }
+  li#Polygon {
+    background-image: url(../assets/home/polygon.png);
+  }
+  li#Circle {
+    background-image: url(../assets/home/circle.png);
+  }
+  li#GroundOverlay {
+    background-image: url(../assets/home/groundoverlay.png);
+  }
+  li#TileOverlay {
+    background-image: url(../assets/home/tileoverlay.png);
+  }
+  li#KmlOverlay {
+    background-image: url(../assets/home/kmloverlay.png);
+  }
+  li#Geocoder {
+    background-image: url(../assets/home/geocoder.png);
+  }
+  li#Geolocation {
+    background-image: url(../assets/home/geolocation.png);
+  }
+  li#Environment {
+    background-image: url(../assets/home/environment.png);
+  }
 }

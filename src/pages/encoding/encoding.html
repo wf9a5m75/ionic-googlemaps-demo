@@ -1,0 +1,33 @@
+<!--
+  Generated template for the EncodingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>encoding utility</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+      <div id="contentsFrame">
+
+          <h3>Methods</h3>
+          <table class="reference">
+              <tr>
+                  <th><a [navPush]="'EncodePathPage'">EncodePath</a></th>
+                  <td>Encodes a sequence of LatLngs into an encoded path string.</td>
+              </tr>
+              <tr>
+                  <th><a [navPush]="'DecodePathPage'">DecodePath</a></th>
+                  <td>Decodes an encoded path string into a sequence of LatLngs.</td>
+              </tr>
+          </table>
+      </div>
+  </div>
+</ion-content>
