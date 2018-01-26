@@ -1,0 +1,104 @@
+<!--
+  Generated template for the ComputeDistanceBetweenPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Spherical.computeDistanceBetween()</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+      <div id="contentsFrame">
+          <section class="demo">
+              <p>
+                Returns the distance, in meters, between two LatLngs.
+              </p>
+              <div class="map" id="map_canvas">
+                <span class="smallPanel" *ngIf="label">{{label}}</span>
+              </div>
+              <textarea readonly="readonly" class="prettyprint">
+class ComputeDistanceBetweenPage {
+  map: GoogleMap;
+  label: string;
+
+  constructor(private _ngZone: NgZone) {}
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ComputeDistanceBetweenPage');
+    this.loadMap();
+  }
+
+  loadMap() {
+    let center: ILatLng = {"lat": 32, "lng": -97};
+
+    // radius (meter)
+    let radius: number = 300;
+
+    // Calculate the positions
+    let deg0: ILatLng = Spherical.computeOffset(center, radius, 0);
+    let deg90: ILatLng = Spherical.computeOffset(center, radius, 90);
+    let deg180: ILatLng = Spherical.computeOffset(center, radius, 180);
+    let deg270: ILatLng = Spherical.computeOffset(center, radius, 270);
+
+    this.map = GoogleMaps.create('map_canvas', {
+      camera: {
+        target: [deg0, deg90, deg180, deg270],
+        padding: 100
+      }
+    });
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+
+      return this.map.addMarker({
+        'position': deg0,
+        'draggable': true,
+        'title': 'Drag me!'
+      });
+
+    }).then((marker: Marker) => {
+      marker.showInfoWindow();
+
+      // Add circle
+      return this.map.addCircle({
+        'center': center,
+        'radius': radius,
+        'strokeColor' : '#AA00FF',
+        'strokeWidth': 5,
+        'fillColor' : '#00880055'
+      }).then((circle: Circle) => {
+
+        circle.on('radius_changed').subscribe((params: any[]) => {
+          // params = [prevRadius: number, newRadius: number, circle: Circle];
+
+          // redraw the label
+          this._ngZone.run(() => {
+            this.label = "radius: " + params[1].toFixed(2) + "(m)";
+          });
+        });
+
+        marker.on('position_changed').subscribe((params: any[]) => {
+          // params = [prevPosition: ILatLng, newPosition: ILatLng, marker: Marker];
+
+          // Calculate distance between center and the marker position
+          let newRadius: number = Spherical.computeDistanceBetween(center, params[1]);
+
+          // Update the circle radius
+          circle.setRadius(newRadius);
+        });
+
+      });
+
+    });
+  }
+}
+</textarea>
+          </section>
+      </div>
+  </div>
+</ion-content>

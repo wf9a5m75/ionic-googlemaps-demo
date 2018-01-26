@@ -264,7 +264,7 @@ I will write your github account name on this README.md file.
   - [x] decodePath (@wf9a5m75)
 
 - [ ] spherical
-  - [ ] computeDistanceBetween (@wf9a5m75)
+  - [x] computeDistanceBetween (@wf9a5m75)
   - [x] computeOffset (@wf9a5m75)
   - [x] computeOffsetOrigin (@wf9a5m75)
   - [ ] computeLength
