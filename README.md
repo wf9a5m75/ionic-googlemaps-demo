@@ -240,13 +240,13 @@ I will write your github account name on this README.md file.
   - [ ] open (@wf9a5m75)
   - [ ] close (@wf9a5m75)
 
-- [ ] TileOverlay
-  - [ ] map.addTileLayer
-  - [ ] setFadeIn
-  - [ ] setZIndex
-  - [ ] setOpacity
-  - [ ] setVisible
-  - [ ] remove
+- [x] TileOverlay (@wf9a5m75)
+  - [x] map.addTileLayer (@wf9a5m75)
+  - [x] setFadeIn (@wf9a5m75)
+  - [x] setZIndex (@wf9a5m75)
+  - [x] setOpacity (@wf9a5m75)
+  - [x] setVisible (@wf9a5m75)
+  - [x] remove (@wf9a5m75)
 
 - [x] Geocoding (@ThorvaldAagaard)
   - [x] geocoding
@@ -263,11 +263,11 @@ I will write your github account name on this README.md file.
   - [x] encodePath (@wf9a5m75)
   - [x] decodePath (@wf9a5m75)
 
-- [ ] spherical
+- [x] spherical (@wf9a5m75)
   - [x] computeDistanceBetween (@wf9a5m75)
   - [x] computeOffset (@wf9a5m75)
   - [x] computeOffsetOrigin (@wf9a5m75)
-  - [ ] computeLength
+  - [x] computeLength (@wf9a5m75)
   - [x] computeArea (@wf9a5m75)
   - [x] computeSignedArea (@wf9a5m75)
   - [x] computeHeading (@wf9a5m75)

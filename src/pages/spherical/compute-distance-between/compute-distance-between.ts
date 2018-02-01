@@ -38,6 +38,10 @@ export class ComputeDistanceBetweenPage {
       camera: {
         target: [deg0, deg90, deg180, deg270],
         padding: 100
+      },
+      controls: {
+        myLocation: true,
+        myLocationButton: false
       }
     });
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
