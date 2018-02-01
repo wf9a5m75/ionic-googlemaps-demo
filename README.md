@@ -160,7 +160,7 @@ I will write your github account name on this README.md file.
   - [ ] MAP_DRAG_EVENTS
   - [ ] MAP_READY
 
-- [ ] Marker
+- [x] Marker
   - [x] map.addMarker (@wf9a5m75)
   - [x] getPosition (@pavel-kurnosov)
   - [x] showInfoWindow (@pavel-kurnosov)
@@ -179,8 +179,8 @@ I will write your github account name on this README.md file.
   - [x] setDraggable (@pavel-kurnosov)
   - [x] setDisableAutoPan (@pavel-kurnosov)
   - [x] setPosition (@pavel-kurnosov)
-  - [ ] setRotation
-  - [ ] setFlat
+  - [x] setRotation (@wf9a5m75)
+  - [x] setFlat (@wf9a5m75)
   - [x] setIcon (@wf9a5m75)
 
 - [ ] Circle

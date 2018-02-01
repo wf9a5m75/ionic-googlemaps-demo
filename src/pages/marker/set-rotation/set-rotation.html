@@ -1,0 +1,79 @@
+<!--
+  Generated template for the SetRotationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>SetRotationPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+
+        <p>
+          Set the marker rotation angle. Speciable value range is from 0 to 360.
+        </p>
+
+        <div class="map" id="map_canvas">
+          <ion-list>
+            <ion-item>
+              <ion-label>rotaion</ion-label>
+              <ion-range min="0" max="360" step="10" color="secondary"  snaps="true" [(ngModel)]="rotation" (ionChange)="onRangeChange()"></ion-range>
+            </ion-item>
+          </ion-list>
+        </div>
+        <textarea readonly="readonly" class="prettyprint">
+@IonicPage()
+@Component(...)
+class SetRotationPage {
+
+  map: GoogleMap;
+  rotation: number = 0;
+
+  constructor() {}
+
+  ionViewDidLoad() {
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = GoogleMaps.create('map_canvas');
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+
+      // Default marker
+      this.map.addMarker({
+        'position': {
+          lat: 0,
+          lng: 0
+        }
+      }).then((marker: Marker) => {
+
+        this.map.on("rangeChange").subscribe(() => {
+          // Set the marker rotation angle.
+          marker.setRotation(this.rotation);
+        });
+
+      });
+    });
+  }
+
+  onRangeChange() {
+    if (this.map) {
+      this.map.trigger("rangeChange");
+    }
+  }
+}
+</textarea>
+      </section>
+    </div>
+  </div>
+</ion-content>
