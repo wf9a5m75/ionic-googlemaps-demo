@@ -14,50 +14,62 @@
 
 
 <ion-content padding>
-    <div id="contentView">
-        <div id="contentsFrame">
+  <div id="contentView">
+    <div id="contentsFrame">
 
-            <h3>Create</h3>
-            <table class="reference">
-                <tr>
-                    <th><a [navPush]="'NewHtmlInfoWindowPage'">new HtmlInfoWindow</a></th>
-                    <td>Add a html infoWindow.</td>
-                </tr>
-            </table>
+      <h3>Create</h3>
+      <table class="reference">
+        <tr>
+          <th><a [navPush]="'NewHtmlInfoWindowPage'">new HtmlInfoWindow</a></th>
+        </tr>
+        <tr>
+          <td>Add a html infoWindow.</td>
+        </tr>
+      </table>
 
-            <h3>Method</h3>
-            <table class="reference">
-                <tr>
-                    <th><a [navPush]="'SetContentPage'">setContent(string|node)</a></th>
-                    <td>Set your HTML contents.</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'SetBackgroundColorPage'">setBackgroundColor</a></th>
-                    <td>Change the backgroundColor</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'OpenPage'">open</a></th>
-                    <td>Open the htmlInfoWIndow</td>
-                </tr>
-                <tr>
-                    <th><a [navPush]="'ClosePage'">close</a></th>
-                    <td>Close the htmlInfoWindow</td>
-                </tr>
-            </table>
+      <h3>Method</h3>
+      <table class="reference">
+        <tr>
+          <th><a [navPush]="'SetContentPage'">setContent(string|node)</a></th>
+        </tr>
+        <tr>
+          <td>Set your HTML contents.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'SetBackgroundColorPage'">setBackgroundColor</a></th>
+        </tr>
+        <tr>
+          <td>Change the backgroundColor</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'OpenPage'">open</a></th>
+        </tr>
+        <tr>
+          <td>Open the htmlInfoWIndow</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'ClosePage'">close</a></th>
+        </tr>
+        <tr>
+          <td>Close the htmlInfoWindow</td>
+        </tr>
+      </table>
 
-            <h3>Events</h3>
-            <table class="reference">
-                <tr>
-                    <th>INFO_OPEN</th>
-                    <td>Arguments: none<br>
-This event is fired when the infoWindow is opened.</td>
-                </tr>
-                <tr>
-                    <th>INFO_CLOSE</th>
-                    <td>Arguments: none<br>
-This event is fired when the infoWindow is closed.</td>
-                </tr>
-            </table>
-        </div>
+      <h3>Events</h3>
+      <table class="reference">
+        <tr>
+          <th>INFO_OPEN</th>
+        </tr>
+        <tr>
+          <td>Arguments: none<br> This event is fired when the infoWindow is opened.</td>
+        </tr>
+        <tr>
+          <th>INFO_CLOSE</th>
+        </tr>
+        <tr>
+          <td>Arguments: none<br> This event is fired when the infoWindow is closed.</td>
+        </tr>
+      </table>
     </div>
+  </div>
 </ion-content>

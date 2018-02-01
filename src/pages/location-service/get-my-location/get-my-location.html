@@ -1,0 +1,75 @@
+<!--
+  Generated template for the GetMyLocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>GetMyLocationPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+        <p>
+          The LocationService.getMyLocation() method returns the current device location.
+          You can use this method without creating a map.
+        </p>
+        <div class="map" id="map_canvas"></div>
+        <textarea readonly="readonly" class="prettyprint">
+@IonicPage()
+@Component(...)
+class GetMyLocationPage {
+  map: GoogleMap;
+
+  constructor() {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad GetMyLocationPage');
+    this.loadMap();
+  }
+
+  loadMap() {
+    LocationService.getMyLocation().then((location: MyLocation) => {
+
+      this.map = GoogleMaps.create('map_canvas', {
+        camera: {
+          target: location.latLng,
+          zoom: 16
+        }
+      });
+
+      this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+
+        // Add a marker
+        let text:string = ["Current your location:\n",
+          "latitude:" + location.latLng.lat.toFixed(3),
+          "longitude:" + location.latLng.lng.toFixed(3),
+          "speed:" + location.speed,
+          "time:" + location.time,
+          "bearing:" + location.bearing].join("\n");
+
+        this.map.addMarker({
+          position: location.latLng,
+          title: text
+        }).then((marker: Marker) => {
+          marker.showInfoWindow();
+        });
+
+      });
+    });
+  }
+
+}
+</textarea>
+      </section>
+    </div>
+  </div>
+</ion-content>

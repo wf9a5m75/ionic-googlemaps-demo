@@ -10,10 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-geolocation',
-  templateUrl: 'geolocation.html',
+  selector: 'page-location-service',
+  templateUrl: 'location-service.html',
 })
-export class GeolocationPage {
+export class LocationServicePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

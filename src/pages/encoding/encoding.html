@@ -15,19 +15,23 @@
 
 <ion-content padding>
   <div id="contentView">
-      <div id="contentsFrame">
+    <div id="contentsFrame">
 
-          <h3>Methods</h3>
-          <table class="reference">
-              <tr>
-                  <th><a [navPush]="'EncodePathPage'">EncodePath</a></th>
-                  <td>Encodes a sequence of LatLngs into an encoded path string.</td>
-              </tr>
-              <tr>
-                  <th><a [navPush]="'DecodePathPage'">DecodePath</a></th>
-                  <td>Decodes an encoded path string into a sequence of LatLngs.</td>
-              </tr>
-          </table>
-      </div>
+      <h3>Methods</h3>
+      <table class="reference">
+        <tr>
+          <th><a [navPush]="'EncodePathPage'">EncodePath</a></th>
+        </tr>
+        <tr>
+          <td>Encodes a sequence of LatLngs into an encoded path string.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'DecodePathPage'">DecodePath</a></th>
+        </tr>
+        <tr>
+          <td>Decodes an encoded path string into a sequence of LatLngs.</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </ion-content>

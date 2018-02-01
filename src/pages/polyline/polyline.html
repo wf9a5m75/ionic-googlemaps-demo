@@ -5,95 +5,122 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-        <ion-title>Polyline Class</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>Polyline Class</ion-title>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-    <div id="contentView">
-        <div id="contentsFrame">
-          <h3>Create</h3>
-          <table class="reference">
-            <tr>
-              <th><a [navPush]="'AddPolylinePage'">map.addPolyline()</a></th>
-              <td>Add a polyline.</td>
-            </tr>
-          </table>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <h3>Create</h3>
+      <table class="reference">
+        <tr>
+          <th><a [navPush]="'AddPolylinePage'">map.addPolyline()</a></th>
+        </tr>
+        <tr>
+          <td>Add a polyline.</td>
+        </tr>
+      </table>
 
-          <h3>Methos</h3>
-          <table class="reference">
-            <tr>
-                <th><a href="./setPoints.html">setPoints()</a></th>
-                <td>Change the polyline points.</td>
-            </tr>
-            <tr>
-                <th><a href="./getPoints.html">getPoints()</a></th>
-                <td>Return an instance of the <a href="../BaseArrayClass/index.html">BaseArrayClass</a>.<br>
-                  You can modify the points.</td>
-            </tr>
-            <tr>
-                <th><a href="./setGeodesic.html">setGeodesic()</a></th>
-                <td>When true, edges of the polygon are interpreted as geodesic and will follow the curvature of the Earth. </td>
-            </tr>
-            <tr>
-                <th>getGeodesic()</th>
-                <td>Return true if the polyline is geodesic.</td>
-            </tr>
-            <tr>
-                <th><a href="./setVisible.html">setVisible()</a></th>
-                <td>Change visibility of the polyline.</td>
-            </tr>
-            <tr>
-                <th>getVisible()</th>
-                <td>Return true if the polyline is visible.</td>
-            </tr>
-            <tr>
-                <th><a href="./setClickable.html">setClickable()</a></th>
-                <td>Change clickablity of the polyline.</td>
-            </tr>
-            <tr>
-                <th>getClickable()</th>
-                <td>Return true if the polyline is clickable.</td>
-            </tr>
-            <tr>
-                <th><a href="./setStrokeColor.html">setStrokeColor()</a></th>
-                <td>Change the polyline color.</td>
-            </tr>
-            <tr>
-                <th>getStrokeColor()</th>
-                <td>Return the current polyline color.</td>
-            </tr>
-            <tr>
-                <th><a href="./setStrokeWidth.html">setStrokeWidth()</a></th>
-                <td>Change the polyline stroke width.</td>
-            </tr>
-            <tr>
-                <th>getStrokeWidth()</th>
-                <td>Return the current stroke width (unit: pixel).</td>
-            </tr>
-            <tr>
-                <th><a href="./setZIndex.html">setZIndex()</a></th>
-                <td>Change the polyline zIndex order.</td>
-            </tr>
-            <tr>
-                <th>getZIndex()</th>
-                <td>Return the current polyline zIndex.</td>
-            </tr>
-            <tr>
-                <th><a [navPush]="'PolylineRemovePage'">remove()</a></th>
-                <td>Remove the polyline.</td>
-            </tr>
-          </table>
+      <h3>Methos</h3>
+      <table class="reference">
+        <tr>
+          <th><a href="./setPoints.html">setPoints()</a></th>
+        </tr>
+        <tr>
+          <td>Change the polyline points.</td>
+        </tr>
+        <tr>
+          <th><a href="./getPoints.html">getPoints()</a></th>
+        </tr>
+        <tr>
+          <td>Return an instance of the <a href="../BaseArrayClass/index.html">BaseArrayClass</a>.<br> You can modify the points.</td>
+        </tr>
+        <tr>
+          <th><a href="./setGeodesic.html">setGeodesic()</a></th>
+        </tr>
+        <tr>
+          <td>When true, edges of the polygon are interpreted as geodesic and will follow the curvature of the Earth. </td>
+        </tr>
+        <tr>
+          <th>getGeodesic()</th>
+        </tr>
+        <tr>
+          <td>Return true if the polyline is geodesic.</td>
+        </tr>
+        <tr>
+          <th><a href="./setVisible.html">setVisible()</a></th>
+        </tr>
+        <tr>
+          <td>Change visibility of the polyline.</td>
+        </tr>
+        <tr>
+          <th>getVisible()</th>
+        </tr>
+        <tr>
+          <td>Return true if the polyline is visible.</td>
+        </tr>
+        <tr>
+          <th><a href="./setClickable.html">setClickable()</a></th>
+        </tr>
+        <tr>
+          <td>Change clickablity of the polyline.</td>
+        </tr>
+        <tr>
+          <th>getClickable()</th>
+          <td>Return true if the polyline is clickable.</td>
+        </tr>
+        <tr>
+          <th><a href="./setStrokeColor.html">setStrokeColor()</a></th>
+        </tr>
+        <tr>
+          <td>Change the polyline color.</td>
+        </tr>
+        <tr>
+          <th>getStrokeColor()</th>
+          <td>Return the current polyline color.</td>
+        </tr>
+        <tr>
+          <th><a href="./setStrokeWidth.html">setStrokeWidth()</a></th>
+        </tr>
+        <tr>
+          <td>Change the polyline stroke width.</td>
+        </tr>
+        <tr>
+          <th>getStrokeWidth()</th>
+          <td>Return the current stroke width (unit: pixel).</td>
+        </tr>
+        <tr>
+          <th><a href="./setZIndex.html">setZIndex()</a></th>
+        </tr>
+        <tr>
+          <td>Change the polyline zIndex order.</td>
+        </tr>
+        <tr>
+          <th>getZIndex()</th>
+        </tr>
+        <tr>
+          <td>Return the current polyline zIndex.</td>
+        </tr>
+        <tr>
+          <th><a [navPush]="'PolylineRemovePage'">remove()</a></th>
+        </tr>
+        <tr>
+          <td>Remove the polyline.</td>
+        </tr>
+      </table>
 
-          <h3>Events</h3>
-          <table class="reference">
-            <tr>
-              <th><a href="./MAP_CLICK.html">POLYLINE_CLICK</a></th>
-              <td>...</td>
-            </tr>
-          </table>
-        </div>
-      </div>
+      <h3>Events</h3>
+      <table class="reference">
+        <tr>
+          <th><a href="./MAP_CLICK.html">POLYLINE_CLICK</a></th>
+        </tr>
+        <tr>
+          <td>...</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </ion-content>
