@@ -25,13 +25,12 @@
         <textarea readonly="readonly" class="prettyprint">
 @IonicPage()
 @Component(...)
-class HtmlInfoClosePage {
+ class HtmlInfoSetBackgroundColorPage {
   map: GoogleMap;
 
   constructor() {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewHtmlInfoWindowPage');
     this.loadMap();
   }
 
@@ -49,9 +48,9 @@ class HtmlInfoClosePage {
       infoDiv.innerHTML = "Click the below button.&lt;br&gt;";
 
       let button: any = document.createElement("button");
-      button.innerText = "Close this infoWindow";
+      button.innerText = "click here";
       button.addEventListener("click", function() {
-        htmlInfoWindow.close();
+        htmlInfoWindow.setBackgroundColor("#aaaaff");
       });
       infoDiv.appendChild(button);
 
@@ -66,6 +65,7 @@ class HtmlInfoClosePage {
         marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
           htmlInfoWindow.open(marker);
         });
+        marker.trigger(GoogleMapsEvent.MARKER_CLICK);
 
       });
     });

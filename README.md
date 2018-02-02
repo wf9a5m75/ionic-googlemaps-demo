@@ -233,10 +233,10 @@ I will write your github account name on this README.md file.
   - [ ] remove
   - [ ] GROUND_OVERLAY_CLICK
 
-- [ ] HtmlInfoWindow (@wf9a5m75)
+- [x] HtmlInfoWindow (@wf9a5m75)
   - [x] new HtmlInfoWindow (@wf9a5m75)
   - [x] setContent (@wf9a5m75)
-  - [ ] setBackgroundColor (@wf9a5m75)
+  - [x] setBackgroundColor (@wf9a5m75)
   - [x] open (@wf9a5m75)
   - [x] close (@wf9a5m75)
 

@@ -17,7 +17,6 @@ export class HtmlInfoOpenPage {
   constructor() {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewHtmlInfoWindowPage');
     this.loadMap();
   }
 
