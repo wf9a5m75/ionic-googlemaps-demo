@@ -235,10 +235,10 @@ I will write your github account name on this README.md file.
 
 - [ ] HtmlInfoWindow (@wf9a5m75)
   - [x] new HtmlInfoWindow (@wf9a5m75)
-  - [ ] setContent (@wf9a5m75)
+  - [x] setContent (@wf9a5m75)
   - [ ] setBackgroundColor (@wf9a5m75)
-  - [ ] open (@wf9a5m75)
-  - [ ] close (@wf9a5m75)
+  - [x] open (@wf9a5m75)
+  - [x] close (@wf9a5m75)
 
 - [x] TileOverlay (@wf9a5m75)
   - [x] map.addTileLayer (@wf9a5m75)
@@ -252,7 +252,7 @@ I will write your github account name on this README.md file.
   - [x] geocoding
   - [x] reverse_geocoding
 
-- [x] Geolocation (@wf9a5m75)
+- [x] LocationService (@wf9a5m75)
   - [x] getMyLocation
 
 - [x] Environment (@wf9a5m75)

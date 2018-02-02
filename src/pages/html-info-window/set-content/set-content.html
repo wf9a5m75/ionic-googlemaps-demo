@@ -23,29 +23,6 @@
         </p>
         <div class="map" id="map_canvas"></div>
         <textarea readonly="readonly" class="prettyprint">
-import { Platform, IonicPage } from 'ionic-angular';
-import {
-  Component,
-  ComponentRef,
-  Injector,
-  ApplicationRef,
-  ComponentFactoryResolver,
-  NgZone,
-  ElementRef,
-  ViewChild
-} from '@angular/core';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  BaseArrayClass,
-  MarkerOptions,
-  Marker,
-  HtmlInfoWindow
-} from '@ionic-native/google-maps';
-
-
 @Component({
   selector: 'custom-tag',
   template: `
@@ -63,11 +40,8 @@ export class CustomTag {
 
 
 @IonicPage()
-@Component({
-  selector: 'page-set-content',
-  templateUrl: 'set-content.html',
-})
-export class SetContentPage {
+@Component(...)
+class SetContentPage {
 
   map: GoogleMap;
   htmInfoWindow: HtmlInfoWindow;

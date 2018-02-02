@@ -1,0 +1,78 @@
+<!--
+  Generated template for the HtmlInfoClosePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>HtmlInfoClosePage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+
+        <p>
+          Close the info window.
+        </p>
+        <div class="map" id="map_canvas"></div>
+        <textarea readonly="readonly" class="prettyprint">
+@IonicPage()
+@Component(...)
+class HtmlInfoClosePage {
+  map: GoogleMap;
+
+  constructor() {}
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NewHtmlInfoWindowPage');
+    this.loadMap();
+  }
+
+  loadMap() {
+    this.map = GoogleMaps.create('map_canvas', {
+      camera: {
+        target: {lat: 35.685208, lng: -121.168225},
+        zoom: 5
+      }
+    });
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      let htmlInfoWindow = new HtmlInfoWindow();
+
+      let infoDiv: any = document.createElement("div");
+      infoDiv.innerHTML = "Click the below button.&lt;br&gt;";
+
+      let button: any = document.createElement("button");
+      button.innerText = "Close this infoWindow";
+      button.addEventListener("click", function() {
+        htmlInfoWindow.close();
+      });
+      infoDiv.appendChild(button);
+
+      htmlInfoWindow.setContent(infoDiv);
+
+      this.map.addMarker({
+        position: {lat: 35.685208, lng: -121.168225},
+        draggable: true,
+        disableAutoPan: true
+      }).then((marker: Marker) => {
+
+        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+          htmlInfoWindow.open(marker);
+        });
+
+      });
+    });
+  }
+}
+                </textarea>
+      </section>
+    </div>
+  </div>
+</ion-content>
