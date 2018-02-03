@@ -223,15 +223,15 @@ I will write your github account name on this README.md file.
   - [ ] POLYGON_CLICK
 
 - [ ] GroundOverlay
-  - [ ] map.addGroundOverlay
-  - [ ] setBounds
-  - [ ] setBearing
+  - [x] map.addGroundOverlay (@wf9a5m75)
+  - [x] setBounds (@wf9a5m75)
+  - [x] setBearing (@wf9a5m75)
   - [ ] setImage
-  - [ ] setOpacity
+  - [x] setOpacity (@wf9a5m75)
   - [ ] setClickable
   - [ ] setZIndex
-  - [ ] remove
-  - [ ] GROUND_OVERLAY_CLICK
+  - [x] remove (@wf9a5m75)
+  - [x] GROUND_OVERLAY_CLICK (@wf9a5m75)
 
 - [x] HtmlInfoWindow (@wf9a5m75)
   - [x] new HtmlInfoWindow (@wf9a5m75)
