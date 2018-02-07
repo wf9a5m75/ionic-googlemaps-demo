@@ -1,0 +1,45 @@
+<!--
+  Generated template for the AddKmlOverlayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AddKmlOverlayPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div id="contentView">
+    <div id="contentsFrame">
+      <section class="demo">
+        <p>
+          The map.addGroundOverlay() method adds a ground overlay on the map.
+        </p>
+        <div class="map" id="map_canvas">
+          <ion-select [(ngModel)]="kmlFileUrl" (ionChange)="onItemSelected(item);">
+            <ion-option>Select one kml file</ion-option>
+            <ion-option value="../assets/kmlFiles/marker.kml">ROADMAP</ion-option>
+            <ion-option value="../assets/kmlFiles/shizuoka.kml">SATELLITE</ion-option>
+            <ion-option value="../assets/kmlFiles/polygon.kml">HYBRID</ion-option>
+            <ion-option value="https://data.cityofnewyork.us/api/geospatial/3qz8-muuu?method=export&format=KML">MTA New York city Subway (need online)</ion-option>
+            <ion-option value="https://data.austintexas.gov/api/geospatial/23x8-agw7?method=export&format=KML">City of Austin: zip codes (need online)</ion-option>
+            <ion-option value="../assets/kmlFiles/Extended_Data.Balloon_Substitution.kml">Schema + BalloonStyle</ion-option>
+            <ion-option value="https://raw.githubusercontent.com/jalbertbowden/open-virginia-gis/a5308244bbd84fd106c46be3c61ddad46b8c4ee4/city/falls-church/curbholes/kml/Curbholes.kml">Curbholes.kml (need online)</ion-option>
+            <ion-option value="https://raw.githubusercontent.com/MelikeSila/FinalProject/f32af4d2292876c015cf30ac6bb4cea54ae876a3/library/build/intermediates/res/merged/androidTest/debug/raw/amu_draw_order_ground_overlay.kml">amu_draw_order_ground_overlay.kml (need online)</ion-option>
+            <ion-option value="https://raw.githubusercontent.com/MattSchroyer/roomfinder3d/bfd3ba25056f7146a30b62dd329a57d32ade7976/MB1c.kml">MB1c.kml (need online)</ion-option>
+          </ion-select>
+        </div>
+        <textarea class="prettyprint" readonly="readonly">
+@IonicPage()
+@Component(...)
+
+</textarea>
+      </section>
+    </div>
+  </div>
+</ion-content>
