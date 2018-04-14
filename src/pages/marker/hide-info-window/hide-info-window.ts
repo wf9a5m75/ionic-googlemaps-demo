@@ -20,17 +20,17 @@ export class HideInfoWindowPage {
     this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
+      let marker: Marker = this.map.addMarkerSync({
         position: {
           lat: 0,
           lng: 0
         },
         title: "Click me!"
-      }).then((marker: Marker) => {
-        marker.showInfoWindow();
-        marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
-          marker.hideInfoWindow();
-        });
+      });
+
+      marker.showInfoWindow();
+      marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
+        marker.hideInfoWindow();
       });
     });
   }

@@ -26,25 +26,23 @@ export class GetPositionPage {
         scroll: false  // Disable map dragging
       }
     });
+console.log("-->this.map", this.map);
 
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        return this.map.addMarker({
-          position: {
-            lat: 0,
-            lng: 0
-          },
-          draggable: true,
-          title: "Drag me!"
-        });
-      })
-      .then((marker: Marker) => {
-        this.markerPosition = marker.getPosition();
-
-        marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(event => this.onMarkerMove(event));
-        marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(event => this.onMarkerMove(event));
-        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerMove(event));
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      let marker: Marker = this.map.addMarkerSync({
+        position: {
+          lat: 0,
+          lng: 0
+        },
+        draggable: true,
+        title: "Drag me!"
       });
+      this.markerPosition = marker.getPosition();
+
+      marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(event => this.onMarkerMove(event));
+      marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(event => this.onMarkerMove(event));
+      marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerMove(event));
+    });
   }
 
   onMarkerMove(event) {

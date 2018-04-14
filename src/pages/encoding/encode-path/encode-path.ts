@@ -49,26 +49,22 @@ export class EncodePathPage {
       }
     });
 
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      let encodedPath: string = Encoding.encodePath(GORYOKAKU_POINTS);
-      let alert = this.alertCtrl.create({
-        title: 'Encoded path',
-        subTitle: encodedPath,
-        buttons: ['OK']
-      });
-
-      this.map.addPolygon({
-        points: GORYOKAKU_POINTS,
-        clickable: true
-      }).then((polygon: Polygon) => {
-
-        polygon.on(GoogleMapsEvent.POLYGON_CLICK).subscribe(() => {
-          alert.present();
-        });
-      });
-
+    let encodedPath: string = Encoding.encodePath(GORYOKAKU_POINTS);
+    let alert = this.alertCtrl.create({
+      title: 'Encoded path',
+      subTitle: encodedPath,
+      buttons: ['OK']
     });
+
+    let polygon: Polygon = this.map.addPolygonSync({
+      points: GORYOKAKU_POINTS,
+      clickable: true
+    });
+
+    polygon.on(GoogleMapsEvent.POLYGON_CLICK).subscribe(() => {
+      alert.present();
+    });
+
   }
 
 }

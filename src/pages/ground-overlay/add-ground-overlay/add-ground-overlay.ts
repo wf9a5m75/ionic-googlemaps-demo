@@ -32,19 +32,11 @@ export class AddGroundOverlayPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      // Add ground overlay
-      this.map.addGroundOverlay({
-        'url': "assets/newark_nj_1922.jpg",
-        'bounds': bounds,
-        'opacity': 0.5
-      }).then((groundOverlay: GroundOverlay) => {
-
-        // To do something...
-
-      });
+    // Add ground overlay
+    let groundOverlay: GroundOverlay = this.map.addGroundOverlaySync({
+      'url': "assets/newark_nj_1922.jpg",
+      'bounds': bounds,
+      'opacity': 0.5
     });
 
   }

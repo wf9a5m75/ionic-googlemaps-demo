@@ -36,37 +36,31 @@ export class ReverseGeocodingPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map ready for map_canvas1");
+    this.map1.on(GoogleMapsEvent.MAP_CLICK).subscribe((params:any[]) => {
+      let latLng: ILatLng = params[0];
+      let marker: Marker = this.map1.addMarkerSync({
+        "position": latLng
+      });
 
-      this.map1.on(GoogleMapsEvent.MAP_CLICK).subscribe((params:any[]) => {
-        let latLng: ILatLng = params[0];
-        this.map1.addMarker({
-          "position": latLng
-        })
-        .then((marker: Marker) => {
-          // Latitude, longitude -> address
-          Geocoder.geocode({
-            "position": latLng
-          }).then((results: GeocoderResult[]) => {
-            if (results.length == 0) {
-              // Not found
-              return null;
-            }
-            let address: any = [
-              results[0].subThoroughfare || "",
-              results[0].thoroughfare || "",
-              results[0].locality || "",
-              results[0].adminArea || "",
-              results[0].postalCode || "",
-              results[0].country || ""].join(", ");
+      // Latitude, longitude -> address
+      Geocoder.geocode({
+        "position": latLng
+      }).then((results: GeocoderResult[]) => {
+        if (results.length == 0) {
+          // Not found
+          return null;
+        }
+        let address: any = [
+          results[0].subThoroughfare || "",
+          results[0].thoroughfare || "",
+          results[0].locality || "",
+          results[0].adminArea || "",
+          results[0].postalCode || "",
+          results[0].country || ""].join(", ");
 
-            marker.setTitle(address);
-            marker.showInfoWindow();
-          });
-        });
-      })
+        marker.setTitle(address);
+        marker.showInfoWindow();
+      });
     });
 
   }
@@ -79,9 +73,6 @@ export class ReverseGeocodingPage {
           { "lat": 43.385365, "lng": -70.542110 }
         ]
       }
-    });
-    this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map ready for map_canvas2");
     });
   }
 
@@ -149,29 +140,29 @@ export class ReverseGeocodingPage {
     }).then((mvcArray: BaseArrayClass<GeocoderResult>) => {
 
       mvcArray.one('finish').then(() => {
-        return mvcArray.mapAsync((result: GeocoderResult[], next: (marker: Marker) => void) => {
-          if (result.length === 0) {
-            // Geocoder can not get the result
-            return next(null);
-          }
+        if (mvcArray.getLength() > 0) {
+          let results: any[] =  mvcArray.getArray();
+          results.forEach((result: GeocoderResult[]) => {
 
-          // Get a result
-          let address: string = [
-            result[0].subThoroughfare || "",
-            result[0].thoroughfare || "",
-            result[0].locality || "",
-            result[0].adminArea || "",
-            result[0].postalCode || "",
-            result[0].country || ""].join(", ");
+            // Get a result
+            let address: string = [
+              result[0].subThoroughfare || "",
+              result[0].thoroughfare || "",
+              result[0].locality || "",
+              result[0].adminArea || "",
+              result[0].postalCode || "",
+              result[0].country || ""].join(", ");
 
-          this.map2.addMarker({
-            'position': result[0].position,
-            'icon': 'assets/starbucks.gif',
-            'title': address
-          }).then(next);
-        });
-      })
-      .then((markers: Marker[]) => {
+            let marker: Marker = this.map2.addMarkerSync({
+              'position': result[0].position,
+              'icon': 'assets/starbucks.gif',
+              'title': address
+            });
+            marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(this.onMarkerClick.bind(this));
+
+          });
+        }
+
         let end = Date.now();
         this.isRunning = false;
         console.log('finish', mvcArray.getArray());
@@ -182,9 +173,8 @@ export class ReverseGeocodingPage {
   }
 
 
-  onMarkerAdded(marker) {
-    marker.on(GoogleMapsEvent.MARKER_CLICK, function () {
-      marker.showInfoWindow();
-    });
+  onMarkerClick(params: any[]) {
+    let marker: Marker = params[1];
+    marker.showInfoWindow();
   }
 }

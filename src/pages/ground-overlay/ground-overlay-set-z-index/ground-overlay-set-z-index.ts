@@ -62,41 +62,33 @@ export class GroundOverlaySetZIndexPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      // Add ground overlays
-      let baseArray: BaseArrayClass<any> = new BaseArrayClass<any>(regions);
-      let idx: number = 0;
-      return baseArray.mapSeries((options: any, next: (overlay: GroundOverlay) => void) => {
-        this.map.addGroundOverlay({
-          url: options.url,
-          bounds: options.bounds,
-          opacity: 0.5,
-          zIndex: idx++,
-          clickable: true
-        }).then(next);
-      });
-    }).then((overlays: GroundOverlay[]) => {
-
-      let gOverlays: BaseArrayClass<GroundOverlay> = new BaseArrayClass<GroundOverlay>(overlays);
-      gOverlays.on("active_idx_changed").subscribe((params: any[]) => {
-        let oldIdx: number = params[0];
-        let newIdx: number = params[1];
-        if (typeof oldIdx === "number") {
-          gOverlays.getAt(oldIdx).setOpacity(0.5);
-        }
-        gOverlays.getAt(newIdx).setOpacity(1.0);
+    // Add ground overlays
+    let gOverlays: BaseArrayClass<GroundOverlay> = new BaseArrayClass<GroundOverlay>();
+    regions.forEach((options:any, index: number) => {
+      let overlay: GroundOverlay = this.map.addGroundOverlaySync({
+        url: options.url,
+        bounds: options.bounds,
+        opacity: 0.5,
+        zIndex: index,
+        clickable: true
       });
 
-      overlays.forEach((overlay: GroundOverlay, idx: number) => {
-        overlay.on(GoogleMapsEvent.GROUND_OVERLAY_CLICK).subscribe(() => {
-          gOverlays.set("active_idx", idx);
-        });
+      overlay.on(GoogleMapsEvent.GROUND_OVERLAY_CLICK).subscribe(() => {
+        gOverlays.set("active_idx", index);
       });
 
+      gOverlays.push(overlay);
     });
-  }
 
+    gOverlays.on("active_idx_changed").subscribe((params: any[]) => {
+      let oldIdx: number = params[0];
+      let newIdx: number = params[1];
+      if (typeof oldIdx === "number") {
+        gOverlays.getAt(oldIdx).setOpacity(0.5);
+      }
+      gOverlays.getAt(newIdx).setOpacity(1.0);
+    });
+
+  }
 
 }

@@ -23,48 +23,25 @@
         </p>
         <div class="map" id="map_canvas"></div>
         <textarea readonly="readonly" class="prettyprint">
-@IonicPage()
-@Component(...)
-class HtmlInfoOpenPage {
-  map: GoogleMap;
+let htmlInfoWindow = new HtmlInfoWindow();
 
-  constructor() {}
+let html:string = "<img src='../assets/House-icon.png' width='64' height='64'>" +
+           "<br>" +
+           "This is an example";
 
-  ionViewDidLoad() {
-    this.loadMap();
-  }
+htmlInfoWindow.setContent(html);
 
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: {lat: 35.685208, lng: -121.168225},
-        zoom: 5
-      }
-    });
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      let htmlInfoWindow = new HtmlInfoWindow();
+let marker: Marker = this.map.addMarkerSync({
+  position: {lat: 35.685208, lng: -121.168225},
+  draggable: true,
+  disableAutoPan: true
+});
 
-      let html:string = "<img src='../assets/House-icon.png' width='64' height='64'>" +
-                 "<br>" +
-                 "This is an example";
+marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+  htmlInfoWindow.open(marker);
+});
+marker.trigger(GoogleMapsEvent.MARKER_CLICK);
 
-      htmlInfoWindow.setContent(html);
-
-      this.map.addMarker({
-        position: {lat: 35.685208, lng: -121.168225},
-        draggable: true,
-        disableAutoPan: true
-      }).then((marker: Marker) => {
-
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          htmlInfoWindow.open(marker);
-        });
-        marker.trigger(GoogleMapsEvent.MARKER_CLICK);
-
-      });
-    });
-  }
-}
 </textarea>
       </section>
     </div>

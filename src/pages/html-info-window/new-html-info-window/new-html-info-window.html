@@ -23,57 +23,30 @@
         </p>
         <div class="map" id="map_canvas"></div>
         <textarea readonly="readonly" class="prettyprint">
-import {
-  GoogleMaps, GoogleMap, GoogleMapsEvent,
-  HtmlInfoWindow, Marker
-} from '@ionic-native/google-maps';
+let htmlInfoWindow = new HtmlInfoWindow();
 
-@Component(..)
-class NewHtmlInfoWindowPage {
-  map: GoogleMap;
+let frame: HTMLElement = document.createElement('div');
+frame.innerHTML = [
+  '<h3>Hearst Castle</h3>',
+  '<img src="assets/hearst_castle.jpg">'
+].join("");
+frame.getElementsByTagName("img")[0].addEventListener("click", () => {
+  htmlInfoWindow.setBackgroundColor('red');
+});
+htmlInfoWindow.setContent(frame, {
+  width: "280px",
+  height: "330px"
+});
 
-  constructor() {}
+let marker: Marker = this.map.addMarkerSync({
+  position: {lat: 35.685208, lng: -121.168225},
+  draggable: true,
+  disableAutoPan: true
+});
 
-  ionViewDidLoad() {
-    this.loadMap();
-  }
-
-  this.map = GoogleMaps.create('map_canvas', {
-    camera: {
-      target: {lat: 35.685208, lng: -121.168225},
-      zoom: 5
-    }
-  });
-  this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-    let htmlInfoWindow = new HtmlInfoWindow();
-
-    let frame: HTMLElement = document.createElement('div');
-    frame.innerHTML = [
-      '<h3>Hearst Castle</h3>',
-      '<img src="assets/hearst_castle.jpg">'
-    ].join("");
-    frame.getElementsByTagName("img")[0].addEventListener("click", () => {
-      htmlInfoWindow.setBackgroundColor('red');
-    });
-    htmlInfoWindow.setContent(frame, {
-      width: "280px",
-      height: "330px"
-    });
-
-    this.map.addMarker({
-      position: {lat: 35.685208, lng: -121.168225},
-      draggable: true,
-      disableAutoPan: true
-    }).then((marker: Marker) => {
-
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-        htmlInfoWindow.open(marker);
-      });
-
-    });
-  });
-}
-}
+marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+  htmlInfoWindow.open(marker);
+});
 </textarea>
       </section>
     </div>

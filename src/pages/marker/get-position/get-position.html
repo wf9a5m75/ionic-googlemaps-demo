@@ -15,56 +15,30 @@
                   *ngIf="markerPosition">{{'{'+ markerPosition.lat + ', ' + markerPosition.lng + '}'}}</span>
         </div>
         <textarea class="prettyprint" readonly="readonly">
-import {
-  GoogleMaps, GoogleMap,
-  GoogleMapsEvent, ILatLng, Marker
-} from '@ionic-native/google-maps';
+loadMap() {
+  ...
 
-@Component(..)
-class GetPositionPage {
-  map: GoogleMap;
-  markerPosition: ILatLng;
+  let marker: Marker = this.map.addMarkerSync({
+    position: {
+      lat: 0,
+      lng: 0
+    },
+    draggable: true,
+    title: "Drag me!"
+  });
+  this.markerPosition = marker.getPosition();
 
-  constructor(private _ngZone: NgZone) { }
+  marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(event => this.onMarkerMove(event));
+  marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(event => this.onMarkerMove(event));
+  marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerMove(event));
+}
 
-  ionViewDidLoad() {
-    this.loadMap();
-  }
-
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas', {
-      gestures: {
-        scroll: false  // Disable map dragging
-      }
-    });
-
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        return this.map.addMarker({
-          position: {
-            lat: 0,
-            lng: 0
-          },
-          draggable: true,
-          title: "Drag me!"
-        });
-      })
-      .then((marker: Marker) => {
-        this.markerPosition = marker.getPosition();
-
-        marker.on(GoogleMapsEvent.MARKER_DRAG_START).subscribe(event => this.onMarkerMove(event));
-        marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe(event => this.onMarkerMove(event));
-        marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerMove(event));
-      });
-  }
-
-  onMarkerMove(event) {
-    // event[0] : LatLng
-    // event[1] : Marker
-    this._ngZone.run(() => {
-      this.markerPosition = event[0];
-    });
-  }
+onMarkerMove(event) {
+  // event[0] : LatLng
+  // event[1] : Marker
+  this._ngZone.run(() => {
+    this.markerPosition = event[0];
+  });
 }
       </textarea>
     </section>

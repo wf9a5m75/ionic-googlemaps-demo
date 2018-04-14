@@ -25,53 +25,31 @@
         </p>
         <div class="map" id="map_canvas"></div>
         <textarea readonly="readonly" class="prettyprint">
-@IonicPage()
-@Component(...)
-class HtmlInfoClosePage {
-  map: GoogleMap;
+let htmlInfoWindow = new HtmlInfoWindow();
 
-  constructor() {}
+let infoDiv: any = document.createElement("div");
+infoDiv.innerHTML = "Click the below button.&lt;br&gt;";
 
-  ionViewDidLoad() {
-    this.loadMap();
-  }
+let button: any = document.createElement("button");
+button.innerText = "click here";
+button.addEventListener("click", function() {
+  htmlInfoWindow.setBackgroundColor("#aaaaff");
+});
+infoDiv.appendChild(button);
 
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: {lat: 35.685208, lng: -121.168225},
-        zoom: 5
-      }
-    });
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      let htmlInfoWindow = new HtmlInfoWindow();
+htmlInfoWindow.setContent(infoDiv);
 
-      let infoDiv: any = document.createElement("div");
-      infoDiv.innerHTML = "Click the below button.&lt;br&gt;";
+let marker:Marker = this.map.addMarkerSync({
+  position: {lat: 35.685208, lng: -121.168225},
+  draggable: true,
+  disableAutoPan: true
+});
 
-      let button: any = document.createElement("button");
-      button.innerText = "Close this infoWindow";
-      button.addEventListener("click", function() {
-        htmlInfoWindow.close();
-      });
-      infoDiv.appendChild(button);
+marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+  htmlInfoWindow.open(marker);
+});
+marker.trigger(GoogleMapsEvent.MARKER_CLICK);
 
-      htmlInfoWindow.setContent(infoDiv);
-
-      this.map.addMarker({
-        position: {lat: 35.685208, lng: -121.168225},
-        draggable: true,
-        disableAutoPan: true
-      }).then((marker: Marker) => {
-
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          htmlInfoWindow.open(marker);
-        });
-
-      });
-    });
-  }
-}
                 </textarea>
       </section>
     </div>

@@ -20,22 +20,21 @@ export class RemoveMarkerPage {
     this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
+      let marker: Marker = this.map.addMarkerSync({
         position: {
           lat: 0,
           lng: 0
         },
         title: "Click me!",
         snippet: 'Remove this marker.'
-      }).then((marker: Marker) => {
+      });
 
-        // Open the infoWindow
-        marker.showInfoWindow();
+      // Open the infoWindow
+      marker.showInfoWindow();
 
-        // Catch the MARKER_CLICK event
-        marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
-          marker.remove();
-        });
+      // Catch the MARKER_CLICK event
+      marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
+        marker.remove();
       });
     });
   }

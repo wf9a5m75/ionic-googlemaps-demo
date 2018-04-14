@@ -30,18 +30,17 @@ export class SetAnimationPage {
     });
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
+      this.marker = this.map.addMarkerSync({
         position: {
           lat: 35,
           lng: 137
         },
         icon: "http://www.google.com/intl/en_us/mapfiles/ms/icons/blue-dot.png",
         animation: GoogleMapsAnimation.DROP
-      }).then((marker: Marker) => {
-        this.marker = marker;
-        this.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(()=> {
-          this.marker.setAnimation(GoogleMapsAnimation.BOUNCE);
-        })
+      });
+
+      this.marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(()=> {
+        this.marker.setAnimation(GoogleMapsAnimation.BOUNCE);
       });
     });
   }

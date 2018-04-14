@@ -34,11 +34,9 @@ export class DecodePathPage {
       }
     });
 
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      // Add a polygon
-      return this.map.addPolyline({
-        'points': points
-      });
+    // Add a polygon
+    this.map.addPolylineSync({
+      'points': points
     });
   }
 

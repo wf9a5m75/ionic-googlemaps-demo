@@ -79,25 +79,17 @@ export class SetContentPage {
     };
 
     this.map = GoogleMaps.create('map_canvas', mapOptions);
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        this.htmInfoWindow =  new HtmlInfoWindow();
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      this.htmInfoWindow =  new HtmlInfoWindow();
 
-        // Create markers
-        let mvcArray: BaseArrayClass<MarkerOptions> = new BaseArrayClass<MarkerOptions>(locations);
-        mvcArray.mapAsync((markerOpts: MarkerOptions, next: (marker: Marker) => void) => {
-          this.map.addMarker(markerOpts).then(next);
-        }).then((markers: Marker[]) => {
+      locations.forEach((markerOpts: MarkerOptions) => {
+        let marker: Marker = this.map.addMarkerSync(markerOpts);
 
-          // Listen the MARKER_CLICK event on all markers
-          markers.forEach((marker: Marker) => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe((parmas: any[]) => {
-              this.onMarkerClick(parmas);
-            });
-          });
-        });
-
+        // Listen the MARKER_CLICK event
+        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(this.onMarkerClick.bind(this));
       });
+
+    });
   }
 
   onMarkerClick(params: any[]) {

@@ -2,7 +2,7 @@ import {Component, NgZone} from "@angular/core";
 import {IonicPage} from "ionic-angular";
 import {
   GoogleMaps, GoogleMap, GoogleMapsEvent,
-  Marker, BaseArrayClass
+  Marker, MarkerOptions
 } from "@ionic-native/google-maps";
 
 @IonicPage()
@@ -50,20 +50,15 @@ export class IsInfoWindowShownPage {
         target: bounds
       });
 
-      let mvcArray = new BaseArrayClass(this.data);
-      return mvcArray.mapAsync((item: any, next: (marker: Marker) => void) => {
-        this.map.addMarker(item).then(next);
-      });
-    })
-    .then((markers: Marker[]) => {
-      this.markers = markers;
-      console.log(markers);
-
-      this.markers.forEach((marker,idx)=> {
+      this.markers = this.data.map((markerOpts: MarkerOptions, idx: number) => {
+        let marker: Marker = this.map.addMarkerSync(markerOpts);
         marker.set('idx', idx);
         marker.on(GoogleMapsEvent.INFO_OPEN).subscribe(event => this.onInfoOpenClose(event));
         marker.on(GoogleMapsEvent.INFO_CLOSE).subscribe(event => this.onInfoOpenClose(event));
+        return marker;
       });
+      console.log(this.markers);
+
     });
   }
 

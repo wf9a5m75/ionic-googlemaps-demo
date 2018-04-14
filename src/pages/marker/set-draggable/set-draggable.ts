@@ -23,7 +23,7 @@ export class SetDraggablePage {
     this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
+      this.marker = this.map.addMarkerSync({
         position: {
           lat: 0,
           lng: 0
@@ -31,10 +31,8 @@ export class SetDraggablePage {
         'title': "Drag me!",
         'snippet': "Press a few seconds on this marker",
         'draggable': true
-      }).then((marker: Marker) => {
-        this.marker = marker;
-        this.marker.showInfoWindow();
       });
+      this.marker.showInfoWindow();
     });
   }
 

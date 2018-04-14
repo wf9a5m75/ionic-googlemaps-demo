@@ -31,23 +31,18 @@ export class GroundOverlayRemovePage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      // Add ground overlay
-      this.map.addGroundOverlay({
-        'url': "assets/newark_nj_1922.jpg",
-        'bounds': bounds,
-        'opacity': 0.5,
-        'clickable': true  // default = false
-      }).then((groundOverlay: GroundOverlay) => {
-
-        // Catch the GROUND_OVERLAY_CLICK event
-        groundOverlay.one(GoogleMapsEvent.GROUND_OVERLAY_CLICK).then(() => {
-          groundOverlay.remove();
-        });
-
-      });
+    // Add ground overlay
+    let groundOverlay: GroundOverlay = this.map.addGroundOverlaySync({
+      'url': "assets/newark_nj_1922.jpg",
+      'bounds': bounds,
+      'opacity': 0.5,
+      'clickable': true  // default = false
     });
+
+    // Catch the GROUND_OVERLAY_CLICK event
+    groundOverlay.one(GoogleMapsEvent.GROUND_OVERLAY_CLICK).then(() => {
+      groundOverlay.remove();
+    });
+
   }
 }

@@ -77,7 +77,7 @@ class AddMarkerPage2 {
     // Wait the MAP_READY before using any methods.
     this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
 
-      return this.map2.addMarker({
+      let marker: Marker = this.map2.addMarker({
         position: {
           lat: 0,
           lng: 0
@@ -85,8 +85,7 @@ class AddMarkerPage2 {
         title: "Hello Cordova Google Maps\\n for iOS and Android",
         snippet: "This plugin is awesome!"
       });
-    })
-    .then((marker: Marker) => {
+
       // Display the infoWindow
       marker.showInfoWindow();
     });

@@ -14,42 +14,22 @@
     </p>
     <div class="map" id="map_canvas"></div>
     <textarea class="prettyprint" readonly="readonly">
-import {GoogleMaps, GoogleMap, GoogleMapsEvent, Marker} from "@ionic-native/google-maps";
+let marker: Marker = this.map.addMarkerSync({
+  position: {
+    lat: 0,
+    lng: 0
+  },
+  title: "Click me!",
+  snippet: 'Remove this marker.'
+});
 
-@Component(...)
-class RemoveMarkerPage {
-  map: GoogleMap;
+// Open the infoWindow
+marker.showInfoWindow();
 
-  constructor() {}
-
-  ionViewDidLoad() {
-    this.loadMap();
-  }
-
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas');
-
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
-        position: {
-          lat: 0,
-          lng: 0
-        },
-        title: "Click me!",
-        snippet: 'Remove this marker.'
-      }).then((marker: Marker) => {
-
-        // Open the infoWindow
-        marker.showInfoWindow();
-
-        // Catch the MARKER_CLICK event
-        marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
-          marker.remove();
-        });
-      });
-    });
-  }
-}
+// Catch the MARKER_CLICK event
+marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(() => {
+  marker.remove();
+});
       </textarea>
   </section>
 

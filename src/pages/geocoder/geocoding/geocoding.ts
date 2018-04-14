@@ -18,7 +18,7 @@ export class GeocodingPage {
   search_address: any;
 
   constructor() {}
-
+/*
   ionViewDidLoad() {
     this.loadMap1();
     this.loadMap2();
@@ -26,11 +26,6 @@ export class GeocodingPage {
   loadMap1() {
     this.search_address = 'Kyoto, Japan';
     this.map1 = GoogleMaps.create('map_canvas1');
-
-    // Wait the MAP_READY before using any methods.
-    this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map ready for map_canvas1");
-    });
   }
 
   onButton1_click(event) {
@@ -47,12 +42,10 @@ export class GeocodingPage {
       }
 
       // Add a marker
-      return this.map1.addMarker({
+      let marker: Marker = this.map1.addMarkerSync({
         'position': results[0].position,
         'title':  JSON.stringify(results[0].position)
       });
-    })
-    .then((marker: Marker) => {
 
       // Move to the position
       this.map1.animateCamera({
@@ -62,8 +55,8 @@ export class GeocodingPage {
         marker.showInfoWindow();
         this.isRunning = false;
       });
-
     });
+
   }
 
   loadMap2() {
@@ -74,11 +67,6 @@ export class GeocodingPage {
           {"lat": 47.037874, "lng": -69.779490}
         ]
       }
-    });
-
-    // Wait the MAP_READY before using any methods.
-    this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map ready for map_canvas2");
     });
   }
 
@@ -118,19 +106,16 @@ export class GeocodingPage {
 
 
       mvcArray.one('finish').then(() => {
-        console.log('finish', mvcArray.getArray());
-        return mvcArray.mapAsync((result: GeocoderResult[], next: (marker: Marker) => void) => {
-          if (result.length === 0) {
-            // Geocoder can not get the result
-            return next(null);
-          }
-          this.map2.addMarker({
-            'position': result[0].position,
-            'title':  JSON.stringify(result)
-          }).then(next);
-        });
-      })
-      .then((markers: Marker[]) => {
+        if (mvcArray.getLength() > 0) {
+          let results: any[] =  mvcArray.getArray();
+          results.forEach((result: GeocoderResult[]) => {
+            this.map2.addMarkerSync({
+              'position': result[0].position,
+              'title':  JSON.stringify(result)
+            });
+          });
+        }
+
         let end = Date.now();
         this.isRunning = false;
         alert("duration: " + ((end - start) / 1000).toFixed(1) + " seconds");
@@ -138,4 +123,5 @@ export class GeocodingPage {
 
     });
   }
+*/
 }

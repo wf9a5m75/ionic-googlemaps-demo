@@ -14,6 +14,7 @@ import {
 export class GroundOverlaySetBearingPage {
   map: GoogleMap;
   bearing: number = 0;
+  groundOverlay: GroundOverlay = null;
 
   constructor() {}
 
@@ -33,28 +34,18 @@ export class GroundOverlaySetBearingPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      // Add ground overlay
-      return this.map.addGroundOverlay({
-        'url': "assets/newark_nj_1922.jpg",
-        'bounds': bounds,
-        'opacity': 0.5,
-        'clickable': true  // default = false
-      });
-    }).then((groundOverlay: GroundOverlay) => {
-
-      this.map.on("bearingChange").subscribe(() => {
-        groundOverlay.setBearing(this.bearing);
-      });
-
+    // Add ground overlay
+    this.groundOverlay = this.map.addGroundOverlaySync({
+      'url': "assets/newark_nj_1922.jpg",
+      'bounds': bounds,
+      'opacity': 0.5
     });
+
   }
 
   onBearingChange() {
-    if (this.map) {
-      this.map.trigger("bearingChange");
+    if (this.groundOverlay) {
+      this.groundOverlay.setBearing(this.bearing);
     }
   }
 }

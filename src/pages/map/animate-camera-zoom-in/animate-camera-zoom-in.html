@@ -24,28 +24,8 @@
                     <button ion-button (click)="onButton_click($event)">Click here</button>
                 </div>
                 <textarea readonly="readonly" class="prettyprint">
-import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
-
-@Component(...)
-class AnimateCameraZoomInPage {
-  map: GoogleMap;
-
-  constructor() {}
-
-  ionViewDidLoad() {
-    this.loadMap();
-  }
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas');
-
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log('map is ready');
-    });
-  }
-
-  onButton_click() {
-    this.map.animateCameraZoomIn();
-  }
+onButton_click() {
+  this.map.animateCameraZoomIn();
 }
   </textarea>
             </section>

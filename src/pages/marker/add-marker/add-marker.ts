@@ -26,24 +26,19 @@ export class AddMarkerPage {
   loadMap1() {
     this.map1 = GoogleMaps.create('map_canvas1');
 
-    // Wait the MAP_READY before using any methods.
-    this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map1.addMarker({
+      this.map1.addMarkerSync({
         position: {
           lat: 0,
           lng: 0
         }
       });
-    });
+
   }
 
   loadMap2() {
     this.map2 = GoogleMaps.create('map_canvas2');
 
-    // Wait the MAP_READY before using any methods.
-    this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      return this.map2.addMarker({
+      let marker: Marker = this.map2.addMarkerSync({
         position: {
           lat: 0,
           lng: 0
@@ -51,59 +46,51 @@ export class AddMarkerPage {
         title: "Hello Cordova Google Maps\\n for iOS and Android",
         snippet: "This plugin is awesome!"
       });
-    })
-    .then((marker: Marker) => {
+
       // Display the infoWindow
       marker.showInfoWindow();
-    });
   }
 
   loadMap3() {
+
+    let data: any[] = [
+      {
+        position: {lng: -122.1180187, lat: 37.3960513},
+        title: "Ardis G Egan Intermediate School"
+      },
+      {
+        position: {lng: -122.1102408, lat: 37.3943847},
+        title: "Portola School"
+      },
+      {
+        position: {lng: -122.0848257, lat: 37.3818032},
+        title: "Isaac Newton Graham Middle School"
+      },
+      {
+        position: {lng: -122.1082962, lat: 37.3863294},
+        title: "Los Altos High School"
+      },
+      {
+        position: {lng: -122.013571, lat: 37.3874409},
+        title: "The Kings Academy"
+      },
+      {
+        position: {lng: -122.082462, lat: 37.3627189},
+        title: "Georgina P Blach Intermediate School"
+      },
+      {
+        position: {lng: -122.0421832, lat: 37.3766077},
+        title: "Benner Junior High School"
+      }
+    ];
+
     this.map3 = GoogleMaps.create('map_canvas3');
-    this.map3.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      let data: any[] = [
-        {
-          position: {lng: -122.1180187, lat: 37.3960513},
-          title: "Ardis G Egan Intermediate School"
-        },
-        {
-          position: {lng: -122.1102408, lat: 37.3943847},
-          title: "Portola School"
-        },
-        {
-          position: {lng: -122.0848257, lat: 37.3818032},
-          title: "Isaac Newton Graham Middle School"
-        },
-        {
-          position: {lng: -122.1082962, lat: 37.3863294},
-          title: "Los Altos High School"
-        },
-        {
-          position: {lng: -122.013571, lat: 37.3874409},
-          title: "The Kings Academy"
-        },
-        {
-          position: {lng: -122.082462, lat: 37.3627189},
-          title: "Georgina P Blach Intermediate School"
-        },
-        {
-          position: {lng: -122.0421832, lat: 37.3766077},
-          title: "Benner Junior High School"
-        }
-      ];
-
-      // Add markers
-      let baseArrayClass: any = new BaseArrayClass(data);
-
-      return baseArrayClass.mapAsync((options: any, next: (marker: Marker) => void) => {
+      let markers: Marker[] = [];
+      data.forEach((options: any) => {
         options.mytitle = options.title;
         delete options.title;
-        this.map3.addMarker(options).then(next);
-
+        markers.push(this.map3.addMarkerSync(options));
       });
-    })
-    .then((markers: Marker[]) => {
 
       let htmlInfoWindow: HtmlInfoWindow = new HtmlInfoWindow();
 
@@ -120,9 +107,6 @@ export class AddMarkerPage {
       this.map3.moveCamera({
         target: bounds
       });
-
-    });
-
   }
 
 }

@@ -23,13 +23,11 @@ export class IsVisiblePage {
     this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
+      this.marker = this.map.addMarkerSync({
         position: {
           lat: 0,
           lng: 0
         }
-      }).then((marker: Marker) => {
-        this.marker = marker;
       });
     });
   }

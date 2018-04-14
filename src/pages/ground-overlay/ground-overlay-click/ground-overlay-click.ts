@@ -31,22 +31,16 @@ export class GroundOverlayClickPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      // Add ground overlay
-      this.map.addGroundOverlay({
-        'url': "assets/newark_nj_1922.jpg",
-        'bounds': bounds,
-        'opacity': 0.5,
-        'clickable': true  // default = false
-      }).then((groundOverlay: GroundOverlay) => {
-
-        // Catch the GROUND_OVERLAY_CLICK event
-        groundOverlay.on(GoogleMapsEvent.GROUND_OVERLAY_CLICK).subscribe(this.onClick);
-
-      });
+    // Add ground overlay
+    let groundOverlay: GroundOverlay = this.map.addGroundOverlaySync({
+      'url': "assets/newark_nj_1922.jpg",
+      'bounds': bounds,
+      'opacity': 0.5,
+      'clickable': true  // default = false
     });
+
+    // Catch the GROUND_OVERLAY_CLICK event
+    groundOverlay.on(GoogleMapsEvent.GROUND_OVERLAY_CLICK).subscribe(this.onClick);
 
   }
 
@@ -59,13 +53,12 @@ export class GroundOverlayClickPage {
 
     let map: GoogleMap = groundOverlay.getMap();
 
-    map.addMarker({
+    let marker: Marker = map.addMarkerSync({
       'position': latLng,
       'title': "You clicked here on the ground overlay!",
       'snippet': latLng.toUrlValue()
-    }).then((marker: Marker) => {
-      marker.showInfoWindow();
     });
 
+    marker.showInfoWindow();
   }
 }

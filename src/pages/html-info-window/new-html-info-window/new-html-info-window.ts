@@ -42,17 +42,16 @@ export class NewHtmlInfoWindowPage {
         height: "330px"
       });
 
-      this.map.addMarker({
+      let marker: Marker = this.map.addMarkerSync({
         position: {lat: 35.685208, lng: -121.168225},
         draggable: true,
         disableAutoPan: true
-      }).then((marker: Marker) => {
-
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          htmlInfoWindow.open(marker);
-        });
-
       });
+
+      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+        htmlInfoWindow.open(marker);
+      });
+
     });
   }
 }

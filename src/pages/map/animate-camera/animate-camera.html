@@ -24,39 +24,17 @@
                     <button ion-button (click)="onButton_click($event)">Click here</button>
                 </div>
                 <textarea readonly="readonly" class="prettyprint">
-import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
-
-@Component(...)
-export class AnimateCameraPage {
-  map: GoogleMap;
-
-  constructor() {}
-
-  ionViewDidLoad() {
-    this.loadMap();
-  }
-
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas');
-
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log('map is ready');
-    });
-  }
-
-  onButton_click() {
-    this.map.animateCamera({
-      target: {lat: 37.422359, lng: -122.084344},
-      zoom: 17,
-      tilt: 60,
-      bearing: 140,
-      duration: 5000,
-      padding: 0  // default = 20px
-    }).then(() => {
-      alert("Camera target has been changed");
-    });
-
-  }
+onButton_click() {
+  this.map.animateCamera({
+    target: {lat: 37.422359, lng: -122.084344},
+    zoom: 17,
+    tilt: 60,
+    bearing: 140,
+    duration: 5000,
+    padding: 0  // default = 20px
+  }).then(() => {
+    alert("Camera target has been changed");
+  });
 
 }
 </textarea>

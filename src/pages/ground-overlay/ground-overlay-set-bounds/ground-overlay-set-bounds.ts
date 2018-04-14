@@ -34,35 +34,24 @@ export class GroundOverlaySetBoundsPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      // Add ground overlay
-      return this.map.addGroundOverlay({
-        'url': "assets/newark_nj_1922.jpg",
-        'bounds': bounds,
-        'opacity': 0.5
-      });
-    }).then((groundOverlay: GroundOverlay) => {
-
-      this.groundOverlay = groundOverlay;
-
-      let positionList: BaseArrayClass<ILatLng> = new BaseArrayClass<ILatLng>(bounds);
-      positionList.mapAsync((position: ILatLng, next: (result: Marker) => void) => {
-        this.map.addMarker({
-          'position': position,
-          'draggable': true
-        }).then(next);
-      })
-      .then((markers: Marker[]) => {
-        this.markers = markers;
-
-        markers.forEach((marker: Marker, idx: number) => {
-          marker.on("position_changed").subscribe(this.onPositionChanged.bind(this));
-        });
-
-      });
+    // Add ground overlay
+    this.groundOverlay = this.map.addGroundOverlaySync({
+      'url': "assets/newark_nj_1922.jpg",
+      'bounds': bounds,
+      'opacity': 0.5
     });
+
+    bounds.forEach((position: ILatLng) => {
+
+      let marker: Marker = this.map.addMarkerSync({
+        'position': position,
+        'draggable': true
+      });
+      marker.on("position_changed").subscribe(this.onPositionChanged.bind(this));
+
+      this.markers.push(marker);
+    });
+
   }
 
   onPositionChanged(params: any[]) {

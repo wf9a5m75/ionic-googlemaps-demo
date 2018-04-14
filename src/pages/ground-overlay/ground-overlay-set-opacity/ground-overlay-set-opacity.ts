@@ -14,6 +14,7 @@ import {
 export class GroundOverlaySetOpacityPage {
   map: GoogleMap;
   opacity: number = 100;
+  groundOverlay: GroundOverlay = null;
 
   constructor() {}
 
@@ -33,28 +34,19 @@ export class GroundOverlaySetOpacityPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-
-      // Add ground overlay
-      return this.map.addGroundOverlay({
-        'url': "assets/newark_nj_1922.jpg",
-        'bounds': bounds,
-        'opacity': 0.5,
-        'clickable': true  // default = false
-      });
-    }).then((groundOverlay: GroundOverlay) => {
-
-      this.map.on("opacityChange").subscribe(() => {
-        groundOverlay.setOpacity(this.opacity / 100);
-      });
-
+    // Add ground overlay
+    this.groundOverlay = this.map.addGroundOverlaySync({
+      'url': "assets/newark_nj_1922.jpg",
+      'bounds': bounds,
+      'opacity': 0.5,
+      'clickable': true  // default = false
     });
+
   }
 
   onOpacityChange() {
-    if (this.map) {
-      this.map.trigger("opacityChange");
+    if (this.groundOverlay) {
+      this.groundOverlay.setOpacity(this.opacity / 100);
     }
   }
 }

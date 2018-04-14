@@ -22,17 +22,16 @@ export class SetDisableAutoPanPage {
     this.map = GoogleMaps.create('map_canvas');
 
     this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.map.addMarker({
+      this.marker = this.map.addMarkerSync({
         position: {
           lat: 0,
           lng: 0
         },
         'animation': GoogleMapsAnimation.BOUNCE,
         'title': 'The map does not move when you click on this marker.'
-      }).then((marker: Marker) => {
-        this.marker = marker;
-        this.toggleDisable();
       });
+
+      this.toggleDisable();
     });
   }
 

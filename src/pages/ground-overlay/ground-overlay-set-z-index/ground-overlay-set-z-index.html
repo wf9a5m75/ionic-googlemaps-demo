@@ -24,9 +24,32 @@
           <virtual-dialog [message]="'Click on ground overlays!'"></virtual-dialog>
         </div>
         <textarea class="prettyprint" readonly="readonly">
-@IonicPage()
-@Component(...)
+// Add ground overlays
+let gOverlays: BaseArrayClass<GroundOverlay> = new BaseArrayClass<GroundOverlay>();
+regions.forEach((options:any, index: number) => {
+  let overlay: GroundOverlay = this.map.addGroundOverlaySync({
+    url: options.url,
+    bounds: options.bounds,
+    opacity: 0.5,
+    zIndex: index,
+    clickable: true
+  });
 
+  overlay.on(GoogleMapsEvent.GROUND_OVERLAY_CLICK).subscribe(() => {
+    gOverlays.set("active_idx", index);
+  });
+
+  gOverlays.push(overlay);
+});
+
+gOverlays.on("active_idx_changed").subscribe((params: any[]) => {
+  let oldIdx: number = params[0];
+  let newIdx: number = params[1];
+  if (typeof oldIdx === "number") {
+    gOverlays.getAt(oldIdx).setOpacity(0.5);
+  }
+  gOverlays.getAt(newIdx).setOpacity(1.0);
+});
 </textarea>
       </section>
     </div>

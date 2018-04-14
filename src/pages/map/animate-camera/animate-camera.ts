@@ -18,10 +18,6 @@ export class AnimateCameraPage {
 
   loadMap() {
     this.map = GoogleMaps.create('map_canvas');
-
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log('map is ready');
-    });
   }
 
   onButton_click() {
