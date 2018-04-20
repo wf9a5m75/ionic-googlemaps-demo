@@ -137,7 +137,7 @@ export class ReverseGeocodingPage {
         { "lat": 42.45203, "lng": -71.136821 },
         { "lat": 42.453613, "lng": -71.233316 }
       ]
-    }).then((mvcArray: BaseArrayClass<GeocoderResult>) => {
+    }).then((mvcArray: BaseArrayClass<GeocoderResult[]>) => {
 
       mvcArray.one('finish').then(() => {
         if (mvcArray.getLength() > 0) {

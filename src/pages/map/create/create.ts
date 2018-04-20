@@ -8,9 +8,6 @@ import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapsMapTypeId } from '@io
   templateUrl: 'create.html',
 })
 export class CreatePage {
-  map1: GoogleMap;
-  map2: GoogleMap;
-  map3: GoogleMap;
 
   constructor() {}
 
@@ -21,18 +18,14 @@ export class CreatePage {
   }
 
   loadMap1() {
-    this.map1 = GoogleMaps.create('map_canvas1');
-
-    // Wait the MAP_READY before using any methods.
-    this.map1.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log('Map is ready!');
-
-      });
+    let map: GoogleMap = GoogleMaps.create('map_canvas1');
+    map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      console.log("--> map_canvas1 : ready.");
+    });
   }
 
   loadMap2() {
-    this.map2 = GoogleMaps.create('map_canvas2', {
+    let map:GoogleMap = GoogleMaps.create('map_canvas2', {
       'mapType': GoogleMapsMapTypeId.HYBRID,
       'controls': {
         'compass': true,
@@ -65,20 +58,13 @@ export class CreatePage {
         'bearing': 50
       }
     });
-    // Wait the MAP_READY before using any methods.
-    this.map2.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log("--> map_canvas2 : ready.");
-
-      });
+    map.one(GoogleMapsEvent.MAP_READY).then(() => {
+      console.log("--> map_canvas2 : ready.");
+    });
   }
 
   loadMap3() {
-    this.map3 = GoogleMaps.create('map_canvas3');
-    this.map3.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log("--> map_canvas3 : ready.");
-      });
+    let map:GoogleMap = GoogleMaps.create('map_canvas3');
   }
 
   onButtonClick(event) {

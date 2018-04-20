@@ -21,30 +21,7 @@
     </p>
     <div class="map" id="map_canvas1"></div>
     <textarea class="prettyprint" id="map_canvas1_code">
-import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
-
-@Component(...)
-export class GetMapPage1 {
-  map1: GoogleMap;
-
-  constructor() {}
-
-  ionViewDidLoad() {
-    this.loadMap1();
-  }
-
-  loadMap1() {
-    this.map1 = GoogleMaps.create('map_canvas1');
-
-    // Wait the MAP_READY before using any methods.
-    this.map1.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log('Map is ready!');
-
-      });
-  }
-
-}
+this.map1 = GoogleMaps.create('map_canvas1');
       </textarea>
   </section>
 
@@ -56,61 +33,39 @@ export class GetMapPage1 {
     </p>
     <div class="map" id="map_canvas2"></div>
     <textarea readonly="readonly" class="prettyprint">
-import { GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapsMapTypeId } from '@ionic-native/google-maps';
-
-@Component(...)
-export class CreatePage2 {
-  map2: GoogleMap;
-
-  constructor() {}
-
-  ionViewDidLoad() {
-    this.loadMap2();
+this.map2 = GoogleMaps.create('map_canvas2', {
+  'mapType': GoogleMapsMapTypeId.HYBRID,
+  'controls': {
+    'compass': true,
+    //'myLocationButton': true,
+    'indoorPicker': true
+  },
+  'gestures': {
+    'scroll': true,
+    'tilt': true,
+    'rotate': true,
+    'zoom': true
+  },
+  camera: {
+    target : [
+      {lat:41.79883, lng:140.75675},
+      {lat:41.799240000000005, lng:140.75875000000002},
+      {lat:41.797650000000004, lng:140.75905},
+      {lat:41.79637, lng:140.76018000000002},
+      {lat:41.79567, lng:140.75845},
+      {lat:41.794470000000004, lng:140.75714000000002},
+      {lat:41.795010000000005, lng:140.75611},
+      {lat:41.79477000000001, lng:140.75484},
+      {lat:41.79576, lng:140.75475},
+      {lat:41.796150000000004, lng:140.75364000000002},
+      {lat:41.79744, lng:140.75454000000002},
+      {lat:41.79909000000001, lng:140.75465},
+      {lat:41.79883, lng:140.75673}
+    ],
+    'tilt': 60,
+    'bearing': 50
   }
-
-  loadMap2() {
-    this.map2 = GoogleMaps.create('map_canvas2', {
-      'mapType': GoogleMapsMapTypeId.HYBRID,
-      'controls': {
-        'compass': true,
-        //'myLocationButton': true,
-        'indoorPicker': true
-      },
-      'gestures': {
-        'scroll': true,
-        'tilt': true,
-        'rotate': true,
-        'zoom': true
-      },
-      camera: {
-        target : [
-          {lat:41.79883, lng:140.75675},
-          {lat:41.799240000000005, lng:140.75875000000002},
-          {lat:41.797650000000004, lng:140.75905},
-          {lat:41.79637, lng:140.76018000000002},
-          {lat:41.79567, lng:140.75845},
-          {lat:41.794470000000004, lng:140.75714000000002},
-          {lat:41.795010000000005, lng:140.75611},
-          {lat:41.79477000000001, lng:140.75484},
-          {lat:41.79576, lng:140.75475},
-          {lat:41.796150000000004, lng:140.75364000000002},
-          {lat:41.79744, lng:140.75454000000002},
-          {lat:41.79909000000001, lng:140.75465},
-          {lat:41.79883, lng:140.75673}
-        ],
-        'tilt': 60,
-        'bearing': 50
-      }
-    });
-    // Wait the MAP_READY before using any methods.
-    this.map2.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log("--> map_canvas2 : ready.");
-
-      });
-  }
-
-}
+});
 </textarea>
   </section>
   <section class="demo">
@@ -123,32 +78,9 @@ export class CreatePage2 {
       <span class="smallPanel" style="position:absolute;bottom:1em;right:1em;"><button ion-button color="secondary" (click)="onButtonClick($event)">HTML button2</button></span>
     </div>
     <textarea readonly="readonly" class="prettyprint" style="height:250px">
-import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
-
-@IonicPage()
-@Component(...)
-export class CreatePage3 {
-  map3: GoogleMap;
-
-  constructor() {}
-
-  ionViewDidLoad() {
-    this.loadMap3();
-  }
-
-  loadMap3() {
-    this.map3 = GoogleMaps.create('map_canvas3');
-    this.map3.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log("--> map_canvas3 : ready.");
-      });
-  }
-
-  onButtonClick(event) {
-    console.log(event);
-    alert(event.srcElement.innerText + ' is clicked');
-  }
-
+onButtonClick(event) {
+  console.log(event);
+  alert(event.srcElement.innerText + ' is clicked');
 }
 </textarea>
     <textarea readonly="readonly" class="prettyprint" style="height:100px">

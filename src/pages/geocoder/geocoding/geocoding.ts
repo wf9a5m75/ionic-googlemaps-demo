@@ -18,7 +18,7 @@ export class GeocodingPage {
   search_address: any;
 
   constructor() {}
-/*
+
   ionViewDidLoad() {
     this.loadMap1();
     this.loadMap2();
@@ -123,5 +123,4 @@ export class GeocodingPage {
 
     });
   }
-*/
 }

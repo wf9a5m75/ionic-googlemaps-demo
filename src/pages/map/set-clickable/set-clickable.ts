@@ -28,13 +28,8 @@ export class SetClickablePage {
   loadMap() {
     this.map = GoogleMaps.create("map_canvas");
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("Map is ready!");
-
-      this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(() => {
-        alert("Click!");
-      });
+    this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(() => {
+      alert("Click!");
     });
   }
 

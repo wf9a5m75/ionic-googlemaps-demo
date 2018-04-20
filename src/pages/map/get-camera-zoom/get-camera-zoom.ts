@@ -15,7 +15,7 @@ import {
 export class GetCameraZoomPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private alertCtrl: AlertController) {
+  constructor(private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -24,14 +24,11 @@ export class GetCameraZoomPage {
   loadMap() {
 
     this.map = GoogleMaps.create("map_canvas");
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map is ready");
-    });
 
   }
 
   onButton_click() {
-    var text = "zoom: " + this.map.getCameraZoom();
+    let text:string = "zoom: " + this.map.getCameraZoom();
 
     let alert = this.alertCtrl.create({
       title: 'Current camera zoom level',

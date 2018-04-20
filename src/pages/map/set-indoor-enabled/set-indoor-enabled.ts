@@ -30,11 +30,6 @@ export class SetIndoorEnabledPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log('Map is ready!');
-      });
   }
 
 

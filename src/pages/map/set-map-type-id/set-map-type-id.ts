@@ -14,7 +14,6 @@ export class SetMapTypeIdPage {
   constructor() {}
 
   ionViewDidLoad() {
-    var self=this;
     self.loadMap();
   }
   loadMap() {
@@ -22,11 +21,6 @@ export class SetMapTypeIdPage {
       mapType: GoogleMapsMapTypeId.ROADMAP
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        console.log('Map is ready!');
-      });
   }
 
   onItemSelected(item) {

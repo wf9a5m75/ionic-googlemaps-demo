@@ -14,7 +14,7 @@ import {
 export class GetCameraTiltPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private alertCtrl: AlertController) {
+  constructor(private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -23,15 +23,12 @@ export class GetCameraTiltPage {
   loadMap() {
 
     this.map = GoogleMaps.create("map_canvas");
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map is ready");
-    });
 
   }
 
   onButton_click() {
     // Show the current camera tilt.
-    var text = "tilt: " + this.map.getCameraTilt();
+    let text: string = "tilt: " + this.map.getCameraTilt();
 
     let alert = this.alertCtrl.create({
       title: 'Current camera tilt',

@@ -20,9 +20,6 @@ export class MoveCameraPage {
 
   loadMap1() {
     this.map1 = GoogleMaps.create('map_canvas1');
-    this.map1.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map1 is ready");
-    });
   }
 
   onButton1_click() {
@@ -38,9 +35,6 @@ export class MoveCameraPage {
 
   loadMap2() {
     this.map2 = GoogleMaps.create('map_canvas2');
-    this.map2.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map2 is ready");
-    });
   }
 
   onButton2_click() {

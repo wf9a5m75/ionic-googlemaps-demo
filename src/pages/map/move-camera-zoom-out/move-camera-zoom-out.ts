@@ -26,9 +26,6 @@ export class MoveCameraZoomOutPage {
         "zoom": 15
       }
     });
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map is ready to use.");
-    });
   }
 
   onButton_click() {

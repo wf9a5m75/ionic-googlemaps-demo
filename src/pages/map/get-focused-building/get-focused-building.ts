@@ -36,17 +36,16 @@ export class GetFocusedBuildingPage {
       }
     });
 
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
+    // Wait the MAP_READY before map.getFocusedBuilding()
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
 
-        // Get the current focused building programatically.
-        this.map.getFocusedBuilding().then((event) => this.onIndoorEvents([event]));
+      // Get the current focused building programatically.
+      this.map.getFocusedBuilding().then((event) => this.onIndoorEvents([event]));
 
-        // or you can listen the INDOOR_BUILDING_FOCUSED and the INDOOR_LEVEL_ACTIVATED events.
-        this.map.on(GoogleMapsEvent.INDOOR_BUILDING_FOCUSED).subscribe((event) => this.onIndoorEvents(event));
-        this.map.on(GoogleMapsEvent.INDOOR_LEVEL_ACTIVATED).subscribe((event) => this.onIndoorEvents(event));
-      });
+      // or you can listen the INDOOR_BUILDING_FOCUSED and the INDOOR_LEVEL_ACTIVATED events.
+      this.map.on(GoogleMapsEvent.INDOOR_BUILDING_FOCUSED).subscribe((event) => this.onIndoorEvents(event));
+      this.map.on(GoogleMapsEvent.INDOOR_LEVEL_ACTIVATED).subscribe((event) => this.onIndoorEvents(event));
+    });
   }
 
   onIndoorEvents(event) {

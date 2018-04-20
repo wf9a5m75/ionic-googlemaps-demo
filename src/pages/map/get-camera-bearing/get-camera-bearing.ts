@@ -15,7 +15,7 @@ import {
 export class GetCameraBearingPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private alertCtrl: AlertController) {}
+  constructor(private alertCtrl: AlertController) {}
 
   ionViewDidLoad() {
     this.loadMap();
@@ -39,7 +39,7 @@ export class GetCameraBearingPage {
 
   onButton_click() {
     // Show the current camera bearing.
-    var text = "bearing: " + this.map.getCameraBearing();
+    let text: string = "bearing: " + this.map.getCameraBearing();
 
     let alert = this.alertCtrl.create({
       title: 'Current camera zoom level',

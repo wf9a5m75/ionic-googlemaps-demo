@@ -30,9 +30,6 @@ export class SetCameraBearingPage {
         zoom: 15
       }
     });
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map is ready");
-    });
   }
 
   onButton_click() {

@@ -33,20 +33,14 @@ class FromLatLngToPointPage {
   loadMap() {
     this.map = GoogleMaps.create('map_canvas');
 
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map is ready to use.");
-
-      let center: ILatLng = this.map.getCameraTarget();
-      return this.map.addMarker({
-        position: center,
-        draggable: true,
-        title: "Drag me!"
-      });
-    })
-    .then((marker: Marker) => {
-      marker.showInfoWindow();
-      marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerDragEnd(event));
+    let center: ILatLng = this.map.getCameraTarget();
+    let marker: Marker = this.map.addMarkerSync({
+      position: center,
+      draggable: true,
+      title: "Drag me!"
     });
+    marker.showInfoWindow();
+    marker.on(GoogleMapsEvent.MARKER_DRAG_END).subscribe(event => this.onMarkerDragEnd(event));
   }
 
 

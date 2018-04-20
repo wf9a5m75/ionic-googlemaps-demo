@@ -21,42 +21,34 @@ export class GetMyLocationPage {
 
   loadMap() {
     this.map = GoogleMaps.create("map_canvas");
-
-    // Wait the MAP_READY before using any methods.
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("Map is ready!");
-    });
   }
 
   onButtonClick(event) {
-    this.map.getMyLocation()
-      .then((location) => {
-        let msg: string = [
-          "Current your location:\n",
-          "latitude:" + location.latLng.lat,
-          "longitude:" + location.latLng.lng,
-          "speed:" + location.speed,
-          "time:" + location.time,
-          "bearing:" + location.bearing
-        ].join("\n");
+    this.map.getMyLocation().then((location) => {
+      let msg: string = [
+        "Current your location:\n",
+        "latitude:" + location.latLng.lat,
+        "longitude:" + location.latLng.lng,
+        "speed:" + location.speed,
+        "time:" + location.time,
+        "bearing:" + location.bearing
+      ].join("\n");
 
-        return this.map.addMarker({
-          position: location.latLng,
-          title: msg
-        });
-      })
-      .then((marker: Marker) => {
-
-        let position: CameraPosition<ILatLng> = {
-          target: marker.getPosition(),
-          zoom: 16
-        };
-
-        // move the map's camera to position
-        this.map.animateCamera(position).then(() => {
-          marker.showInfoWindow();
-        });
+      let marker: Marker = this.map.addMarkerSync({
+        position: location.latLng,
+        title: msg
       });
+
+      let position: CameraPosition<ILatLng> = {
+        target: marker.getPosition(),
+        zoom: 16
+      };
+
+      // move the map's camera to position
+      this.map.animateCamera(position).then(() => {
+        marker.showInfoWindow();
+      });
+    });
 
   }
 }

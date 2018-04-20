@@ -14,25 +14,16 @@ import {
 export class GetCameraTargetPage {
   map: GoogleMap;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private googleMaps: GoogleMaps, private alertCtrl: AlertController) {
+  constructor(private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
-  loadMap() {
-
-    this.map = GoogleMaps.create("map_canvas");
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map is ready");
-    });
-
-  }
-
   onButton_click() {
     // Show the current camera target position.
-    var target = this.map.getCameraTarget();
+    let target: ILatLng = this.map.getCameraTarget();
 
     let alert = this.alertCtrl.create({
       title: 'Current camera target',

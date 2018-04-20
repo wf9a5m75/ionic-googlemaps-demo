@@ -27,9 +27,6 @@ export class GetVisibleRegionPage {
         bearing: 150
       }
     });
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      console.log("map is ready");
-    });
   }
 
   onButton_click() {
@@ -38,7 +35,7 @@ export class GetVisibleRegionPage {
     let visibleRegion: VisibleRegion = this.map.getVisibleRegion();
 
     // Draw a red polygon that represents viewport
-    this.map.addPolygon({
+    this.map.addPolygonSync({
       'points': [
         visibleRegion.nearLeft,
         visibleRegion.nearRight,
@@ -48,14 +45,14 @@ export class GetVisibleRegionPage {
       'strokeColor' : 'red',
       'strokeWidth': 2,
       'fillColor': 'rgba(255, 0, 0, 0.5)'
-    }).then(() => {
-      setTimeout(() => {
-        this.map.animateCameraZoomOut()
-      }, 1000);
     });
 
+    setTimeout(() => {
+      this.map.animateCameraZoomOut()
+    }, 1000);
+
     // Draw a blue box that represents latLngBounds
-    this.map.addPolygon({
+    this.map.addPolygonSync({
       'points': [
         visibleRegion.northeast,
         {lat: visibleRegion.northeast.lat, lng: visibleRegion.southwest.lng},

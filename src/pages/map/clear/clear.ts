@@ -45,7 +45,7 @@ export class ClearPage {
     let diffX: number = (ne.lng - sw.lng);
 
     for (let i = 0; i < 100; i++) {
-      this.map.addMarker({
+      this.map.addMarkerSync({
         'position': {
           'lat': sw.lat + diffY * Math.random(),
           'lng': sw.lng  + diffX * Math.random()
