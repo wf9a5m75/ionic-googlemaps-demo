@@ -40,7 +40,7 @@ export class GroundOverlayClickPage {
     });
 
     // Catch the GROUND_OVERLAY_CLICK event
-    groundOverlay.on(GoogleMapsEvent.GROUND_OVERLAY_CLICK).subscribe(this.onClick);
+    groundOverlay.on(GoogleMapsEvent.GROUND_OVERLAY_CLICK).subscribe(this.onClick.bind(this));
 
   }
 
@@ -51,9 +51,7 @@ export class GroundOverlayClickPage {
     // Change the opacity of the ground overlay.
     groundOverlay.setOpacity(1.0);
 
-    let map: GoogleMap = groundOverlay.getMap();
-
-    let marker: Marker = map.addMarkerSync({
+    let marker: Marker = this.map.addMarkerSync({
       'position': latLng,
       'title': "You clicked here on the ground overlay!",
       'snippet': latLng.toUrlValue()
